@@ -1,0 +1,58 @@
+# Reproducible Workflow {#sec-reproducible-workflow}
+
+```{r}
+#| results: "asis"
+#| echo: false
+
+source("_common.R")
+```
+
+While it may be tempting to jump right into working with data and conducting analyses, it's crucial to consider how you organize your projects, files, and data. This is especially important when working with data in R and creating fully reproducible workflows.
+
+Part of the scientific process involves carefully documenting every step in our procedures. Doing so not only ensures higher quality research, but also enables your future self and others to fully reproduce what you did, go back and analyze the data in a different way, or catch errors in the data analysis process. Without a fully reproducible project, it may be difficult or impossible to catch errors that were made.
+
+The typical data analysis workflow looks something like this:
+
+```{r}
+#| label: fig-data-analysis-workflow
+#| echo: false
+#| fig-cap: Data analysis workflow
+
+knitr::include_graphics(rep("images/data_analysis_workflow.png"))
+```
+
+1.  The first step in working with raw data files is to prepare the data so that it is usable and easy to understand. This often involves cleaning up the **messy** raw data and transforming it into a **tidy** format.
+
+2.  Once the data is tidy, the next step is typically to aggregate the data across responses (e.g., accuracy, RT) and clean the data to create a **scored and cleaned** data file.
+
+3.  With the data cleaned and scored, it is then ready for **statistical analysis** and **data visualization**. Depending on the project, there may be additional steps required before conducting statistical analysis and visualization.
+
+The first two steps can be accomplished using R scripts. The general process is to import the raw data file, transform the data (e.g., tidy the data or aggregate responses), and save the transformed data as an output file.
+
+The third step is best done using Quarto documents. This allows for easy rendering and sharing of the results.
+
+## What does reproducibility mean? {#sec-what-does-reproducibility-mean}
+
+Reproducibility in data processing and analysis means that all processing and analysis steps can be fully replicated using only the original raw data files and the execution of the R (or other program) scripts. There are different levels of reproducibility:
+
+1.  Partially reproducible - only some data processing and analysis steps can be reproduced, which may be due to a lack of original raw data files or the use of non-reproducible software.
+
+2.  Minimal level of reproducibility (acceptable) - full reproduction of data processing and analysis steps on your computer (or a lab computer) without any modifications needed.
+
+3.  Moderately reproducible (desired) - meets the minimal level plus other people not involved in the research project can reproduce the steps with minimal modifications.
+
+4.  Highly reproducible (good luck!) - full reproduction of steps without modification needed by people not involved in the research project 5 - 10+ years from now.
+
+Note that these levels are arbitrarily defined by myself and what I came up with on the spot. A minimal level of reproducibility is still acceptable, as achieving more requires significant time and effort. Though, we should strive for a moderate amount of reproducibility, and achieving it requires more than just writing code. Your code must be organized, easy to understand, and include notes and documentation. Even if you or someone else attempts to reproduce your steps in the future, they can modify the code to make it work. The highest level of reproducibility is difficult to achieve due to software and code updates. Your code may only work with the current version of R or other packages. There are solutions to this problem of software and code updates, but who knows if those will work in the future!
+
+------------------------------------------------------------------------
+
+Simply using R for data analysis does not guarantee that your workflow is reproducible. In fact, there are many non-reproducible ways to use R. To ensure at least a moderate level of reproducibility, consider the following criteria (this is not an exhaustive list):
+
+-   Your statistical analysis can be fully reproduced using only the raw data files and R scripts
+
+-   Your code can be reproduced on other computers without any modifications
+
+-   **Your data and R scripts are organized and documented in a way that makes them easily understandable to unfamiliar parties**
+
+This last criterion is extremely important, but is often overlooked. Simply posting your data and scripts to an open access repository like OSF is not enough to guarantee reproducibility. If others cannot understand your workflow, then it is not reproducible. Therefore, it is crucial to take the time to think about the organization of your project, files, data, and scripts.

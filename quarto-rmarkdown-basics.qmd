@@ -1,0 +1,124 @@
+# Quarto Basics {#sec-quarto-basics}
+
+```{r}
+#| results: "asis"
+#| echo: false
+
+source("_common.R")
+```
+
+[Quarto documents](https://quarto.org) are a versitle way to create documents of different kinds and output formats. It can be used to generate statistical reports, presentations, websites, books, and interactive documents. This guide was created using [Quarto Books](https://quarto.org/docs/books/).
+
+## R Scripts vs. Quarto {#sec-r-scripts-vs.-quarto}
+
+Using R scripts makes sense when the purpose is to output a data file. Once you have your script all setup, you don't necessarily care about what objects are created in the R environment or what is being printed to the console, etc. What you care about is the outputted data file. The R script was just a means to get there.
+
+With data visualization and statistical analysis we care about generating figures, tables, and statistical reports - not data files. The process of data visualization and statistical analysis is also typically more explorative, iterative, and cyclic. Ultimately, we will want to generate a formatted, easy to read, final report of our analyses. All these things are not possible with R scripts.
+
+An alternative to R scripts (.R) are Quarto (.qmd) and R Markdown (.Rmd) documents. The primary use of Quarto documents in the lab is to generate statistical reports in .html format.
+
+::: callout-note
+Quarto documents are the next generation of R Markdown documents, therefore, this guide will simply refer to Quarto documents from here on out.
+
+The basic structure of R Markdown and Quarto documents are the same. And most, though not all, features of R Markdown documents have been ported over to Quarto documents. And for the most part you can convert R Markdown documents to Quarto without any problems.
+:::
+
+Follow this link for a brief Intro to [Quarto Documents](https://quarto.org/docs/blog/posts/2023-05-15-get-started/).
+
+To open an Quartodocument go to
+
+File -\> New File -\> Quarto Document...
+
+Select HTML and click Create
+
+An example Quarto document will open. We can use this to get familiar with the structure of Quarto documents.
+
+By default, Quarto documents will open using the Visual Markdown Editor. This editor mode creates an easy to read formatted text that feels more similar to writing in a Microsoft Word document. This type of visual markdown text is called WYSIWG. It hides the markdown formatting and displays the text as it would be formatted in a document.
+
+::: callout-note
+You can switch to Source Editor mode if you want to see the actual raw non-formatted content of the document. Go ahead and try switching modes to see the difference.
+
+You will likely find some advantages to editing Quarto documents in source mode rather than Visual Editor mode.
+:::
+
+There are three types of content that form the structure of a Quarto document.
+
+-   A YAML header
+
+-   R code chunks
+
+-   Markdown formatted text
+
+## YAML header {#sec-yaml-header}
+
+The YAML header contains metadata about how the document should be rendered and the output format. It is located at the very top of the document and is surrounded by lines of three dashes.
+
+```         
+---
+title: "Title of document"
+output: html_document
+---
+```
+
+There are various metadata options you can specify, such as if you want to include a table of contents. To learn about a few of them see <https://quarto.org/docs/output-formats/html-basics.html>
+
+## R code chunks {#sec-r-code-chunks}
+
+Unlike a typical R script file (.R), a Quarto document (.qmd) is a mixture of markdown text and R code chunks. Not everything in an R Markdown document is executed in the R console, only the R code chunks.
+
+### Create an R code chunk
+
+R code chunks are enclosed with
+
+#\> \`\`\`{r}
+
+#\> \`\`\`
+
+You can create R code chunks with the shortcut:
+
+Mac: ⌘ ⌥ i (command + alt/opt + i)
+
+Windows: ⌃ ⌥ i (ctrl + alt + i)
+
+Or by going to Insert -\> Code Cell -\> R in the toolboar of the Quarto document (same section as Source / Visual).
+
+Insert the followin code in the R code chunk
+
+```{r}
+#| eval: false
+
+summary(cars)
+```
+
+Create another R code chunk with the following code
+
+```{r}
+#| eval: false
+
+plot(pressure)
+```
+
+### Execute R code chunk
+
+To run chunks of R code you can click on the green "play" button on the top right of the R code chunk. Go ahead and do so.
+
+You can see that the results of the R code are now displayed in the document.
+
+## Markdown text {#sec-markdown-text}
+
+The markdown text sections are **not the same as adding comments to lines of code**. You can write up descriptive reports, create bulletted or numbered lists, embed images or web links, create tables, and more.
+
+The text is formatted using a language known as **Markdown**. Markdown is a convenient and flexible way to format text. When a Markdown document is rendered into some output (such as html or PDF), the text will be formatted as specified by Markdown syntax.
+
+There are a lot of guides on how to use Markdown syntax. I will not cover this so you should check them out on your own. Here is one I reference often: [**Markdown Cheatsheet**](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet){target="_blank"}
+
+## Rendering a Quarto document {#sec-rendering-a-quarto-document}
+
+When you have finalized the content of a Quarto document you will then want to generate the document into the specified output format (.html in this case).
+
+To render a Quarto document click on **Render** at the top. This will
+
+1.  Generate a live preview of the document in the Viewer pane
+2.  Create a .html file
+
+You can now use the .html file to view your visualizations and statistical analyses and share or present them with the lab.

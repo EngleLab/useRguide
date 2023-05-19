@@ -1,0 +1,174 @@
+# Tidy Raw Data {#sec-tidy-raw-data}
+
+```{r}
+#| results: "asis"
+#| echo: false
+
+source("_common.R")
+```
+
+::: callout-tip
+Watch a [video tutorial](https://youtu.be/g9KiPKA-dDw) of this chapter!
+:::
+
+**For this chapter you will need to**:
+
+-   See @sec-working-with-data for working with data in R if you are completely new to R or the tidyverse
+
+-   install the `purrr` package
+
+```{r}
+#| eval: false
+install.packages("purrr")
+```
+
+-   install the `psyworkflow` package
+
+```{r}
+#| eval: false
+# if you do not have devtools installed then do this first
+install.packages("devtools")
+# install workflow
+devtools::install_github("dr-JT/psyworkflow")
+```
+
+-   Setup a project folder, see @sec-psyworkflow
+
+-   download [this data file]() to **data/raw** in your project folder
+
+-   get an R script template for tidying raw data
+
+```{r}
+#| eval: false
+psyworkflow::get_template(raw_script = TRUE)
+```
+
+## Overview of Template
+
+### Setup
+
+```{r}
+#| eval: false
+# ---- Setup ----
+# packages
+library(here)
+library(readr)
+library(dplyr)
+library(purrr) # delete if importing a single file, not a batch of files
+
+# directories
+import_dir <- "data/raw/messy"
+output_dir <- "data/raw"
+
+# file names
+task <- "taskname"
+import_file <- paste(task, ".txt", sep = "")
+output_file <- paste(task, "raw.csv", sep = "_")
+# ---------------
+```
+
+-   Load packages
+
+    Any packages required for this script are loaded at the top. The `here`, `readr`, and `dplyr` packages will be used. The `purrr` package will be used if you are importing a batch of files. If you are only importing a single file you will not need this and therefore should be deleted.
+
+-   Set Import/Output Directories
+
+    To make this example easier you will not have to actually import/output any files.
+
+-   Set Import/Output Filenames
+
+    The only line we need to change here is the `task <- "taskname"` to `task <- "VAorient_S"`.
+
+### Import
+
+I have provided two different import options. The first one is if you are importing a single file. The second is if you are importing a batch of files. For more details on importing a batch of files see @sec-multiple-files-bind
+
+```{r}
+#| eval: false
+# ---- Import Data ----
+# to import a single file
+data_import <- read_delim(here(import_dir, import_file), delim = "\t",
+                          escape_double = FALSE, trim_ws = TRUE)
+
+# alternatively to import a batch of files...
+# change the arguments in purrr::map_df() depending on type of data files
+# this example is for files created from eprime and needs encoding = "UCS-2LE"
+files <- list.files(here(import_dir, task), pattern = ".txt", full.names = TRUE)
+data_import <- files |>
+  map_df(read_delim, locale = locale(encoding = "UCS-2LE"),
+         delim = "\t", escape_double = FALSE, trim_ws = TRUE, na = "NULL")
+# ---------------------
+```
+
+### Tidy raw data
+
+This is the meat of the script, where the action happens. It will also be different for every task - obviously. I will cover these steps in more detail below.
+
+```{r}
+#| eval: false
+# ---- Tidy Data ----
+data_raw <- data_import |>
+  filter() |>
+  rename() |>
+  mutate() |>
+  select()
+# -------------------
+```
+
+### Output data
+
+No need to change anything here. Isn't that nice?
+
+```{r}
+#| eval: false
+# ---- Save Data ----
+write_csv(data_raw, here(output_dir, output_file))
+# -------------------
+
+rm(list = ls())
+```
+
+## Filter Rows
+
+One of the first things that is useful to do is get rid of rows in the messy data file that you don't need.
+
+For E-Prime data, `Procedure[Trial]` is usually the column name you need to only keep rows for practice and real trials procedures.
+
+::: callout-tip
+Type `colnames(data_import)` in the console window to get a read out of all the column names in your data. It is much faster and easier to see column names in the console than navigating the data frame itself.
+:::
+
+You need to figure out the value names that correspond to the rows you want to keep. Use ``` unique(``Procedure[Trial]``) ```
+
+Let's say we only want to keep rows that have a value in the `Procedure[Trial]` column as either `TrialProc` or `PracProc`.
+
+```{r}
+#| eval: false
+rename(TrialProc = `Procedure[Trial]`)
+filter(TrialProc == "TrialProc" | TrialProc == "PracProc")
+```
+
+## Change Values in Columns
+
+You will likely want to change some of the value labels in columns to make more sense and standardize it across tasks. In general, you should avoid numeric labels for categorical data. Instead, you should just use word strings that describe the category intuitively (e.g., "red", "blue", "green" instead of 1, 2, 3).
+
+Let's change the `TrialProc` values so they are more simple and easy to read.
+
+```{r}
+#| eval: false
+mutate(TrialProc = case_when(TrialProc == "TrialProc" ~ "real", 
+                             TrialProc == "PracProc" ~ "practice",
+                             TRUE ~ as.character(NA))) 
+```
+
+You may want to do more complex changing of values or creating entirely new columns. See the \*\*Working with Data\* section for more details.
+
+## Keep only a few Columns
+
+You will also likely want to select only a subset of columns to keep in the tidy raw data file.
+
+```{r}
+#| eval: false
+select(Subject, TrialProc, Trial, Condition, Accuracy, RT, Response,
+       CorrectResponse, AdminTime, SessionDate, SessionTime)
+```

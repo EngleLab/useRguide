@@ -1,0 +1,77 @@
+# R Packages and Functions {#sec-r-packages-and-functions}
+
+```{r}
+#| results: "asis"
+#| echo: false
+
+source("_common.R")
+```
+
+The community of R users have developed a vast number of functions that expand on the base R functions. Many of the functions developed by R users allow you to do more complicated things with your data without having to be an advanced R programmer. And the great thing is that as more psychology researchers use R, the more functions there are specifically for psychological research.
+
+Functions that R users develop are collected in what are called **packages**. Most R packages are hosted on The Comprehensive R Archive Network - **CRAN**. Some other packages, ones that are in more developmental stages and may not be as stable, are hosted on GitHub.
+
+## Install and Load Packages {#sec-install-and-load-packages}
+
+To install packages from **CRAN** is easy. Simply type into the console window: `install.packages("packagename")`
+
+For example:
+
+```{r}
+#| eval: false
+install.packages("dplyr")
+```
+
+Once you have a package installed, you can load that package into your current environment. Your **R Environment** consists of things such as objects (variables) you have created, data you have imported, and functions you have loaded. Your R Environment are like the tools and objects you have available to you and are working with.
+
+When you load a package you are bringing the functions from that package into your **environment** so you can start using them. To load a package is easy: `library(package_name)`
+
+For example:
+
+```{r}
+#| eval: false
+library(dplyr)
+```
+
+## Using Functions {#sec-using-functions}
+
+Basically anything you do in R is by using **functions**. In fact, learning R is just learning what functions are available and how to use them.
+
+Functions start with the name of the function followed by parentheses `function_name()`. Inside the `()` is where you specify certain arguments separated by commas `,` . Some arguments are optional and some are required for the function to work.
+
+For example, there is a function to create a sequence of numbers, `seq()`.
+
+```{r}
+#| collapse: false
+seq(1, 100, by = 10)
+```
+
+In the `seq()` function above we specified three arguments, separated by commas. The first two arguments were set without specifying the argument name, however the third argument we used the argument name `by` to define `seq(by = 10)`. If you don't explicitly use the argument name it will implicitly assume an argument **based on the order it is entered**, depending on how the author created the function.
+
+------------------------------------------------------------------------
+
+**The Helper Function**
+
+A handy tip is to frequently make use of the helper function, `?`. Type `?seq` into the R console. Helper documentation will be provided for that function and as you can see, the first argument defined is `from` and the second argument is `to`.
+
+------------------------------------------------------------------------
+
+**Order only matters if you do not specify argument names**
+
+Specifying the actual argument names, the above code is identical to the three following examples:
+
+```{r}
+#| eval: false
+seq(from = 1, to = 100, by = 10)
+seq(to = 100, by = 10, from = 1)
+seq(1, 100, 10)
+```
+
+There are also default values that arguments take, which means if you don't define an argument it will take on the default value. The helper documentation shows that the `from` argument has a default of `from = 1`, therefore we could even leave out the `from =` argument because we were using the default value:
+
+```{r}
+#| eval: false
+seq(to = 100, by = 10)
+```
+
+What this means is that it can be important to know what the default values are for functions you are using and you can figure that out with the helper function `?`

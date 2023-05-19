@@ -1,0 +1,71 @@
+# psyworkflow {#sec-psyworkflow}
+
+```{r}
+#| results: "asis"
+#| echo: false
+
+source("_common.R")
+```
+
+In this chapter, I introduce you to my `psyworkflow` package that allows you to automatically setup the organizational structure I have outlined in the previous chapter, along with R script templates for each data processing stage.
+
+## Install
+
+First, if you do not have the `devtools` package installed:
+
+```{r}
+#| eval: false
+install.packages("devtools")
+```
+
+Install the `psyworkflow` package from my GitHub repository using the `devtools` package:
+
+```{r}
+#| eval: false
+devtools::install_github("dr-JT/psyworkflow")
+```
+
+Restart R: Session -\> Resart R
+
+## Download R Script Templates {#sec-download-r-script-templates}
+
+If you already have an RProject setup and just want to download some of the R script templates you can do so with the `get_template()` function.
+
+```{r eval = FALSE}
+workflow::get_template()
+```
+
+To see what the options are type in the console window
+
+```{r eval = FALSE}
+?workflow::get_template
+```
+
+## Create a New Project
+
+Close RStudio and reopen a new instance of RStudio (not from an RProject file).
+
+Once you have the `psyworkflow` package installed you will be able to create a new RProject directory and file from my **Research Study** template. This will automatically create the directory structure outlined in the previous chapter. It will also add template R scripts in **R / templates** and a **masterscript.Rmd** file.
+
+Using this template will allow you to get right to working with your data in R, without having to spend too much time thinking about organization (I have already done that for you).
+
+To create an RProject from this template:
+
+File -\> New Project... -\> New Directory -\> Research Study (you might need to scroll down to see it)
+
+This will bring up a window to customize the template:
+
+```{r}
+#| label: fig-psyworkflow-project
+#| echo: false
+#| fig-cap: Create new project window
+knitr::include_graphics(rep("images/workflow_package.png"))
+```
+
+Type in whatever you want for the **Directory Name** - this will end up being the name of the project folder and RProject file.
+
+Click on **Browse...** and create the project on your desktop, for now.
+
+Keep all the defaults and select **Create Project**.
+
+Give it some time, and it will reopen RStudio from the newly created RProject. Take a look at the file pane and you can see that the folders have been created, and R Script templates downloaded.

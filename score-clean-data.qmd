@@ -1,0 +1,342 @@
+# Score and Clean Data {#sec-score-and-clean-data}
+
+```{r}
+#| results: "asis"
+#| echo: false
+
+source("_common.R")
+```
+
+**For this chapter you will need to**:
+
+-   See @sec-working-with-data for working with data in R if you are completely new to R or the tidyverse
+
+-   install the `psyworkflow` package
+
+```{r}
+#| eval: false
+# if you do not have devtools installed then do this first
+install.packages("devtools")
+# install workflow
+devtools::install_github("dr-JT/psyworkflow")
+```
+
+-   install the `psych` package
+
+```{r}
+#| eval: false
+install.packages("psych")
+```
+
+-   Setup a project folder, see @sec-psyworkflow
+
+-   download [this data file]() to **data/raw** in your project folder
+
+-   get an R script template for scoring raw data
+
+```{r}
+#| eval: false
+psyworkflow::get_template(score_script = TRUE)
+```
+
+------------------------------------------------------------------------
+
+## Overview
+
+At this stage of data processing you have tidy raw data files for each task. The next step is to process the raw data into aggregate summary variables. This involves several steps:
+
+1.  Calculate task scores
+
+2.  Evaluate and remove problematic subjects and outliers
+
+3.  Calculate reliability
+
+## Setup
+
+```{r}
+#| eval: false
+# ---- Setup ----
+# packages
+library(here)
+library(readr)
+library(dplyr)
+library(englelab)    # for data cleaning functions
+library(tidyr)       # for pivot_wider. delete if not using
+library(psych)       # for cronbach's alpha. delete if not using
+
+# directories
+import_dir <- "data/raw"
+output_dir <- "data/scored"
+
+# file names
+task <- "taskname"
+import_file <- paste(task, "raw.csv", sep = "_")
+output_file <- paste(task, "Scores.csv", sep = "_")
+
+## data cleaning parameters
+outlier_cutoff <- 3.5
+# --------------
+```
+
+-   packages
+
+    Any packages required for this script are loaded at the top. For this task we will need the `here`, `readr`, `dplyr`, `tidyr`, `englelab`, and `psych` packages.
+
+-   directories
+
+    If you are using my default project organization, you do not need to change anything here.
+
+-   file names
+
+    The only line we need to change here is the `task <- "taskname"` to `task <- "VAorient_S"`.
+
+-   data cleaning parameters
+
+    In this section of the script we can set certain data cleaning criterion to variables. This makes it easy to see what data cleaning criteria were used right at the top of the script rather than having to read through and try to interpret the script.
+
+    For the visual arrays task we should remove subjects who had low accuracy scores - lets say those with accuracy lower 50% (chance level performance on this task)
+
+    Add `acc_criterion <- .5` to this section of the script.
+
+    There is already an outlier criterion added to this section by default. This criterion will remove outliers that have scores on the task greater or less than 3.5 standard deviations from the mean.
+
+## Import
+
+```{r}
+#| eval: false
+# ---- Import Data ----
+data_import <- read_csv(here(import_dir, import_file))
+# ---------------------
+```
+
+Because of this template, you can now quickly import the data file by running the line of code in the import section. Take a look at the dataframe.
+
+Notice how there are rows that correspond to **practice** trials. We do not want to use these rows when calculating scores on the task. So let's filter for only **real** trials right when we import the data, so that we won't have to remember to do it later.
+
+Add a row to keep only **real trials**
+
+```{r}
+#| eval: false
+# ---- Import Data ----
+data_import <- read_csv(here(import_dir, import_file)) |>
+  filter(TrialProc == "real")
+# ---------------------
+```
+
+## Calculate Task Scores
+
+This is where the action happens. It will also be different for every task - obviously. However, there are a few steps that are pretty common.
+
+```{r}
+#| eval: false
+# ---- Score Data ----
+data_scores <- data_import |>
+  muatate(.by = Subject) |>
+  summarise(.by = Subject)
+# -------------------
+```
+
+### Trim Reaction Time
+
+To trim reaction times less than 200ms:
+
+```{r}
+#| eval: false
+mutate(RT = ifelse(RT < 200, NA, RT))
+```
+
+To trim reaction times less than 200ms or greater than 10000ms
+
+```{r}
+#| eval: false
+mutate(RT = ifelse(RT < 200 | RT > 10000, NA, RT))
+```
+
+Alternatively, using `dplyr::case_when()`
+
+```{r}
+#| eval: false
+mutate(RT = case_when(RT < 200 ~ as.numeric(NA),
+                      RT > 10000 ~ as.numeric(NA),
+                      TRUE ~ RT))
+```
+
+### Summary Statistic
+
+Once you group and clean the data, you can calculate a summary statistic such as a mean, median, or standard deviation.
+
+To calculate the mean accuracy and reaction time for each subject and condition:
+
+```{r}
+#| eval: false
+summarise(.by = c(Subject, Condition),
+          Accuracy.mean = mean(Accuracy, na.rm = TRUE),
+          RT.mean = mean(RT, na.rm = TRUE))
+```
+
+### Transform Data to Wide
+
+If you are grouping by Subject and Condition, then you will likely want to transform the aggregated data into a wide format. This is because `summarise()` will produce a row for each Condition per Subject. What you might want is a single row per subject, with the conditions spread out across columns.
+
+::: callout-tip
+If you forget how to use a function or what the argument names are then type `?functionName()` in the console (e.g. `?pivot_wider()`).
+:::
+
+```{r}
+#| eval: false
+pivot_wider(id_cols = Subject,
+            names_from = Condition,
+            values_from = Accuracy.mean)
+```
+
+### More Complex Scoring
+
+This is an example of how to calculate *k* scores for the visual arrays task. You can see this is a little more involved.
+
+```{r}
+#| eval: false
+data_scores <- data_import |>
+  summarise(.by = c(Subject, SetSize),
+            CR.n = sum(CorrectRejection, na.rm = TRUE),
+            FA.n = sum(FalseAlarm, na.rm = TRUE),
+            M.n = sum(Miss, na.rm = TRUE),
+            H.n = sum(Hit, na.rm = TRUE)) |>
+  mutate(CR = CR.n / (CR.n + FA.n),
+         H = H.n / (H.n + M.n),
+         k = SetSize * (H + CR - 1)) |>
+  pivot_wider(id_cols = Subject,
+              names_from = SetSize,
+              names_prefix = "VA.k_",
+              values_from = k) |>
+  mutate(VA.k = (VA.k_5 + VA.k_7) / 2)
+```
+
+## Data Cleaning
+
+The next section of the script template is for cleaning the data by removing problematic subjects and/or removing outliers.
+
+### Remove Problematic Subjects
+
+Depending on the task, problematic subjects can be detected in different ways. For this task we will simply remove subjects that had less than chance performance (were just guessing or did not understand the task).
+
+To do so, we will use a custom function created for this purpose, `remove_problematic()` from our `englelab` package. `?englelab::remove_problematic`
+
+The main argument is `filter =`. You need to put in here, what you would put inside of `dplyr::filter()` to remove anyone with less than chance performance: `dplyr::filter(Accuracy.mean < acc_criterion)`. Remember at the top of the script we added the accuracy criterion by setting `acc_criterion <- .5` (chance performance).
+
+The other argument, that is more optional, is `log_file =`. This allows us to save a data file containing only the subjects that were removed. This is good if we later on want to inspect how many subjects were removed, and why.
+
+```{r}
+#| eval: false
+data_cleaned <- data_scores |>
+  remove_problematic(
+    filter = "Accuracy.mean < acc_criterion",
+    log_file = here("data/logs", paste(task, "_problematic.csv", sep = "")))
+```
+
+### Remove Outliers
+
+Remove outliers based on their final task scores. A typical way we remove outliers is by setting their score to missing `NA` if it is 3.5 standard deviations above or below the mean.
+
+To do so, we will use a custom function created for this purpose, `replace_outliers` from our `englelab` package.
+
+There are several arguments that need to be defined. See `?englelab::replace_outliers` for a description on this.
+
+The fully piped `|>` code for this entire section looks like:
+
+```{r}
+#| eval: false
+# ---- Clean Data ----
+data_cleaned <- data_scores |>
+  remove_problematic(
+    filter = "Accuracy.mean < acc_criterion",
+    log_file = here("data/logs", paste(task, "_problematic.csv", sep = ""))) |>
+  replace_outliers(
+    variables = "VA.k",
+    cutoff = outlier_cutoff,
+    with = "NA",
+    log_file = here("data/logs", paste(task, "_outliers.csv", sep = ""))) |>
+  filter(!is.na())
+# -------------------
+```
+
+Notice that `filter(!is.na())` is specified after `replace_outliers`. This removes any of the outliers from the dataframe.
+
+## Calculate Reliability
+
+There are two standard ways of calculating reliability: split-half and cronbach's alpha.
+
+It is best to calculate reliability only on the subjects that made it passed data cleaning.
+
+```{r}
+#| eval: false
+reliability <- data_import |>
+  filter(Subject %in% data_cleaned$Subject)
+```
+
+`reliability` will be the raw data frame that we will use to calculate reliabilty estimates on.
+
+### Split-half reliability
+
+Here is an example if the task score was an aggregate of accuracy.
+
+```{r}
+#| eval: false
+splithalf <- reliability |>
+  mutate(.by = Subject,
+         Split = ifelse(Trial %% 2, "odd", "even")) |>
+  summarise(.by = c(Subject, Split),
+            Accuracy.mean = mean(Accuracy, na.rm = TRUE)) |>
+  pivot_wider(id_cols = Subject,
+              names_from = Split,
+              values_from = Accuracy.mean) |>
+  summarise(r = cor(even, odd)) |>
+  mutate(r = (2 * r) / (1 + r))
+
+data_cleaned$Score_splithalf <- splithalf$r
+```
+
+For tasks, like the visual arrays, where the score is not a simple aggregate but a more complicated calculation this is more involved and we would basically want to score the data set for even and odd trials separately.
+
+To calculate the split-half reliability of **k scores** on the visual arrays task would look something like:
+
+```{r}
+#| eval: false
+splithalf <- reliability |>
+  mutate(.by = c(Subject, SetSize),
+         Split = ifelse(Trial %% 2, "odd", "even")) |>
+  summarise(.by = c(Subject, SetSize, Split),
+            CR.n = sum(CorrectRejection, na.rm = TRUE),
+            FA.n = sum(FalseAlarm, na.rm = TRUE),
+            M.n = sum(Miss, na.rm = TRUE),
+            H.n = sum(Hit, na.rm = TRUE)) |>
+  mutate(CR = CR.n / (CR.n + FA.n),
+         H = H.n / (H.n + M.n),
+         k = SetSize * (H + CR - 1)) |>
+  pivot_wider(id_cols = Subject,
+              names_from = c(SetSize, Split),
+              names_prefix = "VA.k_",
+              values_from = k) |>
+  mutate(VA.k_even = (VA.k_5_even + VA.k_7_even) / 2,
+         VA.k_odd = (VA.k_5_odd + VA.k_7_odd) / 2)
+  summarise(r = cor(VA.k_even, VA.k_odd)) |>
+  mutate(r = (2 * r) / (1 + r))
+
+data_cleaned$Score_splithalf <- splithalf$r
+```
+
+### Cronbach's alpha
+
+Here is an example if the task score was an aggregate of accuracy.
+
+```{r}
+#| eval: false
+cronbachalpha <- reliability |>
+  select(Subject, Trial, Accuracy) |>
+  pivot_wider(id_cols = Subject,
+              names_from = Trial,
+              values_from = Accuracy) |>
+  select(-Subject) |>
+  alpha()  # from the psych package
+
+data_cleaned$Score_cronbachalpha <- cronbachalpha$total$std.alpha
+```

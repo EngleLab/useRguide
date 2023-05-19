@@ -1,19 +1,57 @@
 project:
   type: book
+  output-dir: _book
 
 book:
-  title: "useRguide"
+  title: "Engle Lab useRguide"
   author: "Jason S. Tsukahara"
   date: today
+  page-navigation: true
+  reader-mode: true
+  search: true
+  cover-image: cover.png
+  favicon: cover.png
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    
+    - part: "Getting Started"
+      chapters:
+        - installation.qmd
+        - tips.qmd
+        - pkgs-and-funcs.qmd
+        - R-basics.qmd
+        - R-intermediate.qmd
+        - quarto-rmarkdown-basics.qmd
+      
+    - part: "Tidyverse"
+      chapters: 
+        - this-is-the-way.qmd
+        - import-write.qmd
+        - working-with-data.qmd
+    
+    - part: "Project Organization"
+      chapters: 
+        - reproducible-workflow.qmd
+        - file-organization.qmd
+        - psyworkflow.qmd
+    
+    - part: "Data Processing"
+      chapters: 
+        - data-processing-steps.qmd
+        - tidy-raw-data.qmd
+        - score-clean-data.qmd
+        - single-merged-file.qmd
+        
+    - part: "Data Visualization"
+      chapters:
+        - intro-ggplot2.qmd
 
 format:
   html:
     theme: cosmo
+    code-copy: true
+    code-link: true
+    number-depth: 1
   pdf:
     documentclass: scrreprt
 

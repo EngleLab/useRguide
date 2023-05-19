@@ -1,9 +1,5 @@
-# Preface {.unnumbered}
+# Welcome {.unnumbered}
 
-This is a Quarto book.
+This is the useRguide for the [Attention & Working Memory Lab](https://englelab.gatech.edu) at Georgia Tech. This guide provides training in the basics of how to use R, the tidyverse, and tools for how we process and analyze data in our lab. The workflow and data processing steps presented in this guide are perculiar to the type of data we tend to work with in our lab. We primarily collect behavioral data on a large set of cognitive tasks to test individual differences in cognitive ability. However, you will find that most of the principles presented here apply to working with other types of data. This is especially true of the sections on data manipulation and data visualization.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
-
-```{r}
-1 + 1
-```
+I have developed several R packages that were designed to work with the type of data and analyses we use in the lab. Most of these packages contain R script templates and Quarto documents to make it easier for you to create new R scripts and analysis documents.

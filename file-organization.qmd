@@ -1,0 +1,115 @@
+# File Organization {#sec-file-organization}
+
+```{r}
+#| results: "asis"
+#| echo: false
+
+source("_common.R")
+```
+
+Good project organization starts with easy to understand folder and file organization. For a data analysis project, the following folders are typically needed for a fully reproducible workflow:
+
+```{r}
+#| label: fig-folder-org
+#| echo: false
+#| fig-cap: Folder organization
+
+knitr::include_graphics(rep("images/folder_organization.png"))
+```
+
+Notice how the structure of the **data** folder follows the data analysis workflow. The original **messy** raw data files are stored in **data / raw / messy**. The **tidy** raw data files are stored in **data / raw**. And the **scored and cleaned** data files are stored in **data / scored**.
+
+```{r}
+#| label: fig-data-analysis-workflow2
+#| echo: false
+#| fig-cap: Data analysis workflow
+
+knitr::include_graphics(rep("images/data_analysis_workflow.png"))
+```
+
+This organizational structure makes it easy to understand how the various **R Scripts**, stored in the **R** folder, correspond to each step in the data analysis workflow, what data the script is importing and where it is coming from, and what data file the script is outputting and saving to.
+
+To help with this even further, I typically follow a particular file naming scheme.
+
+-   I like to just keep the original data file name for the **messy** raw data file.
+
+-   For **tidy** raw data files I use **taskname_raw.csv**
+
+-   For **scored** data files I use **taskname_scored.csv**
+
+-   For R Scripts I will append a prefix number corresponding to the order in which the scripts need to be ran and a suffix corresponding to what stage of the data analysis workflow it is in:
+
+    -   **1_taskname_raw.R**
+
+    -   **2_taskname_score.R**
+
+    -   **3_merge_scores.R**
+
+It could be tempting to just throw all your R code into one script or RMarkdown document, however, I advise against that because it will make it more difficult to manage, reproduce, and understand your data processing workflow.
+
+## RProjects and here() {#sec-rprojects-and-here}
+
+You need to be using RStudio Projects for anything you do in R.
+
+In fact, **you should be opening RStudio by opening an RProject file**.
+
+RStudio Projects allow you to open isolated instances of R and RStudio for each of your projects. In combination with the `here` package it will also provide a simple and fool proof way of specifying file paths.
+
+Every time you use `here()` you know that the file path will start at where you have your .Rproj file saved. Instead of messing around with working directories using `setwd()` or `getwd()`, just use `here()` and RStudio Projects. This becomes especially helpful when working with Quarto documents.
+
+For instance, I have an .Rproj file saved in my "useRguide" folder. When I use `here()`, the function will start at a file path to that location.
+
+```{r}
+library(here)
+here()
+```
+
+You can then use a relative file path inside of `here()`.
+
+```{r}
+here("data/raw/flanker_raw.csv")
+```
+
+This is equivalent to
+
+```{r}
+here("data", "raw", "flanker_raw.csv")
+```
+
+I typically like to set the first argument as the relative file path and the second argument as the file name. This visually separates the file path and the file name, making your script easier to read.
+
+```{r}
+here("data/raw", "flanker_raw.csv")
+```
+
+You can then use `here()` directly in import and output functions:
+
+```{r}
+#| eval: false
+import <- read_csv(here("data/raw", "flanker_raw.csv"))
+```
+
+```{r}
+#| eval: false
+write_csv(data, here("data/scored", "flanker_scored.csv"))
+```
+
+## mainscript file
+
+When you break up your data processing stages into separate R scripts, this can lead to having a lot of R scripts to source. It can be tedious to open each script, source it, then repeat for every R script while making sure you are doing everything in the right order.
+
+Instead, I prefer to create a **mainscript.Rmd** file that uses `source()` to source each R script file in a particular order, and `render_quarto()` to render Quarto documents.
+
+Using a Quarto (.qmd) document for the mainscript file is useful if you want to add in documentation about the study and data analysis workflow. For instance, you can add brief descriptions of how outliers were detected and dealt with, how reliability was calculated, etc.
+
+It also makes it easier for yourself, your future self, or someone else to look at your **mainscript.qmd** file and easily understand your data processing workflow without having to go through each of your R scripts line-by-line.
+
+## Use Templates!
+
+Don't start from scratch, like ever.
+
+It can be a ton of work, and mental effort, to create an efficient and reproducible project organization from scratch. Generally, I would try to avoid starting a project from blank, empty, R scripts. More than likely what will happen is that any organization you had thought of just breaks down because you are struggling enough with writing the R code itself, and you need to get a report on the data to your advisor so you decide to use shortcuts **"for now"**. But we all know that **"for now"** always turns into **forever**.
+
+Unfortunately, not starting from scratch usually means that you have already setup an organization system with R script templates that you can use. This is likely not the case. So what to do?
+
+Well. in the next chapter, I will introduce you to my `psyworkflow` package that allows you to automatically setup the organizational structure I have outlined in this chapter, along with R script templates for each data processing stage.
