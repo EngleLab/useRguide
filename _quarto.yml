@@ -1,0 +1,21 @@
+project:
+  type: book
+
+book:
+  title: "useRguide"
+  author: "Jason S. Tsukahara"
+  date: today
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
