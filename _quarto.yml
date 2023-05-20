@@ -13,6 +13,12 @@ book:
   favicon: cover.png
   navbar: 
     left:
+      - text: "Lab Website"
+        href: https://englelab.gatech.edu/
+        target: _blank
+      - text: "Lab Manual"
+        href: https://engle-lab.gitbook.io/lab-manual/
+        target: _blank
       - text: "R Packages"
         menu:
           - text: "englelab"
