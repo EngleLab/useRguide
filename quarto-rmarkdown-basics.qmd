@@ -122,3 +122,12 @@ To render a Quarto document click on **Render** at the top. This will
 2.  Create a .html file
 
 You can now use the .html file to view your visualizations and statistical analyses and share or present them with the lab.
+
+## Visual Editor
+
+[See Visual Editing in RStudio](https://quarto.org/docs/visual-editor/) for more details on using the visual editor including shortcuts and tips.
+
+There are two convenient ways to insert formatted content in the visual editor:
+
+1.  Use the Insert tool in the toolbar at the top
+2.  Simply type `/` to quickly display the Insert Anything shortcut options. You can even start typing/searching what you want to insert.

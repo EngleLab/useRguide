@@ -238,6 +238,13 @@
     "text": "Rendering a Quarto document\nWhen you have finalized the content of a Quarto document you will then want to generate the document into the specified output format (.html in this case).\nTo render a Quarto document click on Render at the top. This will\n\nGenerate a live preview of the document in the Viewer pane\nCreate a .html file\n\nYou can now use the .html file to view your visualizations and statistical analyses and share or present them with the lab."
   },
   {
+    "objectID": "quarto-rmarkdown-basics.html#visual-editor",
+    "href": "quarto-rmarkdown-basics.html#visual-editor",
+    "title": "6  Quarto Basics",
+    "section": "Visual Editor",
+    "text": "Visual Editor\nSee Visual Editing in RStudio for more details on using the visual editor including shortcuts and tips.\nThere are two convenient ways to insert formatted content in the visual editor:\n\nUse the Insert tool in the toolbar at the top\nSimply type / to quickly display the Insert Anything shortcut options. You can even start typing/searching what you want to insert."
+  },
+  {
     "objectID": "this-is-the-way.html#sec-the-pipe-operator",
     "href": "this-is-the-way.html#sec-the-pipe-operator",
     "title": "7  This Is The Way",

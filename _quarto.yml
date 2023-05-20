@@ -11,6 +11,26 @@ book:
   search: true
   cover-image: cover.png
   favicon: cover.png
+  navbar: 
+    left:
+      - text: "R Packages"
+        menu:
+          - text: "englelab"
+            href: https://englelab.github.io/englelab/
+            target: _blank
+          - text: "psyworkflow"
+            href: https://dr-jt.github.io/psyworkflow/
+            target: _blank
+          - text: "semoutput"
+            href: https://dr-jt.github.io/semoutput/
+            target: _blank
+          - text: "modeloutput"
+            href: https://dr-jt.github.io/modeloutput/
+            target: _blank
+          - text: "pupillometry"
+            href: https://dr-jt.github.io/pupillometry/
+            target: _blank
+      
   chapters:
     - index.qmd
     
