@@ -10,11 +10,9 @@ You should let the graduate students in the lab know if you are learning R and u
 
 ## Navigation
 
-You can navigate this useRguide using the left side bar. Select the section headers to see an introduction to each section.
+You can navigate this useRguide using the **left side bar**. Within each chapter there will be a table of contents on the **right side bar** that you can use to navigate.
 
-Within each chapter there will be a table of contents on the right side bar that you can use to navigate.
-
-The top menu navigation bar has convenient links to the lab website, the lab manual, and documentation on R packages that were developed in this lab.
+The **top menu navigation bar** has convenient links to the lab website, the lab manual, and documentation on R packages that were developed in this lab.
 
 ## Section Contents
 
