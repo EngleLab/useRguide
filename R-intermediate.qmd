@@ -144,34 +144,6 @@ d
 
 Yay! Good job.
 
-## Functions {#sec-functions}
-
-Basically anything you do in R is by using **functions**. In fact, learning R is just learning what functions are available and how to use them. Not much more to it than that.
-
-You have only seen a couple of functions at this point. In this chapter, a common function used was `c()`. This function simply concatenates a series of numerical or string values into a vector. `c(1,6,3,7)`.
-
-Functions start with the name of the function followed by parentheses `function_name()`. Inside the `()` is where you specify certain arguments separated by commas `,` . Some arguments are optional and some are required for the function to work.
-
-For example, another function you saw last chapter was `data.frame()`. This function creates a data frame with the columns specified by arguments.
-
-```{r}
-data.frame(id = 1:10, x = c("a", "b"), y = seq(10,100, by = 10))
-```
-
-The arguments `id`, `x`, and `y` form the columns in the data frame. These arguments themselves used functions. For instance `y` used the function `seq()`. This function creates a sequence of numbers in a certain range at a given interval. Sometimes arguments are not defined by an `=`. The first two arguments in in `seq()` specify the range of 10 to 100. The third argument `by` specified the interval to be 10. So `seq(10, 100, by = 10)` creates a sequence of numbers ranging from 10 to 100 in intervals of 10.
-
-```{r}
-seq(10, 100, by = 10)
-```
-
-In the `seq()` function the `by` argument is not required. This is because there is a default `by` value of 1.
-
-```{r}
-seq(10, 100)
-```
-
-Obviously if you want to specify a different interval, then you will need to specify `by =`.
-
 ## Creating Your Own Functions {#sec-creating-your-own-functions}
 
 This section is optional. It will go over how to create your own functions.

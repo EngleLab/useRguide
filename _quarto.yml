@@ -39,27 +39,22 @@ book:
       
   chapters:
     - index.qmd
+    - introduction.qmd
     
     - part: "Getting Started"
       chapters:
         - installation.qmd
-        - tips.qmd
         - pkgs-and-funcs.qmd
         - R-basics.qmd
         - R-intermediate.qmd
         - quarto-rmarkdown-basics.qmd
-      
+        - tips.qmd
+        
     - part: "Tidyverse"
       chapters: 
         - this-is-the-way.qmd
         - import-write.qmd
         - working-with-data.qmd
-    
-    - part: "Project Organization"
-      chapters: 
-        - reproducible-workflow.qmd
-        - file-organization.qmd
-        - psyworkflow.qmd
     
     - part: "Data Processing"
       chapters: 
@@ -71,7 +66,12 @@ book:
     - part: "Data Visualization"
       chapters:
         - intro-ggplot2.qmd
-
+        
+  appendices:
+    - reproducible-workflow.qmd
+    - file-organization.qmd
+    - psyworkflow.qmd
+    
 format:
   html:
     theme: cosmo

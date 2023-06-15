@@ -1,4 +1,4 @@
-set.seed(1014)
+set.seed(1988)
 
 knitr::opts_chunk$set(
   collapse = TRUE,

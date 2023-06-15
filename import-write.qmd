@@ -1,4 +1,4 @@
-# Import Data {#sec-import-data}
+# Import and Export Data {#sec-import-data}
 
 ```{r}
 #| results: "asis"
@@ -286,7 +286,7 @@ files <- list.files("data/folder", pattern = "-Export",
                     full.names = TRUE)
 
 # 2. Import and bind the list of files using purrr::map_df()
-data_import <- files %>%
+data_import <- files |>
   map_df(read_delim, delim = "\t", 
          escape_double = FALSE, trim_ws = TRUE, na = "NULL",
          locale = locale(encoding = "UCS-2LE"))
@@ -322,8 +322,8 @@ files <- list.files("data/folder", pattern = "_Scores",
                     full.names = TRUE)
 
 # 2 - 3. Import with lapply() and then join with plyr::join_all()
-data_import <- files %>%
-  map(read_csv) %>%
+data_import <- files |>
+  map(read_csv) |>
   reduce(full_join, by = "Subject")
 ```
 

@@ -1,4 +1,4 @@
-# This Is The Way {#sec-this-is-the-way}
+# This is the Way {#sec-this-is-the-way}
 
 ```{r}
 #| results: "asis"
@@ -35,9 +35,9 @@ The pipe operator allows you to chain together a series of functions to conduct 
 ```{r}
 #| eval: false
 
-data %>%
-  step1 %>%
-  step2 %>%
+data |>
+  step1 |>
+  step2 |>
   step3
 ```
 
@@ -48,10 +48,10 @@ Actual tidyverse code might look something like this:
 ```{r}
 #| eval: false
 
-data %>%
-  filter(year == 2019) %>%
+data |>
+  filter(year == 2019) |>
   summarise(mean_satisfaction_score = 
-              mean(satisfaction_rating)) %>%
+              mean(satisfaction_rating)) |>
   arrange(mean_satisfaction_score)
 ```
 

@@ -1,4 +1,4 @@
-# R and RStudio {#sec-r-and-rstudio}
+# Installs and Updates {#sec-r-and-rstudio}
 
 ```{r}
 #| results: "asis"
@@ -7,7 +7,7 @@
 source("_common.R")
 ```
 
-R is the actual programming software that executes the code. RStudio is an environment for writing R scripts and, Quarto, and R Markdown documents, managing packages and projects, and much more. When you open RStudio, it will open a window to the R console within the RStudio environment.
+R is the actual programming software that executes the code. RStudio is an environment for writing R scripts, Quarto documents, managing packages and projects, and much more. When you open RStudio, it will open a window to the R console within the RStudio environment.
 
 If you already have R and RStudio installed move on to Updating R. If you have an R version older than 4.0.0 than you need to update R.
 

@@ -374,40 +374,6 @@ if (is.na(a)) {
 }
 ```
 
-## R Packages {#sec-r-packages}
-
-R comes with a basic set of functions. All the functions we have used so far are part of the R basic functions. But when you want to start doing more complex operations it would be nice to have more complex functions. This is where R Packages come in...
-
-An R Package is simply a collection of functions - that usually have some common theme to them. **Now the most wonderful thing about R is that other R users have developed tons of packages with functions they created themselves**. For instance, a group of users have developed an R package called `lavaan` that makes it extremely easy to conduct SEM in R.
-
-### Installing and Loading R Packages {#sec-installing-and-loading-r-packages}
-
-R packages are easy to install and load. You just need to know the name of the package.
-
-```{r}
-#| eval: false
-
-install.packages("name_of_package")
-```
-
-or for multiple packages at once
-
-```{r}
-#| eval: false
-
-install.packages(c("package1", "package2", "package3"))
-```
-
-Installing the package does not mean you can start using the functions. To be able to use the function you need to then load the package library of functions as such
-
-```{r}
-#| eval: false
-
-library(name_of_package)
-```
-
-When loading packages you do not have to in-case the package name in `" "`
-
 ## More Resources
 
 For additional tips in the basics of coding R see:

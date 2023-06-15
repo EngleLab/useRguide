@@ -1,36 +1,10 @@
-# R Packages and Functions {#sec-r-packages-and-functions}
+# Functions and Packages {#sec-functions-packages}
 
 ```{r}
 #| results: "asis"
 #| echo: false
 
 source("_common.R")
-```
-
-The community of R users have developed a vast number of functions that expand on the base R functions. Many of the functions developed by R users allow you to do more complicated things with your data without having to be an advanced R programmer. And the great thing is that as more psychology researchers use R, the more functions there are specifically for psychological research.
-
-Functions that R users develop are collected in what are called **packages**. Most R packages are hosted on The Comprehensive R Archive Network - **CRAN**. Some other packages, ones that are in more developmental stages and may not be as stable, are hosted on GitHub.
-
-## Install and Load Packages {#sec-install-and-load-packages}
-
-To install packages from **CRAN** is easy. Simply type into the console window: `install.packages("packagename")`
-
-For example:
-
-```{r}
-#| eval: false
-install.packages("dplyr")
-```
-
-Once you have a package installed, you can load that package into your current environment. Your **R Environment** consists of things such as objects (variables) you have created, data you have imported, and functions you have loaded. Your R Environment are like the tools and objects you have available to you and are working with.
-
-When you load a package you are bringing the functions from that package into your **environment** so you can start using them. To load a package is easy: `library(package_name)`
-
-For example:
-
-```{r}
-#| eval: false
-library(dplyr)
 ```
 
 ## Using Functions {#sec-using-functions}
@@ -75,3 +49,31 @@ seq(to = 100, by = 10)
 ```
 
 What this means is that it can be important to know what the default values are for functions you are using and you can figure that out with the helper function `?`
+
+## R Packages {#sec-r-packages}
+
+The community of R users have developed a vast number of functions that expand on the base R functions. Many of the functions developed by R users allow you to do more complicated things with your data without having to be an advanced R programmer. And the great thing is that as more psychology researchers use R, the more functions there are specifically for psychological research.
+
+Functions that R users develop are collected in what are called **packages**. Most R packages are hosted on The Comprehensive R Archive Network - **CRAN**. Some other packages, ones that are in more developmental stages and may not be as stable, are hosted on GitHub.
+
+### Install and Load Packages
+
+To install packages from **CRAN** is easy. Simply type into the console window: `install.packages("packagename")`
+
+For example:
+
+```{r}
+#| eval: false
+install.packages("dplyr")
+```
+
+Once you have a package installed, you can load that package into your current environment. Your **R Environment** consists of things such as objects (variables) you have created, data you have imported, and functions you have loaded. Your R Environment are like the tools and objects you have available to you and are working with.
+
+When you load a package you are bringing the functions from that package into your **environment** so you can start using them. To load a package is easy: `library(package_name)`
+
+For example:
+
+```{r}
+#| eval: false
+library(dplyr)
+```

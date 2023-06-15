@@ -14,22 +14,24 @@ Part of the scientific process involves carefully documenting every step in our 
 The typical data analysis workflow looks something like this:
 
 ```{r}
-#| label: fig-data-analysis-workflow
+#| label: fig-data-steps-2
 #| echo: false
-#| fig-cap: Data analysis workflow
+#| fig-cap: Data processing steps
 
-knitr::include_graphics(rep("images/data_analysis_workflow.png"))
+knitr::include_graphics(rep("images/data_steps.png"))
 ```
 
 1.  The first step in working with raw data files is to prepare the data so that it is usable and easy to understand. This often involves cleaning up the **messy** raw data and transforming it into a **tidy** format.
 
-2.  Once the data is tidy, the next step is typically to aggregate the data across responses (e.g., accuracy, RT) and clean the data to create a **scored and cleaned** data file.
+2.  The next step is to aggregate the data across responses (e.g., accuracy, RT) and clean the data to create a **scored and cleaned** data file.
 
-3.  With the data cleaned and scored, it is then ready for **statistical analysis** and **data visualization**. Depending on the project, there may be additional steps required before conducting statistical analysis and visualization.
+3.  Then a **single merged data file** needs to be created that is ready for statistical analysis.
 
-The first two steps can be accomplished using R scripts. The general process is to import the raw data file, transform the data (e.g., tidy the data or aggregate responses), and save the transformed data as an output file.
+4.  Finally, we can move on to the fun part of generating reports of **statistical analysis and data visualization**.
 
-The third step is best done using Quarto documents. This allows for easy rendering and sharing of the results.
+The first three steps can be accomplished using R scripts. The general process is to import the raw data file, transform the data (e.g., tidy the data or aggregate responses), and save the transformed data as an output file.
+
+The fourth step is best done using Quarto documents. This allows for easy rendering and sharing of the results.
 
 ## What does reproducibility mean? {#sec-what-does-reproducibility-mean}
 

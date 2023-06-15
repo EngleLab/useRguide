@@ -1,4 +1,4 @@
-# Introduction to ggplot2 {#sec-introduction-to-ggplot2}
+# Intro to ggplot2 {#sec-introduction-to-ggplot2}
 
 ```{r}
 #| results: "asis"
@@ -98,6 +98,7 @@ Let's go ahead and start building our graphical elements in `ggplot2`. Load the 
 
 ```{r}
 library(ggplot2)
+
 ggplot(data = iris)
 ```
 
@@ -252,6 +253,7 @@ Compare these two sets of plots:
 ```{r}
 library(dplyr)
 library(patchwork)
+
 p1 <- ggplot(filter(iris, Species == "setosa"), 
              aes(Sepal.Length, Sepal.Width)) +
   geom_point() +
