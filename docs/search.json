@@ -7,11 +7,18 @@
     "text": "Welcome\nThis useRguide for the Attention & Working Memory Lab at Georgia Tech provides training in the basics of how to use R, the tidyverse, and tools for how we process and analyze data in our lab. The workflow and data processing steps presented in this guide are specific to the type of data we tend to work with in our lab. We primarily collect behavioral data on a large set of cognitive tasks to test individual differences in cognitive ability. However, you will find that most of the principles presented here apply to working with other types of data. This is especially true of the sections on data manipulation and data visualization."
   },
   {
-    "objectID": "introduction.html",
-    "href": "introduction.html",
+    "objectID": "introduction.html#navigation",
+    "href": "introduction.html#navigation",
     "title": "Introduction",
-    "section": "",
-    "text": "There is considerable learning curve for any programming language, R is no different. The first section will cover the fundamentals that you will need to do anything in R, starting with installing the appropriate software.\n\n\n\n\n\n\nNote\n\n\n\nYou should use your own computer for this useRguide instead of a lab computer.\n\n\nYou should let the graduate students in the lab know if you are learning R and using this guide that way they know whether you have these skills. This is a great way to start getting more involved in the lab as this allows graduate students to give you more tasks to do.\nYou can navigate this useRguide using the left side bar. Select the section headers to see an introduction to each section.\nWithin each chapter there will be a table of contents on the right side bar that you can use to navigate.\nThe top menu navigation bar has convenient links to the lab website, the lab manual, and documentation on R packages that were developed in this lab.\nThe Getting Started section covers how to install and update software, introduce the basics of how R works, and more.\nThe Tidyverse section is a genearl introduction to working with data in R using the Tidyverse set of packages.\nThe Data Processing section will cover data processing steps in a way that are specific to our lab.\nThe Data Visualization section will introduce different ways of plotting data using the ggplot2 package.\nWe use R at every stage of processing data from tidying up messy raw data files to generating statistical and graphical reports.\n\n\n\n\nFigure 1: Data processing steps"
+    "section": "Navigation",
+    "text": "Navigation\nYou can navigate this useRguide using the left side bar. Select the section headers to see an introduction to each section.\nWithin each chapter there will be a table of contents on the right side bar that you can use to navigate.\nThe top menu navigation bar has convenient links to the lab website, the lab manual, and documentation on R packages that were developed in this lab."
+  },
+  {
+    "objectID": "introduction.html#section-contents",
+    "href": "introduction.html#section-contents",
+    "title": "Introduction",
+    "section": "Section Contents",
+    "text": "Section Contents\nThe Getting Started section covers how to install and update software, introduce the basics of how R works, and more.\nThe Tidyverse section is a genearl introduction to working with data in R using the Tidyverse set of packages.\nThe Data Processing section will cover data processing steps in a way that are specific to our lab.\nThe Data Visualization section will introduce different ways of plotting data using the ggplot2 package.\nWe use R at every stage of processing data from tidying up messy raw data files to generating statistical and graphical reports.\n\n\n\n\nFigure 1: Data processing steps"
   },
   {
     "objectID": "installation.html#sec-install-r",

@@ -8,11 +8,15 @@ You should use your own computer for this useRguide instead of a lab computer.
 
 You should let the graduate students in the lab know if you are learning R and using this guide that way they know whether you have these skills. This is a great way to start getting more involved in the lab as this allows graduate students to give you more tasks to do.
 
+## Navigation
+
 You can navigate this useRguide using the left side bar. Select the section headers to see an introduction to each section.
 
 Within each chapter there will be a table of contents on the right side bar that you can use to navigate.
 
 The top menu navigation bar has convenient links to the lab website, the lab manual, and documentation on R packages that were developed in this lab.
+
+## Section Contents
 
 The [Getting Started](#sec-r-and-rstudio) section covers how to install and update software, introduce the basics of how R works, and more.
 
