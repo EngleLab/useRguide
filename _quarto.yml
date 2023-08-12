@@ -66,6 +66,10 @@ book:
     - part: "Data Visualization"
       chapters:
         - intro-ggplot2.qmd
+    
+    - part: "Statistical Analysis"
+      chapters: 
+        - regression.qmd
         
   appendices:
     - reproducible-workflow.qmd

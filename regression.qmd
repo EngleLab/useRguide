@@ -1,0 +1,584 @@
+# Regression {#sec-regression}
+
+```{r}
+#| results: "asis"
+#| echo: false
+#| message: false
+
+source("_common.R")
+library(here)
+library(readr)
+library(tidyr)
+library(sjPlot)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+library(correlation)
+library(broom)
+library(performance)
+library(parameters)
+library(sandwich)
+library(mediation)
+library(semTools)
+library(ggeffects)
+library(e1071)
+library(modeloutput)
+library(semoutput)
+library(dplyr)
+
+happiness_data <- read_csv(here("data", "happiness_data.csv"))
+```
+
+Suppose we have a data set in which we are interested in what variables can predict people's self-reported levels of **happiness**, measured using valid and reliable questionnaires. We measured a number of other variables we thought might best predict happiness.
+
+-   **Financial wealth** (annual income)
+
+-   **Emotional Regulation** (higher values indicate better emotional regulation ability)
+
+-   **Social Support Network** (higher values indicate a stronger social support network)
+
+-   **Chocolate Consumption** (higher values indicate more chocolate consumption on a weekly basis)
+
+-   **Type of Chocolate** (the type of chocolate they consume the most of)
+
+## ggplot2 Theme
+
+It can be nice to set a global ggplot2 theme that is applied to all ggplots. Here is some code on how to 1) create a custom theme e.g., `theme_spacious` and 2) how to set the global theme based on some combination of custom and template themes.
+
+```{r}
+theme_spacious <- function(font.size = 14, bold = TRUE){
+  key.size <- trunc(font.size * .8)
+  if (bold == TRUE) {
+    face.type <- "bold"
+  } else {
+    face.type <- "plain"
+  }
+  
+  theme(text = element_text(size = font.size),
+        axis.title.x = element_text(margin = margin(t = 15, r = 0,
+                                                    b = 0, l = 0),
+                                    face = face.type),
+        axis.title.y = element_text(margin = margin(t = 0, r = 15,
+                                                    b = 0, l = 0),
+                                    face = face.type),
+        legend.title = element_text(face = face.type),
+        legend.spacing = unit(20, "pt"),
+        legend.text = element_text(size = key.size),
+        plot.title = element_text(face = face.type, hjust = .5,
+                                  margin = margin(b = 10)),
+        plot.caption = element_text(hjust = 0, size = key.size,
+                                    margin = margin(t = 20)),
+        strip.background = element_rect(fill = "white", color = "white"),
+        strip.text = element_text(color = "black",
+                                  face = face.type))
+}
+
+output_theme <- theme_linedraw() + 
+  theme_spacious(font.size = 12) + 
+  theme(panel.border = element_rect(color = "gray"),
+        axis.line.x = element_line(color = "gray"),
+        axis.line.y = element_line(color = "gray"),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.y = element_blank())
+
+theme_set(output_theme)
+```
+
+## Table Theme
+
+It can also be nice to customize how tables from statistical analyses are displayed. Here is some code on how to define a table theme using the `knitr` and `kableExtra` packages. You will see that we will pass tables to `table_theme()` with some customization for the number of digits to round to, adding a table title, and footnotes.
+
+```{r}
+table_theme <- function(x, digits = 3, title = NULL, note = NULL) {
+  kable(x, digits = digits, caption = title) |>
+    kable_classic(position = "left") |>
+    kable_styling(full_width = FALSE, position = "left") |>
+    footnote(general = note)
+}
+```
+
+## Specify factor levels
+
+Notice that the `Type of Chocolate` variable is categorical. When dealing with categorical variables for statistical analyses in R, it is usually a good idea to define the order of the categories as this will by deafult determine which category is treated as the reference (comparison group).
+
+```{r}
+happiness_data <- happiness_data |>
+  mutate(Type_of_Chocolate = factor(Type_of_Chocolate,
+                                    levels = c("White", "Milk",
+                                               "Dark", "Alcohol")))
+```
+
+## Descriptives
+
+It is a good idea to get a look at the data before running your analysis. One way of doing so is to calculate summary statistics (descriptives) and print it out in a table. There are some column we can't or don't want descriptives for. For instance there is usually a subject id column in data files or some variables might be categorical rather than continuous variables. We can remove those column using `select()` from the `dplyr` package.
+
+```{r}
+#| message: false
+
+library(e1071)
+
+happiness_data |>
+  select(-Subject, -Type_of_Chocolate) |>
+  pivot_longer(everything(),
+               names_to = "Variable", 
+               values_to = "value") |>
+  group_by(Variable) |>
+  summarise(n = length(which(!is.na(value))),
+            Mean = mean(value, na.rm = TRUE),
+            SD = sd(value, na.rm = TRUE),
+            min = min(value, na.rm = TRUE),
+            max = max(value, na.rm = TRUE),
+            Skewness =
+              skewness(value, na.rm = TRUE, type = 2),
+            Kurtosis =
+              kurtosis(value, na.rm = TRUE, type = 2),
+            '% Missing' =
+              100 * (length(which(is.na(value))) / n())) |>
+  table_theme(title = "Descriptive Statistics")
+```
+
+::: callout-note
+`skewness()` and `kurtosis()` are from the `e1071` pacakge
+:::
+
+### Using `modeloutput`
+
+I have an R package, `modeloutput` , for easily creating nice looking tables for statistical analyses. For a descriptives table we can use `descriptives_table()`.
+
+```{r}
+#| message: false
+
+library(modeloutput)
+
+happiness_data |>
+  select(-Subject, -Type_of_Chocolate) |>
+  descriptives_table()
+```
+
+## Historgrams
+
+Visualizing the actual distribution of values on each variable is a good idea too. This is how outliers or other problematic values can be detected. The most simple way to do so is by plotting a histogram for each variable in the data file using `hist()`.
+
+```{r}
+hist(happiness_data$Happiness)
+```
+
+## Correlation Tables
+
+Regression models are based on the covariation (or correlation) between variables. Therefore, we might want to first evaluate all of the pairwise correlations in the data.
+
+### Using `correlation`
+
+One option is to use the `correlation` package to create scatterplots using a combination of `plot()` and `cor_test()`.
+
+```{r}
+#| message: false
+
+library(correlation)
+
+plot(cor_test(happiness_data, "Financial_Wealth", "Happiness"))
+
+```
+
+### Using `ggplot2`
+
+The `ggplot2` way, more code but better customization. The `geom_smooth(method = "lm")` will plot the regression line on the data, the line of best fit.
+
+```{r}
+library(ggplot2)
+
+ggplot(data = happiness_data, aes(x = Financial_Wealth, y = Happiness)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(x = "Financial Wealth (annual income)") +
+  theme_linedraw()
+```
+
+### Using `base R`
+
+The base R way, easy and simple with plot().
+
+```{r}
+plot(happiness_data$Financial_Wealth, happiness_data$Happiness)
+```
+
+## Regression
+
+Regression models allow us to test more complicated relationships between variables. It is important to match your research question with the correct regression model. But also, thinking about the different types of regression models can help you clarify your research question. We will take a look at how to conduct the following regression models in R:
+
+-   Simple regression
+
+-   Multiple regression
+
+-   Hierarchical regression
+
+-   Mediation analysis
+
+-   Moderation analysis
+
+To conduct a regression model is fairly simple in R, all you need is to specify the regression formula in the `lm()` function.
+
+## Simple Regression
+
+In what is called simple regression, there is only one predictor variable. Simple regression is not really necessary because it is directly equivalent to a correlation. However, it is useful to demonstrate what happens once you add multiple predictors into a model.
+
+The formula in the `lm()` function takes on the form of: `dv ~ iv`.
+
+Model
+
+```{r}
+reg_simple <- lm(Happiness ~ Financial_Wealth, data = happiness_data)
+```
+
+### Using `broom` and `performance`
+
+The `broom` and `performance` packages provide an easy way to get model results into a table format that we can then pass on to `table_theme()`
+
+```{r}
+library(broom)
+
+glance(reg_simple) |>
+  table_theme(title = "Model Summary")
+```
+
+```{r}
+library(performance)
+
+model_parameters(reg_simple) |>
+  table_theme(title = "Unstandardized Parameters")
+```
+
+```{r}
+model_parameters(reg_simple, standardize = "refit") |>
+  table_theme(title = "Standardized Parameters")
+```
+
+### Using `modeloutput`
+
+My `modeloutput` pacakge provides a way to display regression tables in output format similar to other statistical software packages like JASP or SPSS.
+
+```{r}
+#| results: asis
+library(modeloutput)
+
+regression_rsquared(reg_simple)
+```
+
+```{r}
+regression_modelsig(reg_simple)
+```
+
+```{r}
+#| results: asis
+
+regression_coeff(reg_simple)
+```
+
+::: callout-note
+The formula on the coefficients table shouls display horizontally across the bottom in your reports, but in this book format it is not working.
+:::
+
+You can also use a single function to display all three tables
+
+```{r}
+#| results: asis
+
+regression_tables(reg_simple)
+```
+
+::: callout-important
+R code chunk option results: asis needs to be set to correctly display the output of `regression_tables()`
+
+#\| results: asis
+
+regression_tables()
+:::
+
+## Multiple Regression
+
+You can and will most likely want to include multiple **predictor variables** in a regression model. There will be a different interpretation of the beta coefficients compared to the simple regression model. Now, the beta coefficients will represent a **unique** contribution (controlling for all the other predictor variables) of that variable to the prediction of the dependent variable. We can compare the relative strengths of the beta coefficients to decide which variable(s) are the strongest predictors of the dependent variable.
+
+In this case, we can go ahead and include all the continuous predictor variables in a model predicting **Happiness** and compare it with the simple regression when we only had **Financial Wealth** in the model.
+
+Model
+
+```{r}
+reg_multiple <- lm(Happiness ~ Financial_Wealth + Emotion_Regulation + 
+                     Social_Support + Chocolate_Consumption,
+                   data = happiness_data)
+```
+
+### Using `broom` and `performance`
+
+The `broom` and `performance` packages provide an easy way to get model results into a table format that we can then pass on to `table_theme()`
+
+```{r}
+library(broom)
+
+glance(reg_multiple) |>
+  table_theme(title = "Model Summary")
+```
+
+```{r}
+library(performance)
+
+model_parameters(reg_multiple) |>
+  table_theme(title = "Unstandardized Parameters")
+```
+
+```{r}
+model_parameters(reg_multiple, standardize = "refit") |>
+  table_theme(title = "Standardized Parameters")
+```
+
+### Using `modeloutput`
+
+My `modeloutput` pacakge provides a way to display regression tables in output format similar to other statistical software packages like JASP or SPSS.
+
+You can also add up to three regression models to easily compare in the output
+
+```{r}
+#| results: asis
+library(modeloutput)
+
+regression_rsquared(reg_simple, reg_multiple)
+```
+
+```{r}
+regression_modelsig(reg_simple, reg_multiple)
+```
+
+```{r}
+regression_coeff(reg_simple, reg_multiple)
+```
+
+You can also use a single function to display all three tables
+
+```{r}
+#| results: asis
+
+regression_tables(reg_simple, reg_multiple)
+```
+
+::: callout-important
+R code chunk option results: asis needs to be set to correctly display the output of `regression_tables()`
+
+#\| results: asis
+
+regression_tables()
+:::
+
+## Mediation
+
+Mediation analysis is similar to hierarchical regression, however it allows us to test whether the effect of a predictor variable, on the dependent variable, "goes through" a mediator variable. This effect that "goes through" the mediator variable is called the indirect effect; whereas any effect of the predictor variable that does not "go through" the mediator is called the direct effect where:
+
+**Total Effect = Direct Effect + Indirect Effect**
+
+We are parsing the variance explained by the predictor variable into direct and indirect effects. Here are some possibilities for the outcome:
+
+-   **Full Mediation**: The total effect of the predictor variable can be fully explained by the indirect effect. The mediator fully explains the effect of the predictor variable on the dependent variable. Direct effect = 0, indirect effect != 0.
+
+-   **Partial Mediation**: The total effect of the predictor variable can be partially explained by the indirect effect. The mediator only partially explains the effect of the predictor variable on the dependent variable. Direct effect != 0, indirect effect != 0.
+
+-   **No Mediation**: The total effect of the predictor variable can not be explained by the indirect effect; there is no indirect effect at all. Direct effect != 0, indirect effect = 0.
+
+There are two general ways to perform a mediation analysis in R.
+
+-   The standard regression method
+
+-   Path analysis
+
+### Regression
+
+The regression method requires multiple regression models because we have two dependent variables in the mode - the mediation and the outcome measure. The mediator acts as both an independent variable and dependent variable in the model. Because regression requires only one dependent variable, we cannot test the full model in one regression model. Instead, we have to test the different pieces of the model one at a time. We also need to perform a test on the **indirect effect** itself, which will require a separate model.
+
+In order to evaluate the standardize coefficients (which is often times most useful), we need to first convert the the variables into z-scores. This is fairly straightforward but does require some extra code. A z-score is standardized score on the scale of standard deviation units and is calculated as:
+
+**z-score = (raw score - mean) / sd**
+
+We can create new columns representing the z-scores using `mutate()` from the `dplyr` package.
+
+```{r}
+data_mediation <- happiness_data %>%
+  mutate(Happiness_z = 
+           (Happiness - mean(Happiness)) / sd(Happiness),
+         Social_Support_z = 
+           (Social_Support - mean(Social_Support)) / sd(Social_Support),
+         Emotion_Regulation_z = 
+           (Emotion_Regulation - mean(Emotion_Regulation)) / sd(Emotion_Regulation))
+```
+
+The standard regression model typically involves three regression models and a model testing the indirect effect.
+
+1.  A model with the total effect: `dv ~ iv`
+
+```{r}
+reg_total <- lm(Happiness_z ~ Social_Support_z, 
+                data = data_mediation)
+```
+
+2.  A model with the effect of the predictor on the mediator: `m ~ iv`
+
+```{r}
+reg_med <- lm(Emotion_Regulation_z ~ Social_Support_z, 
+              data = data_mediation)
+```
+
+3.  A model with the direct effect and the effect of the mediator: `dv ~ iv + m`
+
+```{r}
+reg_direct <- lm(Happiness_z ~ Emotion_Regulation_z + Social_Support_z, 
+                 data = data_mediation)
+```
+
+4.  A statistical test of the indirect effect: `mediation::mediate()`
+
+```{r}
+library(mediation)
+
+model_mediation <- mediate(reg_med, reg_direct,
+                           treat = "Social_Support_z",
+                           mediator = "Emotion_Regulation_z",
+                           boot = TRUE, sims = 1000, 
+                           boot.ci.type = "bca")
+```
+
+For simplicity, we will use the `modeloutput` package to display the regression output
+
+```{r}
+#| results: asis
+
+regression_tables(reg_total, reg_direct)
+```
+
+```{r}
+#| results: asis
+
+regression_tables(reg_med)
+```
+
+Then we can display the result of the indirect mediation analysis
+
+```{r}
+model_parameters(model_mediation) |>
+  table_theme()
+```
+
+### Path Analysis
+
+There is a statistical modelling approach called **path analysis** that does allow for multiple dependent variables in a single model. Here is how to specify a path analysis model using the `lavaan` package.
+
+See the [lavaan website](https://lavaan.ugent.be/tutorial/mediation.html){target="_blank"} for how to conduct mediation in lavaan
+
+Model
+
+```{r}
+model <- "
+# a path
+Emotion_Regulation ~ a*Social_Support
+
+# b path
+Happiness ~ b*Emotion_Regulation
+
+# c prime path 
+Happiness ~ c*Social_Support
+
+# indirect and total effects
+indirect := a*b
+total := c + a*b
+"
+
+fit <- sem(model, data = happiness_data)
+```
+
+I also have a package, `semoutput` for displaying results from `lavaan` models:
+
+```{r}
+#| results: asis
+
+library(semoutput)
+
+sem_tables(fit)
+```
+
+But we need to calculate bootstrapped and bias-corrected confidence intervals around the indirect effect:
+
+```{r}
+monteCarloCI(fit, nRep = 1000, standardized = TRUE) |>
+  table_theme()
+```
+
+## Moderation
+
+Another type of multiple regression model is the **moderation** analysis. The concept of moderation in regression is analogous to the concept of an interaction in ANOVA. The idea here is that the relationship (correlation or slope) between two variables changes as a function of another variable, called the **moderator**. As the values on the moderator variable increases, the correlation or slope might increase or decrease. The moderator can be either continuous or categorical.
+
+In our happiness data, we can test whether the relationship between chocolate consumption and happiness is moderated by the type of chocolate consumed. In this case, type of chocolate is a categorical variable: White, milk, dark, or alcohol.
+
+**It is highly advisable to first "center" the predictor and moderator variables. Centering refers to centering the scores around the mean (making the mean = 0). This can simply be done by subtracting out the mean from each score. We can do this with** `mutate()` **from the** `dplyr` **package.**
+
+Since type of chocolate is categorical we do not need to center it.
+
+```{r}
+data_mod <- happiness_data %>%
+  mutate(Chocolate_Consumed_c = 
+           Chocolate_Consumption - mean(Chocolate_Consumption))
+```
+
+Model
+
+```{r}
+model_null <- lm(Happiness ~ Chocolate_Consumed_c + Type_of_Chocolate, 
+                 data = data_mod)
+
+model_moderation <- lm(Happiness ~ Chocolate_Consumed_c * Type_of_Chocolate, 
+                       data = data_mod)
+```
+
+```{r}
+#| results: asis
+
+regression_tables(model_null, model_moderation)
+```
+
+To better understand the nature of a moderation, it helps to plot the results.
+
+### Figures - `ggeffects` and `ggplot2`
+
+The most customizable way to plot model results is using the `ggeffects` and `ggplot2` pacakges. We can use `ggeffect()` to get a data frame with estimated model values for specified terms in the model and the dependent variable.
+
+For continuous variables, we can customize at what values we want to plot. For "all" possible values from the original data we can specify `[all]`. If your variable was standardized before entering it into the model you can use `[2, 0, -2]` to get values at +2 standard deviations above the mean, the mean, and -2 standard deviations below the mean.
+
+```{r}
+library(ggeffects)
+
+data_plot <- ggeffect(model_moderation,
+                       terms = c("Chocolate_Consumed_c [all]", 
+                                 "Type_of_Chocolate")) |>
+  rename(Chocolate_Consumed_c = x, Type_of_Chocolate = group,
+         Happiness = predicted)
+```
+
+This results in a data frame of estimated values from the model that we can now plot using `ggplot2`
+
+```{r}
+
+library(ggplot2)
+
+ggplot(data_plot, aes(Chocolate_Consumed_c, Happiness, 
+                      color = Type_of_Chocolate)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high, 
+                  fill = Type_of_Chocolate), 
+              show.legend = FALSE, alpha = .1, color = NA) +
+  geom_smooth(method = "lm", alpha = 0) +
+  scale_color_brewer(palette = "Set1",
+                     guide_legend(title = "Type of Chocolate")) +
+  labs(x = "Amount of Chocolate Consumed")
+```
+
+### Figures - `sjPlot`
+
+The easiest way to plot the results of a moderation analysis is using the `plot_model()` function from the `sjPlot` package. Note that it is a bit more complicated to plot a moderation analysis when the moderator is a continuous variable instead of categorical but the `sjPlot` package actually makes it a bit easier.
+
+```{r}
+plot_model(model_moderation, typ = "int")
+```
