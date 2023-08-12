@@ -82,8 +82,6 @@ format:
     code-copy: true
     code-link: true
     number-depth: 1
-  pdf:
-    documentclass: scrreprt
 
 editor: visual
 
