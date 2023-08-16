@@ -261,7 +261,8 @@ ggplot(recall_data, aes(x = Memory_Strategy, y = Recall_Performance,
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", 
                width = .1) +
   labs(x = "Memory Strategy", y = "Recall Performance") +
-  scale_color_brewer(palette = "Set1")
+  scale_color_brewer(palette = "Set1") +
+  guides(color = "none")
 ```
 
 ### Figures - raincloud plot
@@ -281,7 +282,7 @@ ggplot(recall_data, aes(x = Memory_Strategy, y = Recall_Performance,
   labs(x = "Memory Strategy", y = "Recall Performance") +
   scale_color_brewer(palette = "Set1") +
   scale_fill_brewer(palette = "Set1") +
-  guides(fill = "none")
+  guides(fill = "none", color = "none")
 ```
 
 ### Figures - `jsPlot`
@@ -348,7 +349,8 @@ ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance,
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", 
                width = .1) +
   labs(x = "Presentation Rate", y = "Recall Performance") +
-  scale_color_brewer(palette = "Set1")
+  scale_color_brewer(palette = "Set1") +
+  guides(color = "none")
 ```
 
 ### Figures - raincloud plot
@@ -368,7 +370,7 @@ ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance,
   labs(x = "Presentation_Rate", y = "Recall Performance") +
   scale_color_brewer(palette = "Set1") +
   scale_fill_brewer(palette = "Set1") +
-  guides(fill = "none")
+  guides(fill = "none", color = "none")
 ```
 
 ### Figures - `jsPlot`
