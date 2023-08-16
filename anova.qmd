@@ -275,7 +275,8 @@ ggplot(recall_data, aes(x = Memory_Strategy, y = Recall_Performance,
   geom_flat_violin(position = position_nudge(x = .1, y = 0),
                    adjust = 1.5, trim = FALSE, 
                    alpha = .5, colour = NA) +
-  geom_point(aes(as.numeric(Memory_Strategy) - .15), position = position_jitter(width = .05), alpha = .2) +
+  geom_point(aes(as.numeric(Memory_Strategy) - .15), 
+             position = position_jitter(width = .05), alpha = .2) +
   stat_summary(fun = mean, geom = "point", size = 3) + 
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", 
                width = .1) +
@@ -342,15 +343,13 @@ anova_tables(anova_ws, contrast = "Presentation_Rate")
 The most customizable way to plot model results is using the `ggplot2` pacakge.
 
 ```{r}
-ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance,
-                        color = Presentation_Rate)) +
+ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance)) +
   geom_point(position = position_jitter(width = .1), alpha = .2) +
+  stat_summary(fun = mean, geom = "line", linewidth = 1, group = 1) +
   stat_summary(fun = mean, geom = "point", size = 3) + 
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", 
                width = .1) +
-  labs(x = "Presentation Rate", y = "Recall Performance") +
-  scale_color_brewer(palette = "Set1") +
-  guides(color = "none")
+  labs(x = "Presentation Rate", y = "Recall Performance")
 ```
 
 ### Figures - raincloud plot
@@ -358,19 +357,17 @@ ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance,
 My `modeloutput` function has a `geom_flat_violin()` function to create the cloud part of the raincloud plot. There are some other modifications that have to be made to other elements of the ggplot as well.
 
 ```{r}
-ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance,
-                 color = Presentation_Rate, fill = Presentation_Rate)) +
+ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0),
                    adjust = 1.5, trim = FALSE, 
-                   alpha = .5, colour = NA) +
-  geom_point(aes(as.numeric(Presentation_Rate) - .15), position = position_jitter(width = .05), alpha = .2) +
+                   alpha = .5, fill = "gray", color = NA) +
+  geom_point(aes(as.numeric(Presentation_Rate) - .15), 
+             position = position_jitter(width = .05), alpha = .2) +
+  stat_summary(fun = mean, geom = "line", linewidth = 1, group = 1) +
   stat_summary(fun = mean, geom = "point", size = 3) + 
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", 
                width = .1) +
-  labs(x = "Presentation_Rate", y = "Recall Performance") +
-  scale_color_brewer(palette = "Set1") +
-  scale_fill_brewer(palette = "Set1") +
-  guides(fill = "none", color = "none")
+  labs(x = "Presentation_Rate", y = "Recall Performance")
 ```
 
 ### Figures - `jsPlot`
@@ -434,7 +431,7 @@ ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance,
                         color = Memory_Strategy, 
                         group = Memory_Strategy)) +
   geom_point(position = position_jitter(width = .1), alpha = .2) +
-  stat_summary(fun = mean, geom = "line", size = 1) +
+  stat_summary(fun = mean, geom = "line", linewidth = 1) +
   stat_summary(fun = mean, geom = "point", size = 3) + 
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", 
                width = .1) +
@@ -461,7 +458,7 @@ ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance,
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", 
                width = .1) +
   labs(x = "Presentation_Rate", y = "Recall Performance") +
-  scale_color_brewer(palette = "Set1") +
+  scale_color_brewer(palette = "Set1", name = "Memory Strategy") +
   scale_fill_brewer(palette = "Set1") +
   guides(fill = "none")
 ```
