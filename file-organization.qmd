@@ -108,7 +108,7 @@ It also makes it easier for yourself, your future self, or someone else to look 
 
 Don't start from scratch, like ever.
 
-It can be a ton of work, and mental effort, to create an efficient and reproducible project organization from scratch. Generally, I would try to avoid starting a project from blank, empty, R scripts. More than likely what will happen is that any organization you had thought of just breaks down because you are struggling enough with writing the R code itself, and you need to get a report on the data to your advisor so you decide to use shortcuts **"for now"**. But we all know that **"for now"** always turns into **forever**.
+It can be a ton of work, and mental effort, to create an efficient and reproducible project organization from scratch. Generally, I would try to avoid starting a project from blank, empty, R scripts. More than likely what will happen is that any organization you had thought of just breaks down because you are struggling enough with writing the R code itself, and you need to get a report on the data to your adviser so you decide to use shortcuts **"for now"**. But we all know that **"for now"** always turns into **forever**.
 
 Unfortunately, not starting from scratch usually means that you have already setup an organization system with R script templates that you can use. This is likely not the case. So what to do?
 

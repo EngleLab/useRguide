@@ -132,7 +132,7 @@ ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width))
 
 You can see we went from a blank box to a graph with the variable and scales of Sepal.Length mapped onto the x-axis and Sepal.Width on the y-axis.
 
-The aeshetic layer also maps variables in our data to other elements in our graphical visualization, such as color, size, fill, etc.
+The aesthetic layer also maps variables in our data to other elements in our graphical visualization, such as color, size, fill, etc.
 
 ```{r}
 ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species))
@@ -413,7 +413,7 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
   theme_linedraw()
 ```
 
-You can also set a default theme for the rest of your ggplots at the top of your script. That way you do not have to keep on specifying the theme for evey ggplot.
+You can also set a default theme for the rest of your ggplots at the top of your script. That way you do not have to keep on specifying the theme for every ggplot.
 
 ```{r}
 #| eval: false
@@ -430,4 +430,4 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
   stat_smooth(method = "lm", se = FALSE)
 ```
 
-You can do a google search to easily find different types of theme templates.
+You can do a Google search to easily find different types of theme templates.

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.340">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Engle Lab useRguide - 4&nbsp; R Intermediate</title>
 <style>
@@ -87,8 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 </head>
@@ -159,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./installation.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./R-intermediate.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Intermediate</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -479,7 +478,7 @@ Note
 <span><span class="co">## [1] 18</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now for each element in <code>c</code>, if it is is greater than 3, then multiply it by 2 - else set as missing value. You can see that on each iteration the output is either the <code>i</code>th element of c multiplied by 2 or <code>NA</code>.</p>
-<p>But just printing things to the console is useless! Let’s overwright the old values in <code>c</code> with the new values.</p>
+<p>But just printing things to the console is useless! Let’s overwrite the old values in <code>c</code> with the new values.</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">c</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&gt;</span> <span class="fl">3</span><span class="op">)</span> <span class="op">{</span></span>
@@ -490,7 +489,7 @@ Note
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But what if we want to preserve the original vector <code>c</code>? Well we need to put it into a new vector, let’s call it vector <code>d</code>. This get’s a little more complicated but is something you might find yourself doing fairly often so it is good to understand how this works.</p>
-<p>But if you are goind to do this to a “new” vector that is not yet created you will run into an error.</p>
+<p>But if you are going to do this to a “new” vector that is not yet created you will run into an error.</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">c</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">6</span>,<span class="fl">3</span>,<span class="fl">8</span>,<span class="fl">2</span>,<span class="fl">9</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -500,7 +499,7 @@ Note
 <span>    <span class="va">d</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co">## Error: object 'd' not found</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## Error in eval(expr, envir, enclos): object 'd' not found</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You first need to create vector <code>d</code> - in this case we can create an empty vector.</p>
 <div class="cell">
@@ -559,13 +558,13 @@ Note
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When creating a function, you need to specify what input arguments the function is able to take. Here were are specifying the argument <code>x</code>. You can use whatever letter or string of letters you want, but a common notation is to use <code>x</code> for the object that is going to be evaluated by the function. Then, inside the function we use the same letter <code>x</code> to calculate the <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> and <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> of <code>x</code>. What this means is that <strong>Arguments specified in a function become objects (or variables) passed inside the function</strong></p>
-<p>You can create new objects inside a function. For instance we are creating an object, <code>avg</code>. However, these objects are created only inside the environment of the function. You cannot use those objects outside the function and they will not appear in your Environment window. To pass the value of an object outside of the function, you need to specify what you want to <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> or what is the outpute of the function. In this case it is the object <code>avg</code> that we created inside the function.</p>
+<p>You can create new objects inside a function. For instance we are creating an object, <code>avg</code>. However, these objects are created only inside the environment of the function. You cannot use those objects outside the function and they will not appear in your Environment window. To pass the value of an object outside of the function, you need to specify what you want to <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> or what is the output of the function. In this case it is the object <code>avg</code> that we created inside the function.</p>
 <p>Let’s see the function in action</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">average</span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
 <span><span class="co">## [1] 5.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Cool! You created your first function. Becuase the function only takes one argument <code>x</code> it knows that whatever object we specify in <code>average()</code> is the object we want to evaluate.</p>
+<p>Cool! You created your first function. Because the function only takes one argument <code>x</code> it knows that whatever object we specify in <code>average()</code> is the object we want to evaluate.</p>
 <p>But what if our vector contains missing values?</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">NA</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">7</span>,<span class="cn">NA</span>,<span class="fl">8</span>,<span class="fl">4</span>,<span class="fl">9</span>,<span class="fl">3</span><span class="op">)</span></span>

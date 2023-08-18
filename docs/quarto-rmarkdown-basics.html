@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.340">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Engle Lab useRguide - 5&nbsp; Quarto Basics</title>
 <style>
@@ -87,8 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 </head>
@@ -159,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./installation.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./quarto-rmarkdown-basics.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Quarto Basics</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -401,7 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><p><a href="https://quarto.org">Quarto documents</a> are a versitle way to create documents of different kinds and output formats. It can be used to generate statistical reports, presentations, websites, books, and interactive documents. This guide was created using <a href="https://quarto.org/docs/books/">Quarto Books</a>.</p>
+</header><p><a href="https://quarto.org">Quarto documents</a> are a versatile way to create documents of different kinds and output formats. It can be used to generate statistical reports, presentations, websites, books, and interactive documents. This guide was created using <a href="https://quarto.org/docs/books/">Quarto Books</a>.</p>
 <section id="sec-r-scripts-vs.-quarto" class="level2"><h2 class="anchored" data-anchor-id="sec-r-scripts-vs.-quarto">R Scripts vs.&nbsp;Quarto</h2>
 <p>Using R scripts makes sense when the purpose is to output a data file. Once you have your script all setup, you don’t necessarily care about what objects are created in the R environment or what is being printed to the console, etc. What you care about is the outputted data file. The R script was just a means to get there.</p>
 <p>With data visualization and statistical analysis we care about generating figures, tables, and statistical reports - not data files. The process of data visualization and statistical analysis is also typically more explorative, iterative, and cyclic. Ultimately, we will want to generate a formatted, easy to read, final report of our analyses. All these things are not possible with R scripts.</p>
@@ -421,7 +420,7 @@ Note
 </div>
 </div>
 <p>Follow this link for a brief Intro to <a href="https://quarto.org/docs/blog/posts/2023-05-15-get-started/">Quarto Documents</a>.</p>
-<p>To open an Quartodocument go to</p>
+<p>To open an Quarto document go to</p>
 <p>File -&gt; New File -&gt; Quarto Document…</p>
 <p>Select HTML and click Create</p>
 <p>An example Quarto document will open. We can use this to get familiar with the structure of Quarto documents.</p>
@@ -461,8 +460,8 @@ output: html_document
 <p>You can create R code chunks with the shortcut:</p>
 <p>Mac: ⌘ ⌥ i (command + alt/opt + i)</p>
 <p>Windows: ⌃ ⌥ i (ctrl + alt + i)</p>
-<p>Or by going to Insert -&gt; Code Cell -&gt; R in the toolboar of the Quarto document (same section as Source / Visual).</p>
-<p>Insert the followin code in the R code chunk</p>
+<p>Or by going to Insert -&gt; Code Cell -&gt; R in the toolbar of the Quarto document (same section as Source / Visual).</p>
+<p>Insert the following code in the R code chunk</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -474,7 +473,7 @@ output: html_document
 <p>To run chunks of R code you can click on the green “play” button on the top right of the R code chunk. Go ahead and do so.</p>
 <p>You can see that the results of the R code are now displayed in the document.</p>
 </section></section><section id="sec-markdown-text" class="level2"><h2 class="anchored" data-anchor-id="sec-markdown-text">Markdown text</h2>
-<p>The markdown text sections are <strong>not the same as adding comments to lines of code</strong>. You can write up descriptive reports, create bulletted or numbered lists, embed images or web links, create tables, and more.</p>
+<p>The markdown text sections are <strong>not the same as adding comments to lines of code</strong>. You can write up descriptive reports, create bullet or numbered lists, embed images or web links, create tables, and more.</p>
 <p>The text is formatted using a language known as <strong>Markdown</strong>. Markdown is a convenient and flexible way to format text. When a Markdown document is rendered into some output (such as html or PDF), the text will be formatted as specified by Markdown syntax.</p>
 <p>There are a lot of guides on how to use Markdown syntax. I will not cover this so you should check them out on your own. Here is one I reference often: <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank"><strong>Markdown Cheatsheet</strong></a></p>
 </section><section id="sec-rendering-a-quarto-document" class="level2"><h2 class="anchored" data-anchor-id="sec-rendering-a-quarto-document">Rendering a Quarto document</h2>

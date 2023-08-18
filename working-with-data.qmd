@@ -491,13 +491,13 @@ You can see that `.by =` is also more concise (fewer lines of code) than `group_
 
 ## summarise() {#sec-summarise}
 
-The `summarise()` function will **reduce** a data frame by summarizing values in one or multiple columns. The values will be summarised on some statistical value, such as a mean, median, or standard deviation.
+The `summarise()` function will **reduce** a data frame by summarizing values in one or multiple columns. The values will be summarized on some statistical value, such as a mean, median, or standard deviation.
 
 Remember that in order to calculate the `FlankerEffect` for each subject, we first need to calculate each subject's mean `RT` on `incongruent` trials and their mean `RT` on `congruent` trials
 
 We've done our filtering, selecting, mutating, now let's aggregate RTs across `Condition` to calculate mean `RT`. We will use a combo of `.by =` and `summarise()`. `summarise()` is almost always used in conjunction with `.by =` or `group_by()`.
 
-*Let's also summarise the mean accuracy across conditions.*
+*Let's also summarize the mean accuracy across conditions.*
 
 ```{r}
 data <- data |>

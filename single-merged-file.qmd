@@ -132,7 +132,7 @@ data_reliabilities <- data_import %>%
 # -----------------------
 ```
 
-The code in `pivot_longer(names_pattern = "(\\w+.\\w+).(\\w+)")` follows a specific naming scheme used for column names. Underscores (optional) can be used for task names and column descriptions, but a period (required) is ONLY used to seperate the task name / description from the description of the task score type / what the value represents (e.g., RT = reaction time, splithalf = split-half reliability)
+The code in `pivot_longer(names_pattern = "(\\w+.\\w+).(\\w+)")` follows a specific naming scheme used for column names. Underscores (optional) can be used for task names and column descriptions, but a period (required) is ONLY used to separate the task name / description from the description of the task score type / what the value represents (e.g., RT = reaction time, splithalf = split-half reliability)
 
 **Task_Name_MoreStuff.ScoreType**
 

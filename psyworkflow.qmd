@@ -25,7 +25,7 @@ Install the `psyworkflow` package from my GitHub repository using the `devtools`
 devtools::install_github("dr-JT/psyworkflow")
 ```
 
-Restart R: Session -\> Resart R
+Restart R: Session -\> Restart R
 
 ## Download R Script Templates {#sec-download-r-script-templates}
 
@@ -45,7 +45,7 @@ To see what the options are type in the console window
 
 Close RStudio and reopen a new instance of RStudio (not from an RProject file).
 
-Once you have the `psyworkflow` package installed you will be able to create a new RProject directory and file from my **Research Study** template. This will automatically create the directory structure outlined in the previous chapter. It will also add template R scripts in **R / templates** and a **masterscript.Rmd** file.
+Once you have the `psyworkflow` package installed you will be able to create a new RProject directory and file from my **Research Study** template. This will automatically create the directory structure outlined in the previous chapter. It will also add template R scripts in **R / templates** and a **mainscript.Rmd** file.
 
 Using this template will allow you to get right to working with your data in R, without having to spend too much time thinking about organization (I have already done that for you).
 

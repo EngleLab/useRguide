@@ -7,7 +7,7 @@
 source("_common.R")
 ```
 
-[Quarto documents](https://quarto.org) are a versitle way to create documents of different kinds and output formats. It can be used to generate statistical reports, presentations, websites, books, and interactive documents. This guide was created using [Quarto Books](https://quarto.org/docs/books/).
+[Quarto documents](https://quarto.org) are a versatile way to create documents of different kinds and output formats. It can be used to generate statistical reports, presentations, websites, books, and interactive documents. This guide was created using [Quarto Books](https://quarto.org/docs/books/).
 
 ## R Scripts vs. Quarto {#sec-r-scripts-vs.-quarto}
 
@@ -25,7 +25,7 @@ The basic structure of R Markdown and Quarto documents are the same. And most, t
 
 Follow this link for a brief Intro to [Quarto Documents](https://quarto.org/docs/blog/posts/2023-05-15-get-started/).
 
-To open an Quartodocument go to
+To open an Quarto document go to
 
 File -\> New File -\> Quarto Document...
 
@@ -80,9 +80,9 @@ Mac: ⌘ ⌥ i (command + alt/opt + i)
 
 Windows: ⌃ ⌥ i (ctrl + alt + i)
 
-Or by going to Insert -\> Code Cell -\> R in the toolboar of the Quarto document (same section as Source / Visual).
+Or by going to Insert -\> Code Cell -\> R in the toolbar of the Quarto document (same section as Source / Visual).
 
-Insert the followin code in the R code chunk
+Insert the following code in the R code chunk
 
 ```{r}
 #| eval: false
@@ -106,7 +106,7 @@ You can see that the results of the R code are now displayed in the document.
 
 ## Markdown text {#sec-markdown-text}
 
-The markdown text sections are **not the same as adding comments to lines of code**. You can write up descriptive reports, create bulletted or numbered lists, embed images or web links, create tables, and more.
+The markdown text sections are **not the same as adding comments to lines of code**. You can write up descriptive reports, create bullet or numbered lists, embed images or web links, create tables, and more.
 
 The text is formatted using a language known as **Markdown**. Markdown is a convenient and flexible way to format text. When a Markdown document is rendered into some output (such as html or PDF), the text will be formatted as specified by Markdown syntax.
 

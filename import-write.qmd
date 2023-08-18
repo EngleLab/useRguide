@@ -171,7 +171,7 @@ write_delim(import_tab,
 
 As horrible as it might sound, there might be occasions where we need to import an SPSS data file. And worse, we might need to output an SPSS data file!
 
-I will suggest to use different packages for importing and outputing spss files.
+I will suggest to use different packages for importing and outputting spss files.
 
 ### Import .sav
 
@@ -197,7 +197,7 @@ import_sav <- read.spss("~/Downloads/CH9 Salary Ex04.sav")
 
 ### Output .sav
 
-To output an SPSS data file we can use `write_sav()` from the `haven` packge.
+To output an SPSS data file we can use `write_sav()` from the `haven` package.
 
 ```{r}
 #| eval: false

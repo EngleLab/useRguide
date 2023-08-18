@@ -99,7 +99,7 @@ table_theme <- function(x, digits = 3, title = NULL, note = NULL) {
 
 ## Specify factor levels
 
-Notice that the `Type of Chocolate` variable is categorical. When dealing with categorical variables for statistical analyses in R, it is usually a good idea to define the order of the categories as this will by deafult determine which category is treated as the reference (comparison group).
+Notice that the `Type of Chocolate` variable is categorical. When dealing with categorical variables for statistical analyses in R, it is usually a good idea to define the order of the categories as this will by default determine which category is treated as the reference (comparison group).
 
 ```{r}
 happiness_data <- happiness_data |>
@@ -138,7 +138,7 @@ happiness_data |>
 ```
 
 ::: callout-note
-`skewness()` and `kurtosis()` are from the `e1071` pacakge
+`skewness()` and `kurtosis()` are from the `e1071` package
 :::
 
 ### Using `modeloutput`
@@ -165,7 +165,7 @@ hist(happiness_data$Happiness)
 
 ## Correlation Tables
 
-Regression models are based on the covariation (or correlation) between variables. Therefore, we might want to first evaluate all of the pairwise correlations in the data.
+Regression models are based on the co-variation (or correlation) between variables. Therefore, we might want to first evaluate all of the pairwise correlations in the data.
 
 ### Using `correlation`
 
@@ -255,7 +255,7 @@ model_parameters(reg_simple, standardize = "refit") |>
 
 ### Using `modeloutput`
 
-My `modeloutput` pacakge provides a way to display regression tables in output format similar to other statistical software packages like JASP or SPSS.
+My `modeloutput` package provides a way to display regression tables in output format similar to other statistical software packages like JASP or SPSS.
 
 ```{r}
 #| results: asis
@@ -275,7 +275,7 @@ regression_coeff(reg_simple)
 ```
 
 ::: callout-note
-The formula on the coefficients table shouls display horizontally across the bottom in your reports, but in this book format it is not working.
+The formula on the coefficients table should display horizontally across the bottom in your reports, but in this book format it is not working.
 :::
 
 You can also use a single function to display all three tables
@@ -333,7 +333,7 @@ model_parameters(reg_multiple, standardize = "refit") |>
 
 ### Using `modeloutput`
 
-My `modeloutput` pacakge provides a way to display regression tables in output format similar to other statistical software packages like JASP or SPSS.
+My `modeloutput` package provides a way to display regression tables in output format similar to other statistical software packages like JASP or SPSS.
 
 You can also add up to three regression models to easily compare in the output
 
@@ -544,7 +544,7 @@ To better understand the nature of a moderation, it helps to plot the results.
 
 ### Figures - `ggeffects` and `ggplot2`
 
-The most customizable way to plot model results is using the `ggeffects` and `ggplot2` pacakges. We can use `ggeffect()` to get a data frame with estimated model values for specified terms in the model and the dependent variable.
+The most customizable way to plot model results is using the `ggeffects` and `ggplot2` packages. We can use `ggeffect()` to get a data frame with estimated model values for specified terms in the model and the dependent variable.
 
 For continuous variables, we can customize at what values we want to plot. For "all" possible values from the original data we can specify `[all]`. If your variable was standardized before entering it into the model you can use `[2, 0, -2]` to get values at +2 standard deviations above the mean, the mean, and -2 standard deviations below the mean.
 

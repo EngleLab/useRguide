@@ -13,7 +13,7 @@ If you already have R and RStudio installed move on to Updating R. If you have a
 
 ## Install R {#sec-install-r}
 
-irst you need to download the latest version of **R** from their website <https://www.r-project.org>
+First you need to download the latest version of **R** from their website <https://www.r-project.org>
 
 1.  Select **CRAN** on the left, just under **Download**
 
@@ -36,7 +36,7 @@ The easiest way to interact with R is through the R Studio environment. To do th
 
 ------------------------------------------------------------------------
 
-## The RStudio Environemnt {#sec-the-rstudio-environemnt}
+## The RStudio Environment {#sec-the-rstudio-environment}
 
 Go ahead an open the RStudio application on your computer.
 

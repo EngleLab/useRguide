@@ -88,7 +88,7 @@ table_theme <- function(x, digits = 3, title = NULL, note = NULL) {
 
 ## Specify factor levels
 
-When dealing with categorical variables for statistical analyses in R, it is usually a good idea to define the order of the categories as this will by deafult determine which category is treated as the reference (comparison group).
+When dealing with categorical variables for statistical analyses in R, it is usually a good idea to define the order of the categories as this will by default determine which category is treated as the reference (comparison group).
 
 Let's set factor levels for **Memory Strategy** and **Presentation Rate**
 
@@ -241,7 +241,7 @@ estimate_contrasts(anova_bs, contrast = "Memory_Strategy",
 
 ### Using `modeloutput`
 
-My `modeloutput` pacakge provides a way to display ANOVA tables in output format similar to other statistical software packages like JASP or SPSS. Add `anova_tables(contrast = "Memory_Strategy")` to get a table for post-hoc comparisons.
+My `modeloutput` package provides a way to display ANOVA tables in output format similar to other statistical software packages like JASP or SPSS. Add `anova_tables(contrast = "Memory_Strategy")` to get a table for post-hoc comparisons.
 
 ```{r}
 #| results: asis
@@ -251,7 +251,7 @@ anova_tables(anova_bs, contrast = "Memory_Strategy")
 
 ### Figures - `ggplot2`
 
-The most customizable way to plot model results is using the `ggplot2` pacakge.
+The most customizable way to plot model results is using the `ggplot2` package.
 
 ```{r}
 ggplot(recall_data, aes(x = Memory_Strategy, y = Recall_Performance,
@@ -286,7 +286,7 @@ ggplot(recall_data, aes(x = Memory_Strategy, y = Recall_Performance,
   guides(fill = "none", color = "none")
 ```
 
-### Figures - `jsPlot`
+### Figures - `sjPlot`
 
 The main package in R to create and customize plots is `ggplot2`. However, there is definitely a bit of a learning curve to `ggplot2`. Instead, the `sjPlot` package offers convenient ways to plot the results of statistical analyses using `plot_model()`.
 
@@ -330,7 +330,7 @@ estimate_contrasts(anova_ws, contrast = "Presentation_Rate",
 
 ### Using `modeloutput`
 
-My `modeloutput` pacakge provides a way to display ANOVA tables in output format similar to other statistical software packages like JASP or SPSS. Add `anova_tables(contrast = "Presentation_Rate")` to get a table for post-hoc comparisons.
+My `modeloutput` package provides a way to display ANOVA tables in output format similar to other statistical software packages like JASP or SPSS. Add `anova_tables(contrast = "Presentation_Rate")` to get a table for post-hoc comparisons.
 
 ```{r}
 #| results: asis
@@ -340,7 +340,7 @@ anova_tables(anova_ws, contrast = "Presentation_Rate")
 
 ### Figures - `ggplot2`
 
-The most customizable way to plot model results is using the `ggplot2` pacakge.
+The most customizable way to plot model results is using the `ggplot2` package.
 
 ```{r}
 ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance)) +
@@ -370,7 +370,7 @@ ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance)) +
   labs(x = "Presentation_Rate", y = "Recall Performance")
 ```
 
-### Figures - `jsPlot`
+### Figures - `sjPlot`
 
 The main package in R to create and customize plots is `ggplot2`. However, there is definitely a bit of a learning curve to `ggplot2`. Instead, the `sjPlot` package offers convenient ways to plot the results of statistical analyses using `plot_model()`.
 
@@ -412,7 +412,7 @@ estimate_contrasts(anova_2way,
 
 ### Using `modeloutput`
 
-My `modeloutput` pacakge provides a way to display ANOVA tables in output format similar to other statistical software packages like JASP or SPSS. Add `anova_tables(contrast = "Presentation_Rate", at = "Memory_Strategy")` to get a table for post-hoc comparisons.
+My `modeloutput` package provides a way to display ANOVA tables in output format similar to other statistical software packages like JASP or SPSS. Add `anova_tables(contrast = "Presentation_Rate", at = "Memory_Strategy")` to get a table for post-hoc comparisons.
 
 ```{r}
 #| results: asis
@@ -424,7 +424,7 @@ anova_tables(anova_2way,
 
 ### Figures - `ggplot2`
 
-The most customizable way to plot model results is using the `ggplot2` pacakge.
+The most customizable way to plot model results is using the `ggplot2` package.
 
 ```{r}
 ggplot(recall_data, aes(x = Presentation_Rate, y = Recall_Performance,

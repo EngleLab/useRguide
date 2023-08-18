@@ -90,7 +90,7 @@ for (i in seq_along(c)) {
 
 Now for each element in `c`, if it is is greater than 3, then multiply it by 2 - else set as missing value. You can see that on each iteration the output is either the `i`th element of c multiplied by 2 or `NA`.
 
-But just printing things to the console is useless! Let's overwright the old values in `c` with the new values.
+But just printing things to the console is useless! Let's overwrite the old values in `c` with the new values.
 
 ```{r}
 for (i in seq_along(c)) {
@@ -104,7 +104,7 @@ for (i in seq_along(c)) {
 
 But what if we want to preserve the original vector `c`? Well we need to put it into a new vector, let's call it vector `d`. This get's a little more complicated but is something you might find yourself doing fairly often so it is good to understand how this works.
 
-But if you are goind to do this to a "new" vector that is not yet created you will run into an error.
+But if you are going to do this to a "new" vector that is not yet created you will run into an error.
 
 ```{r}
 #| error: true
@@ -191,7 +191,7 @@ average <- function(x) {
 
 When creating a function, you need to specify what input arguments the function is able to take. Here were are specifying the argument `x`. You can use whatever letter or string of letters you want, but a common notation is to use `x` for the object that is going to be evaluated by the function. Then, inside the function we use the same letter `x` to calculate the `sum()` and `length()` of `x`. What this means is that **Arguments specified in a function become objects (or variables) passed inside the function**
 
-You can create new objects inside a function. For instance we are creating an object, `avg`. However, these objects are created only inside the environment of the function. You cannot use those objects outside the function and they will not appear in your Environment window. To pass the value of an object outside of the function, you need to specify what you want to `return()` or what is the outpute of the function. In this case it is the object `avg` that we created inside the function.
+You can create new objects inside a function. For instance we are creating an object, `avg`. However, these objects are created only inside the environment of the function. You cannot use those objects outside the function and they will not appear in your Environment window. To pass the value of an object outside of the function, you need to specify what you want to `return()` or what is the output of the function. In this case it is the object `avg` that we created inside the function.
 
 Let's see the function in action
 
@@ -199,7 +199,7 @@ Let's see the function in action
 average(a)
 ```
 
-Cool! You created your first function. Becuase the function only takes one argument `x` it knows that whatever object we specify in `average()` is the object we want to evaluate.
+Cool! You created your first function. Because the function only takes one argument `x` it knows that whatever object we specify in `average()` is the object we want to evaluate.
 
 But what if our vector contains missing values?
 

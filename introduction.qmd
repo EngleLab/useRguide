@@ -18,11 +18,13 @@ The **top menu navigation bar** has convenient links to the lab website, the lab
 
 The [Getting Started](#sec-r-and-rstudio) section covers how to install and update software, introduce the basics of how R works, and more.
 
-The [Tidyverse](#sec-this-is-the-way) section is a genearl introduction to working with data in R using the Tidyverse set of packages.
+The [Tidyverse](#sec-this-is-the-way) section is a general introduction to working with data in R using the Tidyverse set of packages.
 
 The [Data Processing](#sec-data-processing-steps) section will cover data processing steps in a way that are specific to our lab.
 
 The [Data Visualization](#sec-introduction-to-ggplot2) section will introduce different ways of plotting data using the ggplot2 package.
+
+The [Statistical Analysis](#sec-regression) section will introduce how to perform certain statistical analyses in R.
 
 We use R at every stage of processing data from tidying up messy raw data files to generating statistical and graphical reports.
 
