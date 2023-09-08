@@ -10,7 +10,7 @@ book:
   reader-mode: true
   search: true
   cover-image: cover.png
-  favicon: cover.png
+  favicon: cover_small.png
   navbar: 
     left:
       - text: "Lab Website"
