@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.361">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Engle Lab useRguide - 12&nbsp; Score and Clean Data</title>
 <style>
@@ -87,7 +87,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 </head>
@@ -158,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-processing-steps.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./score-clean-data.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Score and Clean Data</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -351,14 +352,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./file-organization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">File Organization</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./psyworkflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">psyworkflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">psyworkflow</span></span></a>
   </div>
 </li>
       </ul>
@@ -432,12 +427,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"psych"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p>Setup a project folder, see <a href="psyworkflow.html"><span>Appendix&nbsp;C</span></a></p></li>
+<li><p>Setup a project folder, see <a href="psyworkflow.html"><span>Appendix&nbsp;B</span></a></p></li>
 <li><p>download <a href="">this data file</a> to <strong>data/raw</strong> in your project folder</p></li>
 <li><p>get an R script template for scoring raw data</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">psyworkflow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psyworkflow/man/get_template.html">get_template</a></span><span class="op">(</span>score_script <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">psyworkflow</span><span class="fu">::</span><span class="fu">get_template</span><span class="op">(</span>score_script <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
@@ -453,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EngleLab/englelab">englelab</a></span><span class="op">)</span>    <span class="co"># for data cleaning functions</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">englelab</span><span class="op">)</span>    <span class="co"># for data cleaning functions</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>       <span class="co"># for pivot_wider. delete if not using</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://personality-project.org/r/psych/">psych</a></span><span class="op">)</span>       <span class="co"># for cronbach's alpha. delete if not using</span></span>
 <span></span>
@@ -579,27 +574,27 @@ Tip
 <p>The next section of the script template is for cleaning the data by removing problematic subjects and/or removing outliers.</p>
 <section id="remove-problematic-subjects" class="level3"><h3 class="anchored" data-anchor-id="remove-problematic-subjects">Remove Problematic Subjects</h3>
 <p>Depending on the task, problematic subjects can be detected in different ways. For this task we will simply remove subjects that had less than chance performance (were just guessing or did not understand the task).</p>
-<p>To do so, we will use a custom function created for this purpose, <code><a href="https://englelab.github.io/englelab/reference/remove_problematic.html">remove_problematic()</a></code> from our <code>englelab</code> package. <code><a href="https://englelab.github.io/englelab/reference/remove_problematic.html">?englelab::remove_problematic</a></code></p>
+<p>To do so, we will use a custom function created for this purpose, <code>remove_problematic()</code> from our <code>englelab</code> package. <code>?englelab::remove_problematic</code></p>
 <p>The main argument is <code>filter =</code>. You need to put in here, what you would put inside of <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code> to remove anyone with less than chance performance: <code>dplyr::filter(Accuracy.mean &lt; acc_criterion)</code>. Remember at the top of the script we added the accuracy criterion by setting <code>acc_criterion &lt;- .5</code> (chance performance).</p>
 <p>The other argument, that is more optional, is <code>log_file =</code>. This allows us to save a data file containing only the subjects that were removed. This is good if we later on want to inspect how many subjects were removed, and why.</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_cleaned</span> <span class="op">&lt;-</span> <span class="va">data_scores</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://englelab.github.io/englelab/reference/remove_problematic.html">remove_problematic</a></span><span class="op">(</span></span>
+<span>  <span class="fu">remove_problematic</span><span class="op">(</span></span>
 <span>    filter <span class="op">=</span> <span class="st">"Accuracy.mean &lt; acc_criterion"</span>,</span>
 <span>    log_file <span class="op">=</span> <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/logs"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">task</span>, <span class="st">"_problematic.csv"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="remove-outliers" class="level3"><h3 class="anchored" data-anchor-id="remove-outliers">Remove Outliers</h3>
 <p>Remove outliers based on their final task scores. A typical way we remove outliers is by setting their score to missing <code>NA</code> if it is 3.5 standard deviations above or below the mean.</p>
 <p>To do so, we will use a custom function created for this purpose, <code>replace_outliers</code> from our <code>englelab</code> package.</p>
-<p>There are several arguments that need to be defined. See <code><a href="https://englelab.github.io/englelab/reference/replace_outliers.html">?englelab::replace_outliers</a></code> for a description on this.</p>
+<p>There are several arguments that need to be defined. See <code>?englelab::replace_outliers</code> for a description on this.</p>
 <p>The fully piped <code>|&gt;</code> code for this entire section looks like:</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Clean Data ----</span></span>
 <span><span class="va">data_cleaned</span> <span class="op">&lt;-</span> <span class="va">data_scores</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://englelab.github.io/englelab/reference/remove_problematic.html">remove_problematic</a></span><span class="op">(</span></span>
+<span>  <span class="fu">remove_problematic</span><span class="op">(</span></span>
 <span>    filter <span class="op">=</span> <span class="st">"Accuracy.mean &lt; acc_criterion"</span>,</span>
 <span>    log_file <span class="op">=</span> <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/logs"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">task</span>, <span class="st">"_problematic.csv"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://englelab.github.io/englelab/reference/replace_outliers.html">replace_outliers</a></span><span class="op">(</span></span>
+<span>  <span class="fu">replace_outliers</span><span class="op">(</span></span>
 <span>    variables <span class="op">=</span> <span class="st">"VA.k"</span>,</span>
 <span>    cutoff <span class="op">=</span> <span class="va">outlier_cutoff</span>,</span>
 <span>    with <span class="op">=</span> <span class="st">"NA"</span>,</span>
