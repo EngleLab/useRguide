@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.361">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Engle Lab useRguide - Appendix B — File Organization</title>
 <style>
@@ -87,7 +87,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 </head>
@@ -158,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducible-workflow.html">Appendices</a></li><li class="breadcrumb-item"><a href="./file-organization.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">File Organization</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -395,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-folder-org" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure"><p><img src="images/folder_organization.png" class="img-fluid figure-img" width="344"></p>
+<figure class="figure"><p><img src="images/folder_organization.png" class="img-fluid figure-img" width="227"></p>
 <figcaption class="figure-caption">Figure&nbsp;B.1: Folder organization</figcaption></figure>
 </div>
 </div>
@@ -433,24 +434,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For instance, I have an .Rproj file saved in my “useRguide” folder. When I use <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code>, the function will start at a file path to that location.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
-<span><span class="co">## here() starts at /Users/jtsukahara3/GitHub/useRguide</span></span>
+<span><span class="co">## here() starts at /Users/jtsukahara3/GitHub Repos/useRguide</span></span>
 <span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">## [1] "/Users/jtsukahara3/GitHub/useRguide"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] "/Users/jtsukahara3/GitHub Repos/useRguide"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can then use a relative file path inside of <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/raw/flanker_raw.csv"</span><span class="op">)</span></span>
-<span><span class="co">## [1] "/Users/jtsukahara3/GitHub/useRguide/data/raw/flanker_raw.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] "/Users/jtsukahara3/GitHub Repos/useRguide/data/raw/flanker_raw.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is equivalent to</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"flanker_raw.csv"</span><span class="op">)</span></span>
-<span><span class="co">## [1] "/Users/jtsukahara3/GitHub/useRguide/data/raw/flanker_raw.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] "/Users/jtsukahara3/GitHub Repos/useRguide/data/raw/flanker_raw.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I typically like to set the first argument as the relative file path and the second argument as the file name. This visually separates the file path and the file name, making your script easier to read.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/raw"</span>, <span class="st">"flanker_raw.csv"</span><span class="op">)</span></span>
-<span><span class="co">## [1] "/Users/jtsukahara3/GitHub/useRguide/data/raw/flanker_raw.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] "/Users/jtsukahara3/GitHub Repos/useRguide/data/raw/flanker_raw.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can then use <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> directly in import and output functions:</p>
 <div class="cell">

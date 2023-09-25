@@ -74,7 +74,6 @@ book:
         
   appendices:
     - reproducible-workflow.qmd
-    - file-organization.qmd
     - psyworkflow.qmd
     
 format:
