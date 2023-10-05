@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.371">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Engle Lab useRguide - 10&nbsp; Data Processing Steps</title>
+<title>Engle Lab useRguide - Appendix A — Reproducible Workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,6 +17,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -26,8 +60,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tidy-raw-data.html" rel="next">
-<link href="./working-with-data.html" rel="prev">
+<link href="./psyworkflow.html" rel="next">
+<link href="./anova.html" rel="prev">
 <link href="./cover_small.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -128,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-processing-steps.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./data-processing-steps.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Processing Steps</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducible-workflow.html">Appendices</a></li><li class="breadcrumb-item"><a href="./reproducible-workflow.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Reproducible Workflow</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -235,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-processing-steps.html" class="sidebar-item-text sidebar-link active">
+  <a href="./data-processing-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Processing Steps</span></span></a>
   </div>
 </li>
@@ -310,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reproducible-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="./reproducible-workflow.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Reproducible Workflow</span></span></a>
   </div>
 </li>
@@ -336,15 +370,24 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#data-preparation" id="toc-data-preparation" class="nav-link active" data-scroll-target="#data-preparation">Data Preparation</a></li>
-  <li><a href="#scoring-and-cleaning-data" id="toc-scoring-and-cleaning-data" class="nav-link" data-scroll-target="#scoring-and-cleaning-data">Scoring and Cleaning Data</a></li>
-  <li><a href="#preparing-a-single-data-file" id="toc-preparing-a-single-data-file" class="nav-link" data-scroll-target="#preparing-a-single-data-file">Preparing a Single Data File</a></li>
-  <li><a href="#setup-project-folder" id="toc-setup-project-folder" class="nav-link" data-scroll-target="#setup-project-folder">Setup Project Folder</a></li>
+<li><a href="#sec-workflow" id="toc-sec-workflow" class="nav-link active" data-scroll-target="#sec-workflow">Workflow</a></li>
+  <li><a href="#sec-what-does-reproducibility-mean" id="toc-sec-what-does-reproducibility-mean" class="nav-link" data-scroll-target="#sec-what-does-reproducibility-mean">What does reproducibility mean?</a></li>
+  <li><a href="#sec-file-organization" id="toc-sec-file-organization" class="nav-link" data-scroll-target="#sec-file-organization">File Organization</a></li>
+  <li>
+<a href="#sec-rprojects-and-here" id="toc-sec-rprojects-and-here" class="nav-link" data-scroll-target="#sec-rprojects-and-here">RProjects and here()</a>
+  <ul class="collapse">
+<li><a href="#sec-file-paths" id="toc-sec-file-paths" class="nav-link" data-scroll-target="#sec-file-paths">File Paths</a></li>
+  <li><a href="#setwd-sec-setwd" id="toc-setwd-sec-setwd" class="nav-link" data-scroll-target="#setwd-sec-setwd"><code>setwd()</code> {#sec-setwd(}</a></li>
+  <li><a href="#here-sec-here" id="toc-here-sec-here" class="nav-link" data-scroll-target="#here-sec-here"><code>here()</code> {#sec-here(}</a></li>
+  </ul>
+</li>
+  <li><a href="#sec-mainscript-file" id="toc-sec-mainscript-file" class="nav-link" data-scroll-target="#sec-mainscript-file">mainscript file</a></li>
+  <li><a href="#sec-use-templates" id="toc-sec-use-templates" class="nav-link" data-scroll-target="#sec-use-templates">Use Templates!</a></li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-processing-steps.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./data-processing-steps.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Processing Steps</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-data-processing-steps" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Processing Steps</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducible-workflow.html">Appendices</a></li><li class="breadcrumb-item"><a href="./reproducible-workflow.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Reproducible Workflow</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-reproducible-workflow" class="quarto-section-identifier">Appendix A — Reproducible Workflow</span></h1>
 </div>
 
 
@@ -358,49 +401,158 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header><p>There are three stages when processing data: 1) data preparation, 2) scoring and cleaning data, 3) preparing a single data file for statistical analysis.</p>
-<section id="data-preparation" class="level2"><h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
-<p>There are two scenarios in which you may need to start processing and analyzing data:</p>
-<ul>
-<li><p>Before data collection has finished</p></li>
-<li><p>After data collection has finished</p></li>
-</ul>
-<p>For both of these scenarios, you will start with messy raw data files in some file format. Messy raw data files are hard to understand, have poor column and value labels, contain way too many columns and rows, and are just hard to work with. Data preparation is all about getting raw data files that are easy to work with.</p>
+</header><p>While it may be tempting to jump right into working with data and conducting analyses, it’s crucial to consider how you organize your projects, files, and data. This is especially important when working with data in R and creating fully reproducible workflows.</p>
+<p>Part of the scientific process involves carefully documenting every step in our procedures. Doing so not only ensures higher quality research, but also enables your future self and others to fully reproduce what you did, go back and analyze the data in a different way, or catch errors in the data analysis process. Without a fully reproducible project, it may be difficult or impossible to catch errors that were made.</p>
+<section id="sec-workflow" class="level2"><h2 class="anchored" data-anchor-id="sec-workflow">Workflow</h2>
+<p>The typical data analysis workflow looks something like this:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-data-prep-workflow" class="quarto-figure quarto-figure-center anchored" width="247">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-data-prep-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/workflow_messy-tidy.png" class="img-fluid figure-img" width="247">
+<div id="fig-data-steps-2" class="quarto-figure quarto-figure-center anchored" width="1250">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-data-steps-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/data_steps.png" class="img-fluid figure-img" width="1250">
 </div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-data-prep-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.1: Data preparation workflow
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-data-steps-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.1: Data processing steps
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>The end product of the data preparation stage is <em>tidy</em> raw data files. Tidy raw data files are easy to understand, have sensible column and value labels, contain only relevant columns and rows, and are very easy to work with.</p>
-<p>The <strong>Data Preparation</strong> stage is required because the data files created from the E-Prime or other software program are usually not in a format that is easy to use or understand. I am referring to this format as a <strong>messy raw data</strong> file. Also, there are typically other preparation steps one needs to take before they can start looking at the data. These might include merging individual subject data files and exporting the data to a non-proprietary format so we can import the data into R. The purpose of the data preparation stage is simply to create <strong>tidy raw data</strong> files from the messy raw data files.</p>
-<p><strong>Tidy raw data</strong> files are easy to use and understand. There will be one row per trial, column labels that are easy to understand (e.g.&nbsp;Trial, Condition, RT, Accuracy, etc.), and values in columns that make sense. If values in a column are categorical, then the category names will be used rather than numerical values. Ideally, someone not involved in the research project should be able to look at a tidy raw data file and understand what each column represents, and what the values in the column refer to.</p>
-</section><section id="scoring-and-cleaning-data" class="level2"><h2 class="anchored" data-anchor-id="scoring-and-cleaning-data">Scoring and Cleaning Data</h2>
-<p>Once you have tidy raw data files, you can start scoring the tasks and implement any data cleaning procedures. In general, there are three steps that are typically done at this stage:</p>
 <ol type="1">
+<li><p>The first step in working with raw data files is to prepare the data so that it is usable and easy to understand. This often involves cleaning up the <strong>messy</strong> raw data and transforming it into a <strong>tidy</strong> format.</p></li>
+<li><p>The next step is to aggregate the data across responses (e.g., accuracy, RT) and clean the data to create a <strong>scored and cleaned</strong> data file (this step may only be needed if there are multiple tasks / measures - such as in correlational research).</p></li>
+<li><p>Then a <strong>single merged data file</strong> needs to be created that is ready for statistical analysis (this step may only be needed if there are multiple tasks / measures - such as in correlational research).</p></li>
+<li><p>Finally, we can move on to the fun part of generating reports of <strong>statistical analyses and data visualization</strong>.</p></li>
+</ol>
+<p>The first three steps can be accomplished using R scripts. The general process is to import the raw data file, transform the data (e.g., tidy the data or aggregate responses), and save the transformed data as an output file.</p>
+<p>The fourth step is best done using Quarto documents. This allows for easy rendering and sharing of the results.</p>
+</section><section id="sec-what-does-reproducibility-mean" class="level2"><h2 class="anchored" data-anchor-id="sec-what-does-reproducibility-mean">What does reproducibility mean?</h2>
+<p>Reproducibility in data processing and analysis means that all processing and analysis steps can be fully replicated using only the original raw data files and the execution of the R (or other program) scripts. There are different levels of reproducibility:</p>
+<ol type="1">
+<li><p>Partially reproducible - only some data processing and analysis steps can be reproduced, which may be due to a lack of original raw data files or the use of non-reproducible software.</p></li>
+<li><p>Minimal level of reproducibility (acceptable) - full reproduction of data processing and analysis steps on your computer (or a lab computer) without any modifications needed.</p></li>
+<li><p>Moderately reproducible (desired) - meets the minimal level plus other people not involved in the research project can reproduce the steps with minimal modifications.</p></li>
+<li><p>Highly reproducible (good luck!) - full reproduction of steps without modification needed by people not involved in the research project 5 - 10+ years from now.</p></li>
+</ol>
+<p>Note that these levels are arbitrarily defined by myself and what I came up with on the spot. A minimal level of reproducibility is still acceptable, as achieving more requires significant time and effort. Though, we should strive for a moderate amount of reproducibility, and achieving it requires more than just writing code. Your code must be organized, easy to understand, and include notes and documentation. Even if you or someone else attempts to reproduce your steps in the future, they can modify the code to make it work. The highest level of reproducibility is difficult to achieve due to software and code updates. Your code may only work with the current version of R or other packages. There are solutions to this problem of software and code updates, but who knows if those will work in the future!</p>
+<hr>
+<p>Simply using R for data analysis does not guarantee that your workflow is reproducible. In fact, there are many non-reproducible ways to use R. To ensure at least a moderate level of reproducibility, consider the following criteria (this is not an exhaustive list):</p>
+<ul>
+<li><p>Your statistical analysis (the final step) can be fully reproduced from the raw data files and R scripts</p></li>
+<li><p>Your code can be reproduced on other computers without any modifications</p></li>
+<li><p><strong>Your data and R scripts are organized and documented in a way that makes them easily understandable to unfamiliar parties</strong></p></li>
+</ul>
+<p>This last criterion is extremely important, but is often overlooked. Simply posting your data and scripts to an open access repository like Open Science Framework (<a href="https://osf.io">OSF.io</a>) is not enough to guarantee reproducibility. If others cannot understand your workflow, then it is not reproducible. Therefore, it is crucial to take the time to think about the organization of your project, files, data, and scripts.</p>
+</section><section id="sec-file-organization" class="level2"><h2 class="anchored" data-anchor-id="sec-file-organization">File Organization</h2>
+<p>Good project organization starts with easy to understand folder and file organization. For a data analysis project, the following folders are typically needed to meet at least a minimal level of reproducibility (the scored folder may or may not be needed):</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-folder-org" class="quarto-figure quarto-figure-center anchored" width="227">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-folder-org-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/folder_organization.png" class="img-fluid figure-img" width="227">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-folder-org-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.2: Folder organization
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Notice how the structure of the <strong>data</strong> folder follows the data analysis workflow. The original <strong>messy</strong> raw data files are stored in <strong>data / raw / messy</strong>. The <strong>tidy</strong> raw data files are stored in <strong>data / raw</strong>. And the <strong>scored and cleaned</strong> data files are stored in <strong>data / scored</strong> (only if score step is needed)</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-data-analysis-workflow2" class="quarto-figure quarto-figure-center anchored" width="1334">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-data-analysis-workflow2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/data_analysis_workflow.png" class="img-fluid figure-img" width="1334">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-data-analysis-workflow2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.3: Data analysis workflow
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>This organizational structure makes it easy to understand how the various <strong>R Scripts</strong>, stored in the <strong>R</strong> folder, correspond to each step in the data analysis workflow, what data the script is importing and where it is coming from, and what data file the script is outputting and saving to.</p>
+<p>To help with this even further, I typically follow a particular file naming scheme.</p>
+<ul>
+<li><p>I like to keep the original data file name for the <strong>messy</strong> raw data file.</p></li>
+<li><p>For <strong>tidy</strong> raw data files I use <strong>taskname_raw.csv</strong></p></li>
+<li><p>For <strong>scored</strong> data files I use <strong>taskname_scored.csv</strong></p></li>
 <li>
-<p>Scoring the data</p>
-<p>This involves aggregating performance across trials on a task for each subject.</p>
+<p>For R Scripts I will append a prefix number corresponding to the order in which the scripts need to be ran and a suffix corresponding to what stage of the data analysis workflow it is in:</p>
+<ul>
+<li><p><strong>1_taskname_raw.R</strong></p></li>
+<li><p><strong>2_taskname_score.R</strong></p></li>
+<li><p><strong>3_merge_scores.R</strong></p></li>
+</ul>
 </li>
-<li>
-<p>Cleaning the data</p>
-<p>This involves removing subjects that are identified to be problematic and / or outliers.</p>
-</li>
-<li>
-<p>Calculating reliability</p>
-<p>For individual differences, it is important to report the reliability of each task.</p>
-</li>
-</ol></section><section id="preparing-a-single-data-file" class="level2"><h2 class="anchored" data-anchor-id="preparing-a-single-data-file">Preparing a Single Data File</h2>
-<p>The scoring and cleaning data stage will produce scored data files for each task, but ultimately we want a single data file to use for statistical analysis.</p>
-<p>Therefore, the next stage is to join all the scored data files into a single dataframe and select only relevant variables (columns) that we need for analysis.</p>
-</section><section id="setup-project-folder" class="level2"><h2 class="anchored" data-anchor-id="setup-project-folder">Setup Project Folder</h2>
-<p>Before moving on to the other chapters in this section, create a research study project folder. See <a href="psyworkflow.html" class="quarto-xref"><span>Appendix&nbsp;B</span></a> on how to do this.</p>
+</ul>
+<p>It could be tempting to just throw all your R code into one script or Quarto document, however, I advise against that because it will make it more difficult to manage, reproduce, and understand your data processing workflow.</p>
+</section><section id="sec-rprojects-and-here" class="level2"><h2 class="anchored" data-anchor-id="sec-rprojects-and-here">RProjects and here()</h2>
+<p>You need to be using <a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects">RStudio Projects</a> for anything you do in R.</p>
+<p>In fact, <strong>you should be opening RStudio by opening an RProject file</strong>.</p>
+<p>RStudio Projects allow you to open isolated instances of R and RStudio for each of your projects. In combination with the <code>here</code> package it will also provide a simple and fool proof way of specifying file paths.</p>
+<section id="sec-file-paths" class="level3"><h3 class="anchored" data-anchor-id="sec-file-paths">File Paths</h3>
+<p>A file path is what points to a specific file (or folder) on a computer and might look something like</p>
+<p>On Macs:</p>
+<p>Users/jtsukahara3/projects/project_name/a_file.txt</p>
+<p>On Windows:</p>
+<p>C:\jtsukahara3\projects\project_name\a_file.txt</p>
+<p>These are known as <strong>absolute file paths</strong> because they start from a user or drive (C:) directory that is specific to that computer. Absolute file paths should absolutely be avoided in order to meet moderate levels of reproducibility.</p>
+<p><strong>Relative file paths</strong> on the other hand, start from a folder - typically a project folder</p>
+<p>project_name/a_file.txt</p>
+<p>Relative file paths need to be used in order for your project to meet moderate levels of reproducibility. A relative file path can be used on different computers as long as the internal organization of folders and files for the project are the same.</p>
+</section><section id="setwd-sec-setwd" class="level3"><h3 class="anchored" data-anchor-id="setwd-sec-setwd">
+<code>setwd()</code> {#sec-setwd(}</h3>
+<p>The problem with relative file paths is that R still needs to work with files on a local computer and therefore needs to know the absolute file path to the project folder.</p>
+<p>The standard way to do this is using <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>to set the <strong>working directory</strong> (you can also set the working directory using the GUI in RStudio). The working directory tells R where the project folder is located and to set the working directory there. What this does is allow you then to only use relative file paths in your R scripts.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"Users/jtsukahara3/projects/project_name"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>But, setting the working directory requires using an absolute file path!</strong> This means that any script where <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> is used, the absolute file path in <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> would need to be changed any time the script is ran on a different computer.</p>
+<p>This breaks the requirement for a moderate level of reproducibility and, therefore, should be avoided.</p>
+</section><section id="here-sec-here" class="level3"><h3 class="anchored" data-anchor-id="here-sec-here">
+<code>here()</code> {#sec-here(}</h3>
+<p>This is where <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> comes in handy.</p>
+<p><code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> works in conjunction with RStudio Projects and requires an .Rproj file that is created when an RStudio Project is created. When you load the <code>here</code> package with <code><a href="https://here.r-lib.org/">library(here)</a></code> it will search for the .Rproj file and start file paths at that point whenever the <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> function is used.</p>
+<p>For instance, I have an .Rproj file saved in my “useRguide” folder. When I use <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code>, the function will start at a file path to that location.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
+<span><span class="co">## here() starts at /Users/jtsukahara3/GitHub/useRguide</span></span>
+<span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">## [1] "/Users/jtsukahara3/GitHub/useRguide"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Therefore, the absolute file path to the project folder is set by <code><a href="https://here.r-lib.org/">library(here)</a></code> without the user having to write an absolute file path in their script. This means they only have to write relative file paths and, therefore, meets the moderate level of reproducibility.</p>
+<p>Every time you use <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> you know that the file path will start at where you have your .Rproj file saved. Instead of messing around with working directories using <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> or <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>, just use <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> and RStudio Projects. This becomes especially helpful when working with Quarto documents.</p>
+<p>Relative file paths can be specificed inside of <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code></p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/raw/flanker_raw.csv"</span><span class="op">)</span></span>
+<span><span class="co">## [1] "/Users/jtsukahara3/GitHub/useRguide/data/raw/flanker_raw.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is equivalent to</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"flanker_raw.csv"</span><span class="op">)</span></span>
+<span><span class="co">## [1] "/Users/jtsukahara3/GitHub/useRguide/data/raw/flanker_raw.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I typically like to set the first argument as the folder path and the second argument as the file name. This visually separates the folder path and the file name, making your script easier to read.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/raw"</span>, <span class="st">"flanker_raw.csv"</span><span class="op">)</span></span>
+<span><span class="co">## [1] "/Users/jtsukahara3/GitHub/useRguide/data/raw/flanker_raw.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can then use <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> directly in import and output functions:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">import</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/raw"</span>, <span class="st">"flanker_raw.csv"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/scored"</span>, <span class="st">"flanker_scored.csv"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="sec-mainscript-file" class="level2"><h2 class="anchored" data-anchor-id="sec-mainscript-file">mainscript file</h2>
+<p>When you break up your data processing stages into separate R scripts, this can lead to having a lot of R scripts to source. It can be tedious to open each script, source it, then repeat for every R script while making sure you are doing everything in the right order.</p>
+<p>Instead, I prefer to create a <strong>mainscript.Rmd</strong> file that uses <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> to source each R script file in a particular order, and <code>render_quarto()</code> to render Quarto documents.</p>
+<p>Using a Quarto (.qmd) document for the mainscript file is useful if you want to add in documentation about the study and data analysis workflow. For instance, you can add brief descriptions of how outliers were detected and dealt with, how reliability was calculated, etc.</p>
+<p>It also makes it easier for yourself, your future self, or someone else to look at your <strong>mainscript.qmd</strong> file and easily understand your data processing workflow without having to go through each of your R scripts line-by-line.</p>
+</section><section id="sec-use-templates" class="level2"><h2 class="anchored" data-anchor-id="sec-use-templates">Use Templates!</h2>
+<p>Don’t start from scratch, like ever.</p>
+<p>It can be a ton of work, and mental effort, to create an efficient and reproducible project organization from scratch. Generally, I would try to avoid starting a project from blank, empty, R scripts. More than likely what will happen is that any organization you had thought of just breaks down because you are struggling enough with writing the R code itself, and you need to get a report on the data to your adviser so you decide to use shortcuts <strong>“for now”</strong>. But we all know that <strong>“for now”</strong> always turns into <strong>forever</strong>.</p>
+<p>Unfortunately, not starting from scratch usually means that you have already setup an organization system with R script templates that you can use. This is likely not the case. So what to do?</p>
+<p>Check out my <a href="psyworkflow.html" class="quarto-xref"><span>Appendix&nbsp;B</span></a> package that allows you to automatically setup the organizational structure I have outlined in this chapter, along with R script templates for each data processing stage.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -747,13 +899,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./working-with-data.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with Data</span></span>
+      <a href="./anova.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">ANOVA</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tidy-raw-data.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Tidy Raw Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./psyworkflow.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">psyworkflow</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

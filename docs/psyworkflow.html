@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.371">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Engle Lab useRguide - 10&nbsp; Data Processing Steps</title>
+<title>Engle Lab useRguide - Appendix B — psyworkflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,6 +17,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -26,8 +60,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tidy-raw-data.html" rel="next">
-<link href="./working-with-data.html" rel="prev">
+<link href="./update-packages.html" rel="next">
+<link href="./reproducible-workflow.html" rel="prev">
 <link href="./cover_small.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -128,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-processing-steps.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./data-processing-steps.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Processing Steps</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducible-workflow.html">Appendices</a></li><li class="breadcrumb-item"><a href="./psyworkflow.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">psyworkflow</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -235,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-processing-steps.html" class="sidebar-item-text sidebar-link active">
+  <a href="./data-processing-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Processing Steps</span></span></a>
   </div>
 </li>
@@ -316,7 +350,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./psyworkflow.html" class="sidebar-item-text sidebar-link">
+  <a href="./psyworkflow.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">psyworkflow</span></span></a>
   </div>
 </li>
@@ -336,15 +370,14 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#data-preparation" id="toc-data-preparation" class="nav-link active" data-scroll-target="#data-preparation">Data Preparation</a></li>
-  <li><a href="#scoring-and-cleaning-data" id="toc-scoring-and-cleaning-data" class="nav-link" data-scroll-target="#scoring-and-cleaning-data">Scoring and Cleaning Data</a></li>
-  <li><a href="#preparing-a-single-data-file" id="toc-preparing-a-single-data-file" class="nav-link" data-scroll-target="#preparing-a-single-data-file">Preparing a Single Data File</a></li>
-  <li><a href="#setup-project-folder" id="toc-setup-project-folder" class="nav-link" data-scroll-target="#setup-project-folder">Setup Project Folder</a></li>
+<li><a href="#install" id="toc-install" class="nav-link active" data-scroll-target="#install">Install</a></li>
+  <li><a href="#sec-download-r-script-templates" id="toc-sec-download-r-script-templates" class="nav-link" data-scroll-target="#sec-download-r-script-templates">Download R Script Templates</a></li>
+  <li><a href="#create-a-new-project" id="toc-create-a-new-project" class="nav-link" data-scroll-target="#create-a-new-project">Create a New Project</a></li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-processing-steps.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./data-processing-steps.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Processing Steps</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-data-processing-steps" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Processing Steps</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducible-workflow.html">Appendices</a></li><li class="breadcrumb-item"><a href="./psyworkflow.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">psyworkflow</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-psyworkflow" class="quarto-section-identifier">Appendix B — psyworkflow</span></h1>
 </div>
 
 
@@ -358,49 +391,49 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header><p>There are three stages when processing data: 1) data preparation, 2) scoring and cleaning data, 3) preparing a single data file for statistical analysis.</p>
-<section id="data-preparation" class="level2"><h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
-<p>There are two scenarios in which you may need to start processing and analyzing data:</p>
-<ul>
-<li><p>Before data collection has finished</p></li>
-<li><p>After data collection has finished</p></li>
-</ul>
-<p>For both of these scenarios, you will start with messy raw data files in some file format. Messy raw data files are hard to understand, have poor column and value labels, contain way too many columns and rows, and are just hard to work with. Data preparation is all about getting raw data files that are easy to work with.</p>
+</header><p>In this chapter, I introduce you to my <code>psyworkflow</code> package that allows you to automatically setup the organizational structure I have outlined in the previous chapter, along with R script templates for each data processing stage.</p>
+<section id="install" class="level2"><h2 class="anchored" data-anchor-id="install">Install</h2>
+<p>First, if you do not have the <code>devtools</code> package installed:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Install the <code>psyworkflow</code> package from my GitHub repository using the <code>devtools</code> package:</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dr-JT/psyworkflow"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Restart R: Session -&gt; Restart R</p>
+</section><section id="sec-download-r-script-templates" class="level2"><h2 class="anchored" data-anchor-id="sec-download-r-script-templates">Download R Script Templates</h2>
+<p>If you already have an RProject setup and just want to download some of the R script templates you can do so with the <code>get_template()</code> function.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">psyworkflow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psyworkflow/man/get_template.html">get_template</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To see what the options are type in the console window</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="fu">psyworkflow</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/psyworkflow/man/get_template.html">get_template</a></span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="create-a-new-project" class="level2"><h2 class="anchored" data-anchor-id="create-a-new-project">Create a New Project</h2>
+<p>Close RStudio and reopen a new instance of RStudio (not from an RProject file).</p>
+<p>Once you have the <code>psyworkflow</code> package installed you will be able to create a new RProject directory and file from my <strong>Research Study</strong> template. This will automatically create the directory structure outlined in the previous chapter. It will also add template R scripts in <strong>R / templates</strong> and a <strong>mainscript.qmd</strong> file.</p>
+<p>Using this template will allow you to get right to working with your data in R, without having to spend too much time thinking about organization (I have already done that for you).</p>
+<p>To create an RProject from this template:</p>
+<p>File -&gt; New Project… -&gt; New Directory -&gt; Research Study (you might need to scroll down to see it)</p>
+<p>This will bring up a window to customize the template:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-data-prep-workflow" class="quarto-figure quarto-figure-center anchored" width="247">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-data-prep-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/workflow_messy-tidy.png" class="img-fluid figure-img" width="247">
+<div id="fig-psyworkflow-project" class="quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-psyworkflow-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/workflow_package.png" class="img-fluid figure-img" style="width:60.0%">
 </div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-data-prep-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.1: Data preparation workflow
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-psyworkflow-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;B.1: Create new project window
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>The end product of the data preparation stage is <em>tidy</em> raw data files. Tidy raw data files are easy to understand, have sensible column and value labels, contain only relevant columns and rows, and are very easy to work with.</p>
-<p>The <strong>Data Preparation</strong> stage is required because the data files created from the E-Prime or other software program are usually not in a format that is easy to use or understand. I am referring to this format as a <strong>messy raw data</strong> file. Also, there are typically other preparation steps one needs to take before they can start looking at the data. These might include merging individual subject data files and exporting the data to a non-proprietary format so we can import the data into R. The purpose of the data preparation stage is simply to create <strong>tidy raw data</strong> files from the messy raw data files.</p>
-<p><strong>Tidy raw data</strong> files are easy to use and understand. There will be one row per trial, column labels that are easy to understand (e.g.&nbsp;Trial, Condition, RT, Accuracy, etc.), and values in columns that make sense. If values in a column are categorical, then the category names will be used rather than numerical values. Ideally, someone not involved in the research project should be able to look at a tidy raw data file and understand what each column represents, and what the values in the column refer to.</p>
-</section><section id="scoring-and-cleaning-data" class="level2"><h2 class="anchored" data-anchor-id="scoring-and-cleaning-data">Scoring and Cleaning Data</h2>
-<p>Once you have tidy raw data files, you can start scoring the tasks and implement any data cleaning procedures. In general, there are three steps that are typically done at this stage:</p>
-<ol type="1">
-<li>
-<p>Scoring the data</p>
-<p>This involves aggregating performance across trials on a task for each subject.</p>
-</li>
-<li>
-<p>Cleaning the data</p>
-<p>This involves removing subjects that are identified to be problematic and / or outliers.</p>
-</li>
-<li>
-<p>Calculating reliability</p>
-<p>For individual differences, it is important to report the reliability of each task.</p>
-</li>
-</ol></section><section id="preparing-a-single-data-file" class="level2"><h2 class="anchored" data-anchor-id="preparing-a-single-data-file">Preparing a Single Data File</h2>
-<p>The scoring and cleaning data stage will produce scored data files for each task, but ultimately we want a single data file to use for statistical analysis.</p>
-<p>Therefore, the next stage is to join all the scored data files into a single dataframe and select only relevant variables (columns) that we need for analysis.</p>
-</section><section id="setup-project-folder" class="level2"><h2 class="anchored" data-anchor-id="setup-project-folder">Setup Project Folder</h2>
-<p>Before moving on to the other chapters in this section, create a research study project folder. See <a href="psyworkflow.html" class="quarto-xref"><span>Appendix&nbsp;B</span></a> on how to do this.</p>
+<p>Type in whatever you want for the <strong>Directory Name</strong> - this will end up being the name of the project folder and RProject file.</p>
+<p>Click on <strong>Browse…</strong> and create the project on your desktop, for now.</p>
+<p>Keep all the defaults and select <strong>Create Project</strong>.</p>
+<p>Give it some time, and it will reopen RStudio from the newly created RProject. Take a look at the file pane and you can see that the folders have been created, and R Script templates downloaded.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -747,13 +780,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./working-with-data.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with Data</span></span>
+      <a href="./reproducible-workflow.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Reproducible Workflow</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tidy-raw-data.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Tidy Raw Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./update-packages.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Update Lab Packages</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

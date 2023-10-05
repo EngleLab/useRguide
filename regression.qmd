@@ -258,7 +258,6 @@ model_parameters(reg_simple, standardize = "refit") |>
 My `modeloutput` package provides a way to display regression tables in output format similar to other statistical software packages like JASP or SPSS.
 
 ```{r}
-#| results: asis
 library(modeloutput)
 
 regression_rsquared(reg_simple)
@@ -269,8 +268,6 @@ regression_modelsig(reg_simple)
 ```
 
 ```{r}
-#| results: asis
-
 regression_coeff(reg_simple)
 ```
 
@@ -281,18 +278,8 @@ The formula on the coefficients table should display horizontally across the bot
 You can also use a single function to display all three tables
 
 ```{r}
-#| results: asis
-
 regression_tables(reg_simple)
 ```
-
-::: callout-important
-R code chunk option results: asis needs to be set to correctly display the output of `regression_tables()`
-
-#\| results: asis
-
-regression_tables()
-:::
 
 ## Multiple Regression
 
@@ -338,7 +325,6 @@ My `modeloutput` package provides a way to display regression tables in output f
 You can also add up to three regression models to easily compare in the output
 
 ```{r}
-#| results: asis
 library(modeloutput)
 
 regression_rsquared(reg_simple, reg_multiple)
@@ -355,18 +341,8 @@ regression_coeff(reg_simple, reg_multiple)
 You can also use a single function to display all three tables
 
 ```{r}
-#| results: asis
-
 regression_tables(reg_simple, reg_multiple)
 ```
-
-::: callout-important
-R code chunk option results: asis needs to be set to correctly display the output of `regression_tables()`
-
-#\| results: asis
-
-regression_tables()
-:::
 
 ## Mediation
 
@@ -446,14 +422,10 @@ model_mediation <- mediate(reg_med, reg_direct,
 For simplicity, we will use the `modeloutput` package to display the regression output
 
 ```{r}
-#| results: asis
-
 regression_tables(reg_total, reg_direct)
 ```
 
 ```{r}
-#| results: asis
-
 regression_tables(reg_med)
 ```
 
@@ -535,8 +507,6 @@ model_moderation <- lm(Happiness ~ Chocolate_Consumed_c * Type_of_Chocolate,
 ```
 
 ```{r}
-#| results: asis
-
 regression_tables(model_null, model_moderation)
 ```
 
