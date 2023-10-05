@@ -75,6 +75,7 @@ book:
   appendices:
     - reproducible-workflow.qmd
     - psyworkflow.qmd
+    - update-packages.qmd
     
 format:
   html:

@@ -1,0 +1,22 @@
+# Update Lab Packages {#sec-update-lab-packages}
+
+```{r}
+#| results: "asis"
+#| echo: false
+
+source("_common.R")
+```
+
+I will sporadically update my GitHub R Packages. It is recommended to use the latest versions. Copy and paste this code into a script to update the packages on your computer.
+
+```{r}
+#| eval: false
+
+library(devtools)
+
+install_github("EngleLab/englelab", upgrade = FALSE)
+install_github("dr-JT/psyworkflow", upgrade = FALSE)
+install_github("dr-JT/semoutput", upgrade = FALSE)
+install_github("dr-JT/pupillometry", upgrade = FALSE)
+install_github("dr-JT/modeloutput", upgrade = FALSE)
+```
