@@ -59,7 +59,7 @@ This will bring up a window to customize the template:
 #| label: fig-psyworkflow-project
 #| echo: false
 #| fig-cap: Create new project window
-#| out-width: 60%
+#| out-width: 80%
 knitr::include_graphics(rep("images/workflow_package.png"))
 ```
 
