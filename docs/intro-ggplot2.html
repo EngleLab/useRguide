@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.371">
+<meta name="generator" content="quarto-1.3.361">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Engle Lab useRguide - 14&nbsp; Intro to ggplot2</title>
 <style>
@@ -19,7 +19,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,12 +78,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -102,7 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Engle Lab useRguide</span>
     </a>
@@ -114,61 +108,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="https://englelab.gatech.edu/" target="_blank"> 
-<span class="menu-text">Lab Website</span></a>
+    <a class="nav-link" href="https://englelab.gatech.edu/" rel="" target="_blank">
+ <span class="menu-text">Lab Website</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://engle-lab.gitbook.io/lab-manual/" target="_blank"> 
-<span class="menu-text">Lab Manual</span></a>
+    <a class="nav-link" href="https://engle-lab.gitbook.io/lab-manual/" rel="" target="_blank">
+ <span class="menu-text">Lab Manual</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-packages" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-packages" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">R Packages</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-packages">
 <li>
-    <a class="dropdown-item" href="https://englelab.github.io/englelab/" target="_blank">
+    <a class="dropdown-item" href="https://englelab.github.io/englelab/" rel="" target="_blank">
  <span class="dropdown-text">englelab</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://dr-jt.github.io/psyworkflow/" target="_blank">
+    <a class="dropdown-item" href="https://dr-jt.github.io/psyworkflow/" rel="" target="_blank">
  <span class="dropdown-text">psyworkflow</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://dr-jt.github.io/semoutput/" target="_blank">
+    <a class="dropdown-item" href="https://dr-jt.github.io/semoutput/" rel="" target="_blank">
  <span class="dropdown-text">semoutput</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://dr-jt.github.io/modeloutput/" target="_blank">
+    <a class="dropdown-item" href="https://dr-jt.github.io/modeloutput/" rel="" target="_blank">
  <span class="dropdown-text">modeloutput</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://dr-jt.github.io/pupillometry/" target="_blank">
+    <a class="dropdown-item" href="https://dr-jt.github.io/pupillometry/" rel="" target="_blank">
  <span class="dropdown-text">pupillometry</span></a>
   </li>  
     </ul>
 </li>
 </ul>
-</div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro-ggplot2.html">Data Visualization</a></li><li class="breadcrumb-item"><a href="./intro-ggplot2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Intro to ggplot2</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro-ggplot2.html">Data Visualization</a></li><li class="breadcrumb-item"><a href="./intro-ggplot2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Intro to ggplot2</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -398,7 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro-ggplot2.html">Data Visualization</a></li><li class="breadcrumb-item"><a href="./intro-ggplot2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Intro to ggplot2</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title"><span id="sec-introduction-to-ggplot2" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Intro to ggplot2</span></span></h1>
 </div>
 
@@ -411,7 +413,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     
   </div>
   
-
 
 </header><section id="fundamentals-of-data-visualization" class="level2"><h2 class="anchored" data-anchor-id="fundamentals-of-data-visualization">Fundamentals of Data Visualization</h2>
 <p>Data visualization is an essential skill for anyone working with data. It is a combination of statistical understanding and design principles and is really about <strong>graphical data analysis</strong> and <strong>communication and perception</strong>.</p>
@@ -430,13 +431,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The essential grammatical elements to create any visualization are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ge-essentials" class="quarto-figure quarto-figure-center anchored" width="846">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ge-essentials-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ge_essentials.png" class="img-fluid figure-img" width="846">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ge-essentials-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.1: Essential grammatical elements for data visualization
-</figcaption></figure>
+<div id="fig-ge-essentials" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/ge_essentials.png" class="img-fluid figure-img" width="846"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.1: Essential grammatical elements for data visualization</figcaption></figure>
 </div>
 </div>
 </div>
@@ -445,13 +442,9 @@ Figure&nbsp;14.1: Essential grammatical elements for data visualization
 <p>To allow for data visualization that is more in line with the principles for a grammar of graphics, Hadley Wickham created the <code>ggplot2</code> package. This by far the most popular package for data visualization in R.</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="fig-ggplot2-logo" class="quarto-figure quarto-figure-left anchored" data-fig-align="left" width="25%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-logo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ggplot2.jpg" class="img-fluid quarto-figure-left figure-img" style="width:25.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-logo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.2: ggplot2 logo
-</figcaption></figure>
+<div id="fig-ggplot2-logo" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure"><p><img src="images/ggplot2.jpg" class="img-fluid figure-img" style="width:25.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.2: ggplot2 logo</figcaption></figure>
 </div>
 </div>
 </div>
@@ -464,13 +457,9 @@ Figure&nbsp;14.2: ggplot2 logo
 <p>We also saw that the three essential elements are the data layer, aesthetics layer, and geometrics layer. In ggplot2 there are a total of 7 layers we can add to a plot</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-elements" class="quarto-figure quarto-figure-center anchored" width="846">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-elements-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ge_all.png" class="img-fluid figure-img" width="846">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-elements-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.3: ggplot2 elements
-</figcaption></figure>
+<div id="fig-ggplot2-elements" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/ge_all.png" class="img-fluid figure-img" width="846"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.3: ggplot2 elements</figcaption></figure>
 </div>
 </div>
 </div>
@@ -478,13 +467,9 @@ Figure&nbsp;14.3: ggplot2 elements
 <p>The Data Layer specifies the data being plotted.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-data-layer" class="quarto-figure quarto-figure-center anchored" width="50%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-data-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ge_data.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-data-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.4: ggplot2 data layer
-</figcaption></figure>
+<div id="fig-ggplot2-data-layer" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/ge_data.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.4: ggplot2 data layer</figcaption></figure>
 </div>
 </div>
 </div>
@@ -510,12 +495,7 @@ Figure&nbsp;14.4: ggplot2 data layer
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-8-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>You can see that we only have a blank square. This is because we have not added any other layers yet, we have only specified the data layer.</p>
@@ -538,13 +518,9 @@ Note
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-aes-layer" class="quarto-figure quarto-figure-center anchored" width="50%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-aes-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ge_aes.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-aes-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.5: ggplot2 aesthetic (aes) layer
-</figcaption></figure>
+<div id="fig-ggplot2-aes-layer" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/ge_aes.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.5: ggplot2 aesthetic (aes) layer</figcaption></figure>
 </div>
 </div>
 </div>
@@ -552,12 +528,7 @@ Figure&nbsp;14.5: ggplot2 aesthetic (aes) layer
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-2" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-10-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-2" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>You can see we went from a blank box to a graph with the variable and scales of Sepal.Length mapped onto the x-axis and Sepal.Width on the y-axis.</p>
@@ -565,25 +536,16 @@ Figure&nbsp;14.5: ggplot2 aesthetic (aes) layer
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span>, color <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-3" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-11-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-3" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 </section><section id="geometries-layer" class="level2"><h2 class="anchored" data-anchor-id="geometries-layer">Geometries Layer</h2>
 <p>The next <em>essential</em> element for data visualization is the geometries layer or <strong>geom</strong> layer for short.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-geom-layer" class="quarto-figure quarto-figure-center anchored" width="50%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-geom-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ge_geom.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-geom-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.6: ggplot2 geometrics (geom) layer
-</figcaption></figure>
+<div id="fig-ggplot2-geom-layer" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/ge_geom.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.6: ggplot2 geometrics (geom) layer</figcaption></figure>
 </div>
 </div>
 </div>
@@ -596,12 +558,7 @@ Figure&nbsp;14.6: ggplot2 geometrics (geom) layer
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-4" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-14-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-4" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>And walla! Now we have a scatterplot of the relationship between Sepal.Length and Sepal.Width. Cool.</p>
@@ -611,12 +568,7 @@ Figure&nbsp;14.6: ggplot2 geometrics (geom) layer
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span>, color <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-5" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-15-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-5" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>Next, we will consider how to plot <code>Species</code> in separate plots within the same visualization.</p>
@@ -624,13 +576,9 @@ Figure&nbsp;14.6: ggplot2 geometrics (geom) layer
 <p>The facet layer allows you to create subplots within the same graphic object</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-facets-layer" class="quarto-figure quarto-figure-center anchored" width="50%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-facets-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ge_facet.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-facets-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.7: ggplot2 facet layer
-</figcaption></figure>
+<div id="fig-ggplot2-facets-layer" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/ge_facet.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.7: ggplot2 facet layer</figcaption></figure>
 </div>
 </div>
 </div>
@@ -641,25 +589,16 @@ Figure&nbsp;14.7: ggplot2 facet layer
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Species</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-6" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-17-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-6" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 </section><section id="statistics-layer" class="level2"><h2 class="anchored" data-anchor-id="statistics-layer">Statistics Layer</h2>
 <p>The statistics layer allows you plot statistical values calculated from the data</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-stat-layer" class="quarto-figure quarto-figure-center anchored" width="50%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-stat-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ge_stats.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-stat-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.8: ggplot2 statistics (stat) layer
-</figcaption></figure>
+<div id="fig-ggplot2-stat-layer" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/ge_stats.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.8: ggplot2 statistics (stat) layer</figcaption></figure>
 </div>
 </div>
 </div>
@@ -671,12 +610,7 @@ Figure&nbsp;14.8: ggplot2 statistics (stat) layer
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-7" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-19-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-7" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <div class="cell">
@@ -686,25 +620,16 @@ Figure&nbsp;14.8: ggplot2 statistics (stat) layer
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-8" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-20-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-8" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 </section><section id="coordinates-layer" class="level2"><h2 class="anchored" data-anchor-id="coordinates-layer">Coordinates Layer</h2>
 <p>The coordinate layer allows you to adjust the x and y coordinates</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-coord-layer" class="quarto-figure quarto-figure-center anchored" width="50%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-coord-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ge_coord.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-coord-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.9: ggplot2 coordinates (coord) layer
-</figcaption></figure>
+<div id="fig-ggplot2-coord-layer" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/ge_coord.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.9: ggplot2 coordinates (coord) layer</figcaption></figure>
 </div>
 </div>
 </div>
@@ -745,12 +670,7 @@ Figure&nbsp;14.9: ggplot2 coordinates (coord) layer
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span>
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-9" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-22-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-9" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <div class="cell">
@@ -780,12 +700,7 @@ Figure&nbsp;14.9: ggplot2 coordinates (coord) layer
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span>
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-10" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-23-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-10" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -818,12 +733,7 @@ Note
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">5</span>, by <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-11" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-24-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-11" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -843,13 +753,9 @@ Warning
 <p>The Themes Layer refers to any visual elements not mapped to data variables</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-themes-layer" class="quarto-figure quarto-figure-center anchored" width="50%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-themes-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/ge_themes.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-themes-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.10: ggplot2 themes layer
-</figcaption></figure>
+<div id="fig-ggplot2-themes-layer" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/ge_themes.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.10: ggplot2 themes layer</figcaption></figure>
 </div>
 </div>
 </div>
@@ -857,13 +763,9 @@ Figure&nbsp;14.10: ggplot2 themes layer
 <p>There are three types of elements within the Themes Layer; text, line, and rectangle. Together these three elements can control all the non-data ink in the graph. Underneath these three elements are sub-elements and this can be represented in a hierarchy such as:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-theme-elements" class="quarto-figure quarto-figure-center anchored" width="922">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-theme-elements-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/theme_elements.png" class="img-fluid figure-img" width="922">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-theme-elements-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.11: ggplot2 theme elements
-</figcaption></figure>
+<div id="fig-ggplot2-theme-elements" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/theme_elements.png" class="img-fluid figure-img" width="922"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.11: ggplot2 theme elements</figcaption></figure>
 </div>
 </div>
 </div>
@@ -876,13 +778,9 @@ Figure&nbsp;14.11: ggplot2 theme elements
 <p>You can then control different features such as the color, linetype, size, font family, etc.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ggplot2-theme-functions" class="quarto-figure quarto-figure-center anchored" width="553">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot2-theme-functions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/element_func.png" class="img-fluid figure-img" width="553">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ggplot2-theme-functions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.12: ggplot2 theme functions
-</figcaption></figure>
+<div id="fig-ggplot2-theme-functions" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/element_func.png" class="img-fluid figure-img" width="553"></p>
+<figcaption class="figure-caption">Figure&nbsp;14.12: ggplot2 theme functions</figcaption></figure>
 </div>
 </div>
 </div>
@@ -895,12 +793,7 @@ Figure&nbsp;14.12: ggplot2 theme functions
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-12" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-28-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-12" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>Now let’s only change the x-axis text and not the y-axis text.</p>
@@ -912,12 +805,7 @@ Figure&nbsp;14.12: ggplot2 theme functions
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-13" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-29-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-13" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>It is a good idea to have a consistent theme across all your graphs. And so you might want to just create a theme object that you can add to all your graphs.</p>
@@ -934,12 +822,7 @@ Figure&nbsp;14.12: ggplot2 theme functions
 <span>  <span class="va">a_theme</span></span>
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-14" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-30-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-14" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <section id="built-in-themes" class="level3"><h3 class="anchored" data-anchor-id="built-in-themes">Built-in Themes</h3>
@@ -953,12 +836,7 @@ Figure&nbsp;14.12: ggplot2 theme functions
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_linedraw</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-539a35d47e664c97a50115a146a7f1bd-15" class="quarto-figure quarto-figure-center anchored" width="576">
-<figure class="quarto-float quarto-float-fig figure"><div>
-<img src="intro-ggplot2_files/figure-html/unnamed-chunk-31-1.png" id="fig-539a35d47e664c97a50115a146a7f1bd-15" class="img-fluid figure-img" width="576">
-</div>
-</figure>
-</div>
+<p><img src="intro-ggplot2_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 <p>You can also set a default theme for the rest of your ggplots at the top of your script. That way you do not have to keep on specifying the theme for every ggplot.</p>
@@ -1054,9 +932,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1066,17 +945,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1089,81 +959,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
-        }
-        return container.innerHTML
-      } else {
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      return note.innerHTML;
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1207,7 +1002,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1233,33 +1027,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        console.log("RESIZE");
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
