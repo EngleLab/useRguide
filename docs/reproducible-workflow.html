@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.5.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Engle Lab useRguide - Appendix A — Reproducible Workflow</title>
+<title>Engle Lab useRguide – Appendix A — Reproducible Workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,7 +19,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -77,7 +77,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -86,6 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -95,8 +102,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Engle Lab useRguide</span>
     </a>
@@ -108,69 +115,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="https://englelab.gatech.edu/" rel="" target="_blank">
- <span class="menu-text">Lab Website</span></a>
+    <a class="nav-link" href="https://englelab.gatech.edu/" target="_blank"> 
+<span class="menu-text">Lab Website</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://engle-lab.gitbook.io/lab-manual/" rel="" target="_blank">
- <span class="menu-text">Lab Manual</span></a>
+    <a class="nav-link" href="https://engle-lab.gitbook.io/lab-manual/" target="_blank"> 
+<span class="menu-text">Lab Manual</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-packages" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-packages" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">R Packages</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-packages">
 <li>
-    <a class="dropdown-item" href="https://englelab.github.io/englelab/" rel="" target="_blank">
+    <a class="dropdown-item" href="https://englelab.github.io/englelab/" target="_blank">
  <span class="dropdown-text">englelab</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://dr-jt.github.io/psyworkflow/" rel="" target="_blank">
+    <a class="dropdown-item" href="https://dr-jt.github.io/psyworkflow/" target="_blank">
  <span class="dropdown-text">psyworkflow</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://dr-jt.github.io/semoutput/" rel="" target="_blank">
+    <a class="dropdown-item" href="https://dr-jt.github.io/semoutput/" target="_blank">
  <span class="dropdown-text">semoutput</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://dr-jt.github.io/modeloutput/" rel="" target="_blank">
+    <a class="dropdown-item" href="https://dr-jt.github.io/modeloutput/" target="_blank">
  <span class="dropdown-text">modeloutput</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://dr-jt.github.io/pupillometry/" rel="" target="_blank">
+    <a class="dropdown-item" href="https://dr-jt.github.io/pupillometry/" target="_blank">
  <span class="dropdown-text">pupillometry</span></a>
   </li>  
     </ul>
 </li>
 </ul>
-<div class="quarto-navbar-tools ms-auto">
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducible-workflow.html">Appendices</a></li><li class="breadcrumb-item"><a href="./reproducible-workflow.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Reproducible Workflow</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducible-workflow.html">Appendices</a></li><li class="breadcrumb-item"><a href="./reproducible-workflow.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Reproducible Workflow</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -366,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
     </ul>
 </div>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
@@ -388,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducible-workflow.html">Appendices</a></li><li class="breadcrumb-item"><a href="./reproducible-workflow.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Reproducible Workflow</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title"><span id="sec-reproducible-workflow" class="quarto-section-identifier">Appendix A — Reproducible Workflow</span></h1>
 </div>
 
@@ -402,15 +401,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header><p>While it may be tempting to jump right into working with data and conducting analyses, it’s crucial to consider how you organize your projects, files, and data. This is especially important when working with data in R and creating fully reproducible workflows.</p>
 <p>Part of the scientific process involves carefully documenting every step in our procedures. Doing so not only ensures higher quality research, but also enables your future self and others to fully reproduce what you did, go back and analyze the data in a different way, or catch errors in the data analysis process. Without a fully reproducible project, it may be difficult or impossible to catch errors that were made.</p>
 <section id="sec-workflow" class="level2"><h2 class="anchored" data-anchor-id="sec-workflow">Workflow</h2>
 <p>The typical data analysis workflow looks something like this:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-data-steps-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure"><p><img src="images/data_steps.png" class="img-fluid figure-img" width="1250"></p>
-<figcaption class="figure-caption">Figure&nbsp;A.1: Data processing steps</figcaption></figure>
+<div id="fig-data-steps-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-data-steps-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/data_steps.png" class="img-fluid figure-img" width="1250">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-steps-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.1: Data processing steps
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -443,18 +447,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Good project organization starts with easy to understand folder and file organization. For a data analysis project, the following folders are typically needed to meet at least a minimal level of reproducibility (the scored folder may or may not be needed):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-folder-org" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure"><p><img src="images/folder_organization.png" class="img-fluid figure-img" width="227"></p>
-<figcaption class="figure-caption">Figure&nbsp;A.2: Folder organization</figcaption></figure>
+<div id="fig-folder-org" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-folder-org-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/folder_organization.png" class="img-fluid figure-img" width="227">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-folder-org-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.2: Folder organization
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>Notice how the structure of the <strong>data</strong> folder follows the data analysis workflow. The original <strong>messy</strong> raw data files are stored in <strong>data / raw / messy</strong>. The <strong>tidy</strong> raw data files are stored in <strong>data / raw</strong>. And the <strong>scored and cleaned</strong> data files are stored in <strong>data / scored</strong> (only if score step is needed)</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-data-analysis-workflow2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure"><p><img src="images/data_analysis_workflow.png" class="img-fluid figure-img" width="1334"></p>
-<figcaption class="figure-caption">Figure&nbsp;A.3: Data analysis workflow</figcaption></figure>
+<div id="fig-data-analysis-workflow2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-data-analysis-workflow2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/data_analysis_workflow.png" class="img-fluid figure-img" width="1334">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-analysis-workflow2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.3: Data analysis workflow
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -541,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Don’t start from scratch, like ever.</p>
 <p>It can be a ton of work, and mental effort, to create an efficient and reproducible project organization from scratch. Generally, I would try to avoid starting a project from blank, empty, R scripts. More than likely what will happen is that any organization you had thought of just breaks down because you are struggling enough with writing the R code itself, and you need to get a report on the data to your adviser so you decide to use shortcuts <strong>“for now”</strong>. But we all know that <strong>“for now”</strong> always turns into <strong>forever</strong>.</p>
 <p>Unfortunately, not starting from scratch usually means that you have already setup an organization system with R script templates that you can use. This is likely not the case. So what to do?</p>
-<p>Check out my <a href="psyworkflow.html"><span>Appendix&nbsp;B</span></a> package that allows you to automatically setup the organizational structure I have outlined in this chapter, along with R script templates for each data processing stage.</p>
+<p>Check out my <a href="psyworkflow.html" class="quarto-xref"><span>Appendix B</span></a> package that allows you to automatically setup the organizational structure I have outlined in this chapter, along with R script templates for each data processing stage.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -623,10 +635,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -636,8 +665,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -649,7 +687,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -693,6 +854,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -718,6 +880,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -777,12 +965,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./anova.html" class="pagination-link">
+      <a href="./anova.html" class="pagination-link" aria-label="ANOVA">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">ANOVA</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./psyworkflow.html" class="pagination-link">
+      <a href="./psyworkflow.html" class="pagination-link" aria-label="psyworkflow">
         <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">psyworkflow</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
