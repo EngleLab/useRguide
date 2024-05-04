@@ -264,7 +264,7 @@ You might find yourself in a situation where you need to import multiple data fi
 
 ### Bind {#sec-multiple-files-bind}
 
-In R, a "bind" is combining data frames together by staking either the rows or columns. It is unlikely that we you will need to do a column bind so we can skip that. A row "bind" takes data frames that have the same columns but different rows. This will happen if you have separate data files for each subject from the same task. Each subject data file will have their unique rows (subject by trial level data) but they will all have the same columns.
+In R, a "bind" is combining data frames together by stacking either the rows or columns. It is unlikely that we you will need to do a column bind so we can skip that. A row "bind" takes data frames that have the same columns but different rows. This will happen if you have separate data files for each subject from the same task. Each subject data file will have their unique rows (subject by trial level data) but they will all have the same columns.
 
 To bind multiple files together requires only a couple of steps
 

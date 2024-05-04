@@ -103,6 +103,10 @@ recall_data <- recall_data |>
                                     levels = c(1, 2, 4)))
 ```
 
+## ANOVA
+
+Depending on your factor design, you may need to perform different types of ANOVAs. We have a 2 x 3 mixed-factorial design and so will ultimately want to perform a Two-way ANOVA with a between-subject and a within-subject factors. However, for the sake of this exercise, let's walk through the different types of ANOVAs.
+
 ## t-test
 
 A *t*-test can be performed to test whether a **difference between 2 means** is statistically significant. There are three general types of *t*-tests.
@@ -192,9 +196,7 @@ cohens_d(t_pr_2v4) |>
   table_theme()
 ```
 
-## ANOVA
-
-Depending on your factor design, you may need to perform different types of ANOVAs. We have a 2 x 3 mixed-factorial design and so will ultimately want to perform a Two-way ANOVA with a between-subject and a within-subject factors. However, for the sake of this exercise, let's walk through the different types of ANOVAs.
+## 
 
 -   One-way between-subject ANOVA
 
