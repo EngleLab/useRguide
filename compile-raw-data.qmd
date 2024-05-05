@@ -1,0 +1,40 @@
+---
+title: "Compile Raw Data"
+subtitle: "Data Processing"
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+bibliography: references.bib
+---
+
+![](images/data_workflow_2.png){width="850"}
+
+There are three stages of processing and analyzing data in our lab
+
+1.  **Data Preparation**: Convert messy raw data files into tidy raw data files
+2.  **Data Scoring**: Calculate aggregate scores, clean data, remove outliers, and more
+3.  **Data Analysis**: Perform statistical analysis and visualize data
+
+All the steps in our data processing workflow can be fully reproduced with only the original raw data files and R scripts.
+
+But first, we need to compile, organize, and store the raw data files.
+
+# Compile Raw Data
+
+Data is collected locally on running room computers in the lab, each with individual subject files for every session and task. The data is organized by session/task on each of these computers but we need to organize the folders just by /task and to also compile the data from all the computers in one location.
+
+We use a `copy_to_drive.R` script to compile the raw data from all the computers onto a **Network Drive.**
+
+![](images/data_to_zdrive.png){fig-align="center" width="367"}
+
+::: callout-note
+You can find a template for the `copy_to_drive.R` script file on the Network Drive
+:::
+
+# SharePoint - Data Collection
+
+We use the **Network Drive** to [transfer]{.underline} data files to the lab's **SharePoint**, where the data will be permanently stored. A SharePoint/Data Collection/\[Study Name\] directory is where ALL the raw data files for that data collection effort are stored.
+
+![](images/data_to_sharepoint.png){fig-align="center" width="367"}

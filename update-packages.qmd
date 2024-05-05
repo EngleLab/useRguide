@@ -1,4 +1,4 @@
-# Update Lab Packages {#sec-update-lab-packages}
+# Update Packages {.unnumbered}
 
 ```{r}
 #| results: "asis"

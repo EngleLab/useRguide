@@ -1,3 +1,15 @@
+---
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+---
+
 # Welcome {.unnumbered}
 
-This useRguide for the [Attention & Working Memory Lab](https://englelab.gatech.edu) at Georgia Tech provides training in the basics of how to use R, the tidyverse, and tools for how we process and analyze data in our lab. The workflow and data processing steps presented in this guide are specific to the type of data we tend to work with in our lab. We primarily collect behavioral data on a large set of cognitive tasks to test individual differences in cognitive ability. However, you will find that most of the principles presented here apply to working with other types of data. This is especially true of the sections on data manipulation and data visualization.
+The useRguide for the [Attention & Working Memory Lab](https://englelab.gatech.edu) at Georgia Tech documents the steps and tools for how we process and analyze data in our lab.
+
+The workflow and data processing steps presented in this guide are specific to the type of data we tend to work with in our lab. We primarily collect behavioral data on a large set of cognitive tasks to test individual differences in cognitive ability. However, you will find that most of the principles presented here apply to working with other types of data.
+
+For a more complete training in R, see the [R for the Psychology Student Workshop](https://dr-jt.github.io/r-for-psychology-students/){target="_blank"}.

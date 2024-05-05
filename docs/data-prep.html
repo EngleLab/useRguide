@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.24">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>AWM useRguide – 4&nbsp; Data Preparation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./data-score.html" rel="next">
+<link href="./setup-analysis.html" rel="prev">
+<link href="./cover_small.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+</head>
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">AWM useRguide</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="https://englelab.gatech.edu/" target="_blank"> 
+<span class="menu-text">Lab Website</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://engle-lab.gitbook.io/lab-manual/" target="_blank"> 
+<span class="menu-text">Lab Manual</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-packages" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">R Packages</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-packages">
+<li>
+    <a class="dropdown-item" href="https://englelab.github.io/englelab/" target="_blank">
+ <span class="dropdown-text">englelab</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://dr-jt.github.io/psyworkflow/" target="_blank">
+ <span class="dropdown-text">psyworkflow</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://dr-jt.github.io/semoutput/" target="_blank">
+ <span class="dropdown-text">semoutput</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://dr-jt.github.io/modeloutput/" target="_blank">
+ <span class="dropdown-text">modeloutput</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://dr-jt.github.io/pupillometry/" target="_blank">
+ <span class="dropdown-text">pupillometry</span></a>
+  </li>  
+    </ul>
+</li>
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./data-prep.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Preparation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installs and Updates</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Data Processing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-proc-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./compile-raw-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-prep.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Preparation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-score.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Scoring</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-score-merge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Scoring - Merge</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-analysis-anova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-analysis-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Regression</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./update-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Update Packages</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li>
+<a href="#overview-of-template" id="toc-overview-of-template" class="nav-link active" data-scroll-target="#overview-of-template">Overview of Template</a>
+  <ul class="collapse">
+<li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">Import</a></li>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy Data</a></li>
+  <li><a href="#save-data" id="toc-save-data" class="nav-link" data-scroll-target="#save-data">Save Data</a></li>
+  </ul>
+</li>
+  <li><a href="#understand-the-messy-raw-data" id="toc-understand-the-messy-raw-data" class="nav-link" data-scroll-target="#understand-the-messy-raw-data">Understand the Messy Raw Data</a></li>
+  <li><a href="#messy-data-example" id="toc-messy-data-example" class="nav-link" data-scroll-target="#messy-data-example">Messy Data Example</a></li>
+  <li><a href="#rename-columns" id="toc-rename-columns" class="nav-link" data-scroll-target="#rename-columns">Rename Columns</a></li>
+  <li><a href="#filter-rows" id="toc-filter-rows" class="nav-link" data-scroll-target="#filter-rows">Filter Rows</a></li>
+  <li>
+<a href="#add-and-modify-columns" id="toc-add-and-modify-columns" class="nav-link" data-scroll-target="#add-and-modify-columns">Add and Modify Columns</a>
+  <ul class="collapse">
+<li><a href="#combine-information-across-columns" id="toc-combine-information-across-columns" class="nav-link" data-scroll-target="#combine-information-across-columns">Combine information across columns</a></li>
+  <li><a href="#values-in-columns-dont-make-sense" id="toc-values-in-columns-dont-make-sense" class="nav-link" data-scroll-target="#values-in-columns-dont-make-sense">Values in columns don’t make sense</a></li>
+  <li><a href="#add-additional-columns" id="toc-add-additional-columns" class="nav-link" data-scroll-target="#add-additional-columns">Add additional columns</a></li>
+  </ul>
+</li>
+  <li><a href="#remove-columns" id="toc-remove-columns" class="nav-link" data-scroll-target="#remove-columns">Remove Columns</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./data-prep.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Preparation</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Preparation</span>
+</h1>
+<p class="subtitle lead">Data Processing</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p><img src="images/data_workflow_2.png" class="img-fluid" width="850"></p>
+<p>At this stage of data processing you have compiled the raw data files and setup a SharePoint/Data Analysis/[Project Name] project folder and copied over data files for any tasks you need.</p>
+<p>The next step is to convert the messy raw data files into tidy raw data files.</p>
+<hr>
+<section id="overview-of-template" class="level1"><h1>Overview of Template</h1>
+<p>You can download an R script template to convert messy raw data files into tidy raw data files:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">englelab</span><span class="fu">::</span><span class="fu"><a href="https://englelab.github.io/englelab/reference/get_template.html">get_template</a></span><span class="op">(</span>raw_script <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Setup -------------------------------------------------------------------</span></span>
+<span><span class="co"># packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/">purrr</a></span><span class="op">)</span> <span class="co"># delete if not importing a batch of files</span></span>
+<span></span>
+<span><span class="co"># directories</span></span>
+<span><span class="va">import_dir</span> <span class="op">&lt;-</span> <span class="st">"data/raw/messy"</span></span>
+<span><span class="va">output_dir</span> <span class="op">&lt;-</span> <span class="st">"data/raw"</span></span>
+<span></span>
+<span><span class="co"># file names</span></span>
+<span><span class="va">task</span> <span class="op">&lt;-</span> <span class="st">"taskname"</span></span>
+<span><span class="va">import_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">task</span>, <span class="st">".txt"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span><span class="va">output_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">task</span>, <span class="st">"raw.csv"</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <strong>Setup</strong> section is to:</p>
+<ul>
+<li><p>Load any packages used in the script</p></li>
+<li><p>Set the directories of where to import and output data files to</p></li>
+<li><p>Set the file names of the data files to be imported and outputted</p></li>
+</ul>
+<p>I like to include the directory and file names at the top of the script that way it is easy to see what is being imported/outputted and from where right at the top of the script rather than having to search through the script for this information.</p>
+<p>We can then use the <code>import_dir</code> , <code>output_dir</code>, <code>import_file</code>, and <code>output_file</code> variables in the script when we import and output a data file.</p>
+</section><section id="import" class="level2"><h2 class="anchored" data-anchor-id="import">Import</h2>
+<p>Two different import options are included in the script:</p>
+<ol type="1">
+<li>
+<strong>Import a single file</strong>: You can use the standard import functions from <code>readr</code> to do this</li>
+<li>
+<strong>Import multiple files and merge them</strong>: To do this, you need to use <code><a href="https://purrr.tidyverse.org/reference/map_dfr.html">purrr::map_df()</a></code> with a <code>readr</code> import function</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Import Data -------------------------------------------------------------</span></span>
+<span><span class="co"># to import a single file</span></span>
+<span><span class="va">data_import</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">import_dir</span>, <span class="va">import_file</span><span class="op">)</span>, delim <span class="op">=</span> <span class="st">"\t"</span>,</span>
+<span>                          escape_double <span class="op">=</span> <span class="cn">FALSE</span>, trim_ws <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># alternatively to import a batch of files...</span></span>
+<span><span class="co"># change the arguments in purrr::map_df() depending on type of data files</span></span>
+<span><span class="co"># this example is for files created from eprime and needs encoding = "UCS-2LE"</span></span>
+<span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">import_dir</span>, <span class="va">task</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">".txt"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">data_import</span> <span class="op">&lt;-</span> <span class="va">files</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_df</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span><span class="va">.x</span>, locale <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/locale.html">locale</a></span><span class="op">(</span>encoding <span class="op">=</span> <span class="st">"UCS-2LE"</span><span class="op">)</span>, delim <span class="op">=</span> <span class="st">"\t"</span>,</span>
+<span>                      escape_double <span class="op">=</span> <span class="cn">FALSE</span>, trim_ws <span class="op">=</span> <span class="cn">TRUE</span>, na <span class="op">=</span> <span class="st">"NULL"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="tidy-data" class="level2"><h2 class="anchored" data-anchor-id="tidy-data">Tidy Data</h2>
+<p>This is the meat of the script, where the action happens. It will also be different for every task, obviously. I will cover common steps in more detail below.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Tidy Data ---------------------------------------------------------------</span></span>
+<span><span class="va">data_raw</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="save-data" class="level2"><h2 class="anchored" data-anchor-id="save-data">Save Data</h2>
+<p>No need to change anything here. Isn’t that nice?</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Save Data ---------------------------------------------------------------</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">data_raw</span>, <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">output_dir</span>, <span class="va">output_file</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="understand-the-messy-raw-data" class="level1"><h1>Understand the Messy Raw Data</h1>
+<p>You should take some time to better understand your messy raw data file:</p>
+<p>Use functions, such as <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> and <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code> to explore your imported data file.</p>
+<ol type="1">
+<li>Identify the essential columns you want to keep. Some examples:
+<ul>
+<li>Unique IDs for each participant</li>
+<li>If there are multiple trials or items adminstered, what column identifies the trial or item number?
+<ul>
+<li>Same thing if there were multiple blocks or sessions adminstered</li>
+</ul>
+</li>
+<li>Different experimental conditions or counterbalancing condition</li>
+<li>Stimulus information (e.g., red square) for individual trials / items</li>
+<li>Response information
+<ul>
+<li>Response made</li>
+<li>Correct response (if there is one)</li>
+<li>Accuracy (if there is one)</li>
+<li>Response time</li>
+</ul>
+</li>
+<li>Adminstration date and time?</li>
+<li>And more…</li>
+</ul>
+</li>
+<li>What kind of values do each of those columns contain?
+<ul>
+<li>Numeric? Character strings?</li>
+</ul>
+</li>
+</ol>
+<p>The amount of time it will take for you to do those steps is <strong>the reason</strong> we are doing this data preparation step. The end product will hopefully be a tidy raw data file that is way easier to understand and work with, even for someone that was not involved in the project.</p>
+<p>How you need to tidy up your data file will depend on the nature of your program used to generate your data. However, there are some common messy problems we can address.</p>
+<ul>
+<li><p>Column names that are not clear: <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code></p></li>
+<li><p>Rows that are not needed: <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code></p></li>
+<li><p>Add or modify values in columns: <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code></p></li>
+<li><p>Columns that are not needed: <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code></p></li>
+</ul>
+<p>Notice in the script template I laid out the general format for this.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_raw</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="messy-data-example" class="level1"><h1>Messy Data Example</h1>
+<p>Let’s use a hypothetical data set to see how to do these steps</p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["trial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["COND"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Proc Trial"],"name":[4],"type":["chr"],"align":["left"]},{"label":["slide1.resp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["slide2.resp"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Ans"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["slide1.rt"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["slide2.rt"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"NA","3":"NA","4":"inst","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA"},{"1":"1","2":"1","3":"0","4":"prc","5":"1","6":"NA","7":"1","8":"560","9":"NA"},{"1":"1","2":"2","3":"1","4":"prc","5":"3","6":"NA","7":"3","8":"670","9":"NA"},{"1":"1","2":"3","3":"0","4":"prc","5":"2","6":"NA","7":"3","8":"400","9":"NA"},{"1":"1","2":"4","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"431"},{"1":"1","2":"5","3":"0","4":"tsk","5":"NA","6":"3","7":"2","8":"NA","9":"23"},{"1":"1","2":"6","3":"0","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"643"},{"1":"1","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"742"},{"1":"1","2":"8","3":"0","4":"tsk","5":"NA","6":"2","7":"1","8":"NA","9":"9452"},{"1":"2","2":"NA","3":"NA","4":"inst","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA"},{"1":"2","2":"1","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"332","9":"NA"},{"1":"2","2":"2","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"434","9":"NA"},{"1":"2","2":"3","3":"1","4":"prc","5":"1","6":"NA","7":"1","8":"536","9":"NA"},{"1":"2","2":"4","3":"0","4":"tsk","5":"NA","6":"2","7":"2","8":"NA","9":"455"},{"1":"2","2":"5","3":"1","4":"tsk","5":"NA","6":"1","7":"3","8":"NA","9":"743"},{"1":"2","2":"6","3":"0","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"456"},{"1":"2","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"1","8":"NA","9":"186"},{"1":"2","2":"8","3":"1","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"342"}],"options":{"columns":{"min":{},"max":[9]},"rows":{"min":[20],"max":[20]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">data_import</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ID"          "trial"       "COND"        "Proc Trial"  "slide1.resp"
+[6] "slide2.resp" "Ans"         "slide1.rt"   "slide2.rt"  </code></pre>
+</div>
+</div>
+</section><section id="rename-columns" class="level1"><h1>Rename Columns</h1>
+<p>This step can actually be completed in the rest of the steps below but occasionally can be useful to do upfront, especially if the column names contains special characters.</p>
+<p>One thing you might want to do at this point is consider a standard naming scheme for your columns and variables across your study. Do you want to use capital letters? All lower case? Snake_case? CamelCase? A combination of those? etc.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data Frame</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_raw</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>TrialProc <span class="op">=</span> <span class="va">`Proc Trial`</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>You need to use the special type of quotation marks <code>` `</code> if your column names contain special charaters like: a space, <code>$</code>, <code>%</code>, <code>-</code>, and more…</li>
+</ul>
+</div>
+</div>
+<p>View the <strong>Data Frame</strong> tab to see the resulting data frame</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><em>Use the small arrow ▸ at the end of the column names to see more columns</em></p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["trial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["COND"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["TrialProc"],"name":[4],"type":["chr"],"align":["left"]},{"label":["slide1.resp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["slide2.resp"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Ans"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["slide1.rt"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["slide2.rt"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"NA","3":"NA","4":"inst","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA"},{"1":"1","2":"1","3":"0","4":"prc","5":"1","6":"NA","7":"1","8":"560","9":"NA"},{"1":"1","2":"2","3":"1","4":"prc","5":"3","6":"NA","7":"3","8":"670","9":"NA"},{"1":"1","2":"3","3":"0","4":"prc","5":"2","6":"NA","7":"3","8":"400","9":"NA"},{"1":"1","2":"4","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"431"},{"1":"1","2":"5","3":"0","4":"tsk","5":"NA","6":"3","7":"2","8":"NA","9":"23"},{"1":"1","2":"6","3":"0","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"643"},{"1":"1","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"742"},{"1":"1","2":"8","3":"0","4":"tsk","5":"NA","6":"2","7":"1","8":"NA","9":"9452"},{"1":"2","2":"NA","3":"NA","4":"inst","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA"},{"1":"2","2":"1","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"332","9":"NA"},{"1":"2","2":"2","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"434","9":"NA"},{"1":"2","2":"3","3":"1","4":"prc","5":"1","6":"NA","7":"1","8":"536","9":"NA"},{"1":"2","2":"4","3":"0","4":"tsk","5":"NA","6":"2","7":"2","8":"NA","9":"455"},{"1":"2","2":"5","3":"1","4":"tsk","5":"NA","6":"1","7":"3","8":"NA","9":"743"},{"1":"2","2":"6","3":"0","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"456"},{"1":"2","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"1","8":"NA","9":"186"},{"1":"2","2":"8","3":"1","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"342"}],"options":{"columns":{"min":{},"max":[9]},"rows":{"min":[20],"max":[20]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="filter-rows" class="level1"><h1>Filter Rows</h1>
+<p>One of the first things that is useful to do is get rid of rows in the messy data file that you don’t need.</p>
+<p>You need to figure out the value names that correspond to the rows you want to keep.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">data_raw</span><span class="op">$</span><span class="va">TrialProc</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "inst" "prc"  "tsk" </code></pre>
+</div>
+</div>
+<p>Let’s say we only want to keep rows that have a value of <code>prc</code> or <code>tsk</code></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Data Frame</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_raw</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>TrialProc <span class="op">=</span> <span class="va">`Proc Trial`</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"prc"</span> <span class="op">|</span> <span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"tsk"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>View the <strong>Data Frame</strong> tab to see the resulting data frame</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p><em>Use the small arrow ▸ at the end of the column names to see more columns</em></p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["trial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["COND"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["TrialProc"],"name":[4],"type":["chr"],"align":["left"]},{"label":["slide1.resp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["slide2.resp"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Ans"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["slide1.rt"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["slide2.rt"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"0","4":"prc","5":"1","6":"NA","7":"1","8":"560","9":"NA"},{"1":"1","2":"2","3":"1","4":"prc","5":"3","6":"NA","7":"3","8":"670","9":"NA"},{"1":"1","2":"3","3":"0","4":"prc","5":"2","6":"NA","7":"3","8":"400","9":"NA"},{"1":"1","2":"4","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"431"},{"1":"1","2":"5","3":"0","4":"tsk","5":"NA","6":"3","7":"2","8":"NA","9":"23"},{"1":"1","2":"6","3":"0","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"643"},{"1":"1","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"742"},{"1":"1","2":"8","3":"0","4":"tsk","5":"NA","6":"2","7":"1","8":"NA","9":"9452"},{"1":"2","2":"1","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"332","9":"NA"},{"1":"2","2":"2","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"434","9":"NA"},{"1":"2","2":"3","3":"1","4":"prc","5":"1","6":"NA","7":"1","8":"536","9":"NA"},{"1":"2","2":"4","3":"0","4":"tsk","5":"NA","6":"2","7":"2","8":"NA","9":"455"},{"1":"2","2":"5","3":"1","4":"tsk","5":"NA","6":"1","7":"3","8":"NA","9":"743"},{"1":"2","2":"6","3":"0","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"456"},{"1":"2","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"1","8":"NA","9":"186"},{"1":"2","2":"8","3":"1","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"342"}],"options":{"columns":{"min":{},"max":[9]},"rows":{"min":[20],"max":[20]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="add-and-modify-columns" class="level1"><h1>Add and Modify Columns</h1>
+<p>This is where most of the work will be done for data preparation. Some common problems with messy raw data files:</p>
+<ul>
+<li>The same information is contained across different columns BUT in different rows</li>
+</ul>
+<!-- --><ul>
+<li><p>Values in columns don’t make sense and/or require understanding how the program was setup</p></li>
+<li><p>Missing columns that should be there</p></li>
+</ul>
+<section id="combine-information-across-columns" class="level2"><h2 class="anchored" data-anchor-id="combine-information-across-columns">Combine information across columns</h2>
+<p>You can probably guess that the data contained in <code>slide1.resp</code> and <code>slide2.resp</code> contains the same information about what response was made. But one is for practice trials and the other for real trials. This should just be combined in one column. Same thing with <code>slide1.rt</code> and <code>slide2.rt</code>.</p>
+<p>There is a convenient function to do this, <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">dplyr::coalesce()</a></code></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Data Frame</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_raw</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>TrialProc <span class="op">=</span> <span class="va">`Proc Trial`</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"prc"</span> <span class="op">|</span> <span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"tsk"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">slide1.resp</span>, <span class="va">slide2.resp</span><span class="op">)</span>,</span>
+<span>         RT <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">slide1.rt</span>, <span class="va">slide2.rt</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>View the <strong>Data Frames</strong> tab to see the resulting data frames</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p><em>Use the small arrow ▸ at the end of the column names to see more columns</em></p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["trial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["COND"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["TrialProc"],"name":[4],"type":["chr"],"align":["left"]},{"label":["slide1.resp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["slide2.resp"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Ans"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["slide1.rt"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["slide2.rt"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["Response"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["RT"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"0","4":"prc","5":"1","6":"NA","7":"1","8":"560","9":"NA","10":"1","11":"560"},{"1":"1","2":"2","3":"1","4":"prc","5":"3","6":"NA","7":"3","8":"670","9":"NA","10":"3","11":"670"},{"1":"1","2":"3","3":"0","4":"prc","5":"2","6":"NA","7":"3","8":"400","9":"NA","10":"2","11":"400"},{"1":"1","2":"4","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"431","10":"3","11":"431"},{"1":"1","2":"5","3":"0","4":"tsk","5":"NA","6":"3","7":"2","8":"NA","9":"23","10":"3","11":"23"},{"1":"1","2":"6","3":"0","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"643","10":"1","11":"643"},{"1":"1","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"742","10":"3","11":"742"},{"1":"1","2":"8","3":"0","4":"tsk","5":"NA","6":"2","7":"1","8":"NA","9":"9452","10":"2","11":"9452"},{"1":"2","2":"1","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"332","9":"NA","10":"2","11":"332"},{"1":"2","2":"2","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"434","9":"NA","10":"2","11":"434"},{"1":"2","2":"3","3":"1","4":"prc","5":"1","6":"NA","7":"1","8":"536","9":"NA","10":"1","11":"536"},{"1":"2","2":"4","3":"0","4":"tsk","5":"NA","6":"2","7":"2","8":"NA","9":"455","10":"2","11":"455"},{"1":"2","2":"5","3":"1","4":"tsk","5":"NA","6":"1","7":"3","8":"NA","9":"743","10":"1","11":"743"},{"1":"2","2":"6","3":"0","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"456","10":"3","11":"456"},{"1":"2","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"1","8":"NA","9":"186","10":"3","11":"186"},{"1":"2","2":"8","3":"1","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"342","10":"1","11":"342"}],"options":{"columns":{"min":{},"max":[9]},"rows":{"min":[20],"max":[20]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="values-in-columns-dont-make-sense" class="level2"><h2 class="anchored" data-anchor-id="values-in-columns-dont-make-sense">Values in columns don’t make sense</h2>
+<p>Some common examples</p>
+<ul>
+<li><p>The <code>trial</code> number continues across practice <code>practice</code> and <code>real</code> trials</p></li>
+<li><p><code>Condition</code> has values of 0 and 1. What do 0 and 1 mean???</p></li>
+<li><p><code>TrialProc</code> has values that can be more clear</p></li>
+<li><p>Values in columns <code>Response</code> and <code>Ans</code> do not make sense. What do 1, 2, and 3 mean???</p></li>
+</ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Data Frame</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_raw</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>TrialProc <span class="op">=</span> <span class="va">`Proc Trial`</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"prc"</span> <span class="op">|</span> <span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"tsk"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">slide1.resp</span>, <span class="va">slide2.resp</span><span class="op">)</span>,</span>
+<span>         RT <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">slide1.rt</span>, <span class="va">slide2.rt</span><span class="op">)</span>,</span>
+<span>         Condition <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">COND</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"congruent"</span>,</span>
+<span>                               <span class="va">COND</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"incongruent"</span><span class="op">)</span>,</span>
+<span>         TrialProc <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"prc"</span> <span class="op">~</span> <span class="st">"practice"</span>,</span>
+<span>                               <span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"tsk"</span> <span class="op">~</span> <span class="st">"real"</span><span class="op">)</span>,</span>
+<span>         Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">Response</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"red"</span>,</span>
+<span>                              <span class="va">Response</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"green"</span>,</span>
+<span>                              <span class="va">Response</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"blue"</span><span class="op">)</span>,</span>
+<span>         Correct_Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">Ans</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"red"</span>,</span>
+<span>                                      <span class="va">Ans</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"green"</span>,</span>
+<span>                                      <span class="va">Ans</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">ID</span>, <span class="va">TrialProc</span><span class="op">)</span>,</span>
+<span>         Trial <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">row_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>View the <strong>Data Frame</strong> tab to see the resulting data frame</p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p><em>Use the small arrow ▸ at the end of the column names to see more columns</em></p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["trial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["COND"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["TrialProc"],"name":[4],"type":["chr"],"align":["left"]},{"label":["slide1.resp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["slide2.resp"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Ans"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["slide1.rt"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["slide2.rt"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["Response"],"name":[10],"type":["chr"],"align":["left"]},{"label":["RT"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["Condition"],"name":[12],"type":["chr"],"align":["left"]},{"label":["Correct_Response"],"name":[13],"type":["chr"],"align":["left"]},{"label":["Trial"],"name":[14],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"0","4":"practice","5":"1","6":"NA","7":"1","8":"560","9":"NA","10":"red","11":"560","12":"congruent","13":"red","14":"1"},{"1":"1","2":"2","3":"1","4":"practice","5":"3","6":"NA","7":"3","8":"670","9":"NA","10":"blue","11":"670","12":"incongruent","13":"blue","14":"2"},{"1":"1","2":"3","3":"0","4":"practice","5":"2","6":"NA","7":"3","8":"400","9":"NA","10":"green","11":"400","12":"congruent","13":"blue","14":"3"},{"1":"1","2":"4","3":"1","4":"real","5":"NA","6":"3","7":"3","8":"NA","9":"431","10":"blue","11":"431","12":"incongruent","13":"blue","14":"1"},{"1":"1","2":"5","3":"0","4":"real","5":"NA","6":"3","7":"2","8":"NA","9":"23","10":"blue","11":"23","12":"congruent","13":"green","14":"2"},{"1":"1","2":"6","3":"0","4":"real","5":"NA","6":"1","7":"1","8":"NA","9":"643","10":"red","11":"643","12":"congruent","13":"red","14":"3"},{"1":"1","2":"7","3":"1","4":"real","5":"NA","6":"3","7":"3","8":"NA","9":"742","10":"blue","11":"742","12":"incongruent","13":"blue","14":"4"},{"1":"1","2":"8","3":"0","4":"real","5":"NA","6":"2","7":"1","8":"NA","9":"9452","10":"green","11":"9452","12":"congruent","13":"red","14":"5"},{"1":"2","2":"1","3":"0","4":"practice","5":"2","6":"NA","7":"2","8":"332","9":"NA","10":"green","11":"332","12":"congruent","13":"green","14":"1"},{"1":"2","2":"2","3":"0","4":"practice","5":"2","6":"NA","7":"2","8":"434","9":"NA","10":"green","11":"434","12":"congruent","13":"green","14":"2"},{"1":"2","2":"3","3":"1","4":"practice","5":"1","6":"NA","7":"1","8":"536","9":"NA","10":"red","11":"536","12":"incongruent","13":"red","14":"3"},{"1":"2","2":"4","3":"0","4":"real","5":"NA","6":"2","7":"2","8":"NA","9":"455","10":"green","11":"455","12":"congruent","13":"green","14":"1"},{"1":"2","2":"5","3":"1","4":"real","5":"NA","6":"1","7":"3","8":"NA","9":"743","10":"red","11":"743","12":"incongruent","13":"blue","14":"2"},{"1":"2","2":"6","3":"0","4":"real","5":"NA","6":"3","7":"3","8":"NA","9":"456","10":"blue","11":"456","12":"congruent","13":"blue","14":"3"},{"1":"2","2":"7","3":"1","4":"real","5":"NA","6":"3","7":"1","8":"NA","9":"186","10":"blue","11":"186","12":"incongruent","13":"red","14":"4"},{"1":"2","2":"8","3":"1","4":"real","5":"NA","6":"1","7":"1","8":"NA","9":"342","10":"red","11":"342","12":"incongruent","13":"red","14":"5"}],"options":{"columns":{"min":{},"max":[9]},"rows":{"min":[20],"max":[20]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="add-additional-columns" class="level2"><h2 class="anchored" data-anchor-id="add-additional-columns">Add additional columns</h2>
+<p>You may have noticed that there is no column corresponding to accuracy. We have <code>Response</code> and <code>Correct_Response</code> information so we can create a new column for <code>Accuracy</code></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Code</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Data Frame</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_raw</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>TrialProc <span class="op">=</span> <span class="va">`Proc Trial`</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"prc"</span> <span class="op">|</span> <span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"tsk"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">slide1.resp</span>, <span class="va">slide2.resp</span><span class="op">)</span>,</span>
+<span>         RT <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">slide1.rt</span>, <span class="va">slide2.rt</span><span class="op">)</span>,</span>
+<span>         Condition <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">COND</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"congruent"</span>,</span>
+<span>                               <span class="va">COND</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"incongruent"</span><span class="op">)</span>,</span>
+<span>         TrialProc <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"prc"</span> <span class="op">~</span> <span class="st">"practice"</span>,</span>
+<span>                               <span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"tsk"</span> <span class="op">~</span> <span class="st">"real"</span><span class="op">)</span>,</span>
+<span>         Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">Response</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"red"</span>,</span>
+<span>                              <span class="va">Response</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"green"</span>,</span>
+<span>                              <span class="va">Response</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"blue"</span><span class="op">)</span>,</span>
+<span>         Correct_Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">Ans</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"red"</span>,</span>
+<span>                                      <span class="va">Ans</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"green"</span>,</span>
+<span>                                      <span class="va">Ans</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"blue"</span><span class="op">)</span>,</span>
+<span>         Accuracy <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">Response</span> <span class="op">==</span> <span class="va">Correct_Response</span> <span class="op">~</span> <span class="fl">1</span>,</span>
+<span>                              <span class="va">Response</span> <span class="op">!=</span> <span class="va">Correct_Response</span> <span class="op">~</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">ID</span>, <span class="va">TrialProc</span><span class="op">)</span>,</span>
+<span>         Trial <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">row_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>View the <strong>Data Frame</strong> tab to see the resulting data frames</p>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p><em>Use the small arrow ▸ at the end of the column names to see more columns</em></p>
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["trial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["COND"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["TrialProc"],"name":[4],"type":["chr"],"align":["left"]},{"label":["slide1.resp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["slide2.resp"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Ans"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["slide1.rt"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["slide2.rt"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["Response"],"name":[10],"type":["chr"],"align":["left"]},{"label":["RT"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["Condition"],"name":[12],"type":["chr"],"align":["left"]},{"label":["Correct_Response"],"name":[13],"type":["chr"],"align":["left"]},{"label":["Accuracy"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["Trial"],"name":[15],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"0","4":"practice","5":"1","6":"NA","7":"1","8":"560","9":"NA","10":"red","11":"560","12":"congruent","13":"red","14":"1","15":"1"},{"1":"1","2":"2","3":"1","4":"practice","5":"3","6":"NA","7":"3","8":"670","9":"NA","10":"blue","11":"670","12":"incongruent","13":"blue","14":"1","15":"2"},{"1":"1","2":"3","3":"0","4":"practice","5":"2","6":"NA","7":"3","8":"400","9":"NA","10":"green","11":"400","12":"congruent","13":"blue","14":"0","15":"3"},{"1":"1","2":"4","3":"1","4":"real","5":"NA","6":"3","7":"3","8":"NA","9":"431","10":"blue","11":"431","12":"incongruent","13":"blue","14":"1","15":"1"},{"1":"1","2":"5","3":"0","4":"real","5":"NA","6":"3","7":"2","8":"NA","9":"23","10":"blue","11":"23","12":"congruent","13":"green","14":"0","15":"2"},{"1":"1","2":"6","3":"0","4":"real","5":"NA","6":"1","7":"1","8":"NA","9":"643","10":"red","11":"643","12":"congruent","13":"red","14":"1","15":"3"},{"1":"1","2":"7","3":"1","4":"real","5":"NA","6":"3","7":"3","8":"NA","9":"742","10":"blue","11":"742","12":"incongruent","13":"blue","14":"1","15":"4"},{"1":"1","2":"8","3":"0","4":"real","5":"NA","6":"2","7":"1","8":"NA","9":"9452","10":"green","11":"9452","12":"congruent","13":"red","14":"0","15":"5"},{"1":"2","2":"1","3":"0","4":"practice","5":"2","6":"NA","7":"2","8":"332","9":"NA","10":"green","11":"332","12":"congruent","13":"green","14":"1","15":"1"},{"1":"2","2":"2","3":"0","4":"practice","5":"2","6":"NA","7":"2","8":"434","9":"NA","10":"green","11":"434","12":"congruent","13":"green","14":"1","15":"2"},{"1":"2","2":"3","3":"1","4":"practice","5":"1","6":"NA","7":"1","8":"536","9":"NA","10":"red","11":"536","12":"incongruent","13":"red","14":"1","15":"3"},{"1":"2","2":"4","3":"0","4":"real","5":"NA","6":"2","7":"2","8":"NA","9":"455","10":"green","11":"455","12":"congruent","13":"green","14":"1","15":"1"},{"1":"2","2":"5","3":"1","4":"real","5":"NA","6":"1","7":"3","8":"NA","9":"743","10":"red","11":"743","12":"incongruent","13":"blue","14":"0","15":"2"},{"1":"2","2":"6","3":"0","4":"real","5":"NA","6":"3","7":"3","8":"NA","9":"456","10":"blue","11":"456","12":"congruent","13":"blue","14":"1","15":"3"},{"1":"2","2":"7","3":"1","4":"real","5":"NA","6":"3","7":"1","8":"NA","9":"186","10":"blue","11":"186","12":"incongruent","13":"red","14":"0","15":"4"},{"1":"2","2":"8","3":"1","4":"real","5":"NA","6":"1","7":"1","8":"NA","9":"342","10":"red","11":"342","12":"incongruent","13":"red","14":"1","15":"5"}],"options":{"columns":{"min":{},"max":[9]},"rows":{"min":[20],"max":[20]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section><section id="remove-columns" class="level1"><h1>Remove Columns</h1>
+<p>Finally, we can remove and reorder columns using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_raw</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>TrialProc <span class="op">=</span> <span class="va">`Proc Trial`</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"prc"</span> <span class="op">|</span> <span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"tsk"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">slide1.resp</span>, <span class="va">slide2.resp</span><span class="op">)</span>,</span>
+<span>         RT <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">slide1.rt</span>, <span class="va">slide2.rt</span><span class="op">)</span>,</span>
+<span>         Condition <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">COND</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"congruent"</span>,</span>
+<span>                               <span class="va">COND</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"incongruent"</span><span class="op">)</span>,</span>
+<span>         TrialProc <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"prc"</span> <span class="op">~</span> <span class="st">"practice"</span>,</span>
+<span>                               <span class="va">TrialProc</span> <span class="op">==</span> <span class="st">"tsk"</span> <span class="op">~</span> <span class="st">"real"</span><span class="op">)</span>,</span>
+<span>         Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">Response</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"red"</span>,</span>
+<span>                              <span class="va">Response</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"green"</span>,</span>
+<span>                              <span class="va">Response</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"blue"</span><span class="op">)</span>,</span>
+<span>         Correct_Response <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">Ans</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"red"</span>,</span>
+<span>                                      <span class="va">Ans</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"green"</span>,</span>
+<span>                                      <span class="va">Ans</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"blue"</span><span class="op">)</span>,</span>
+<span>         Accuracy <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">Response</span> <span class="op">==</span> <span class="va">Correct_Response</span> <span class="op">~</span> <span class="fl">1</span>,</span>
+<span>                              <span class="va">Response</span> <span class="op">!=</span> <span class="va">Correct_Response</span> <span class="op">~</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">ID</span>, <span class="va">TrialProc</span><span class="op">)</span>,</span>
+<span>         Trial <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">row_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ID</span>, <span class="va">TrialProc</span>, <span class="va">Trial</span>, <span class="va">Condition</span>, <span class="va">Response</span>, </span>
+<span>         <span class="va">Correct_Response</span>, <span class="va">Accuracy</span>, <span class="va">RT</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We now end up with a tidy raw data frame!</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Tidy</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Messy</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["TrialProc"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Trial"],"name":[3],"type":["int"],"align":["right"]},{"label":["Condition"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Response"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Correct_Response"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Accuracy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["RT"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"practice","3":"1","4":"congruent","5":"red","6":"red","7":"1","8":"560"},{"1":"1","2":"practice","3":"2","4":"incongruent","5":"blue","6":"blue","7":"1","8":"670"},{"1":"1","2":"practice","3":"3","4":"congruent","5":"green","6":"blue","7":"0","8":"400"},{"1":"1","2":"real","3":"1","4":"incongruent","5":"blue","6":"blue","7":"1","8":"431"},{"1":"1","2":"real","3":"2","4":"congruent","5":"blue","6":"green","7":"0","8":"23"},{"1":"1","2":"real","3":"3","4":"congruent","5":"red","6":"red","7":"1","8":"643"},{"1":"1","2":"real","3":"4","4":"incongruent","5":"blue","6":"blue","7":"1","8":"742"},{"1":"1","2":"real","3":"5","4":"congruent","5":"green","6":"red","7":"0","8":"9452"},{"1":"2","2":"practice","3":"1","4":"congruent","5":"green","6":"green","7":"1","8":"332"},{"1":"2","2":"practice","3":"2","4":"congruent","5":"green","6":"green","7":"1","8":"434"},{"1":"2","2":"practice","3":"3","4":"incongruent","5":"red","6":"red","7":"1","8":"536"},{"1":"2","2":"real","3":"1","4":"congruent","5":"green","6":"green","7":"1","8":"455"},{"1":"2","2":"real","3":"2","4":"incongruent","5":"red","6":"blue","7":"0","8":"743"},{"1":"2","2":"real","3":"3","4":"congruent","5":"blue","6":"blue","7":"1","8":"456"},{"1":"2","2":"real","3":"4","4":"incongruent","5":"blue","6":"red","7":"0","8":"186"},{"1":"2","2":"real","3":"5","4":"incongruent","5":"red","6":"red","7":"1","8":"342"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[20],"max":[20]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell" data-paged.print="false">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["trial"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["COND"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Proc Trial"],"name":[4],"type":["chr"],"align":["left"]},{"label":["slide1.resp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["slide2.resp"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Ans"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["slide1.rt"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["slide2.rt"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"NA","3":"NA","4":"inst","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA"},{"1":"1","2":"1","3":"0","4":"prc","5":"1","6":"NA","7":"1","8":"560","9":"NA"},{"1":"1","2":"2","3":"1","4":"prc","5":"3","6":"NA","7":"3","8":"670","9":"NA"},{"1":"1","2":"3","3":"0","4":"prc","5":"2","6":"NA","7":"3","8":"400","9":"NA"},{"1":"1","2":"4","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"431"},{"1":"1","2":"5","3":"0","4":"tsk","5":"NA","6":"3","7":"2","8":"NA","9":"23"},{"1":"1","2":"6","3":"0","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"643"},{"1":"1","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"742"},{"1":"1","2":"8","3":"0","4":"tsk","5":"NA","6":"2","7":"1","8":"NA","9":"9452"},{"1":"2","2":"NA","3":"NA","4":"inst","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA"},{"1":"2","2":"1","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"332","9":"NA"},{"1":"2","2":"2","3":"0","4":"prc","5":"2","6":"NA","7":"2","8":"434","9":"NA"},{"1":"2","2":"3","3":"1","4":"prc","5":"1","6":"NA","7":"1","8":"536","9":"NA"},{"1":"2","2":"4","3":"0","4":"tsk","5":"NA","6":"2","7":"2","8":"NA","9":"455"},{"1":"2","2":"5","3":"1","4":"tsk","5":"NA","6":"1","7":"3","8":"NA","9":"743"},{"1":"2","2":"6","3":"0","4":"tsk","5":"NA","6":"3","7":"3","8":"NA","9":"456"},{"1":"2","2":"7","3":"1","4":"tsk","5":"NA","6":"3","7":"1","8":"NA","9":"186"},{"1":"2","2":"8","3":"1","4":"tsk","5":"NA","6":"1","7":"1","8":"NA","9":"342"}],"options":{"columns":{"min":{},"max":[9]},"rows":{"min":[20],"max":[20]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>You can see that this data frame is much easier to understand and to work with. Someone outside of your project would have a decent understanding of what information is contained and what is being measured.</p>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
+      <a href="./setup-analysis.html" class="pagination-link" aria-label="Setup Project">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data-score.html" class="pagination-link" aria-label="Data Scoring">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Scoring</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>AWM useRguide – Update Packages</title>
+<title>AWM useRguide – 6&nbsp; Data Scoring - Merge</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,7 +60,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data-analysis-regression.html" rel="prev">
+<link href="./data-analysis-anova.html" rel="next">
+<link href="./data-score.html" rel="prev">
 <link href="./cover_small.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -163,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./update-packages.html">Appendices</a></li><li class="breadcrumb-item"><a href="./update-packages.html">Update Packages</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./data-score-merge.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Scoring - Merge</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -224,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-score-merge.html" class="sidebar-item-text sidebar-link">
+  <a href="./data-score-merge.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Scoring - Merge</span></span></a>
   </div>
 </li>
@@ -264,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./update-packages.html" class="sidebar-item-text sidebar-link active">
+  <a href="./update-packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Update Packages</span></a>
   </div>
 </li>
@@ -274,17 +275,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">Import</a></li>
+  <li><a href="#task-scores" id="toc-task-scores" class="nav-link" data-scroll-target="#task-scores">Task Scores</a></li>
+  <li><a href="#reliabilities" id="toc-reliabilities" class="nav-link" data-scroll-target="#reliabilities">Reliabilities</a></li>
+  <li><a href="#admin-times" id="toc-admin-times" class="nav-link" data-scroll-target="#admin-times">Admin Times</a></li>
+  <li><a href="#data-cleaning-log" id="toc-data-cleaning-log" class="nav-link" data-scroll-target="#data-cleaning-log">Data Cleaning Log</a></li>
+  <li><a href="#save-data" id="toc-save-data" class="nav-link" data-scroll-target="#save-data">Save Data</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./update-packages.html">Appendices</a></li><li class="breadcrumb-item"><a href="./update-packages.html">Update Packages</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Update Packages</h1>
+<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./data-score-merge.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Scoring - Merge</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Scoring - Merge</span>
+</h1>
+<p class="subtitle lead">Data Processing</p>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -293,20 +307,145 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>I will sporadically update my GitHub R Packages. It is recommended to use the latest versions. Copy and paste this code into a script to update the packages on your computer.</p>
+</header><p><img src="images/data_workflow_2.png" class="img-fluid" width="850"></p>
+<p>At this stage of data processing you have created multiple data files containing the task scores, reliabilities, and other variables for each task. The next step is to create a single merged data file containing the primary task scores for each task that you will be performing data analysis on. We can also create data files with the reliabilities, administration times, and a log of the data cleaning steps.</p>
+<hr>
+<p>You can download an R script template to score tidy raw data files:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">englelab</span><span class="fu">::</span><span class="fu"><a href="https://englelab.github.io/englelab/reference/get_template.html">get_template</a></span><span class="op">(</span>score_script <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="setup" class="level1"><h1>Setup</h1>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Setup -------------------------------------------------------------------</span></span>
+<span><span class="co"># packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"EngleLab/englelab"</span>, upgrade <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dr-JT/psyworkflow"</span>, upgrade <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dr-JT/semoutput"</span>, upgrade <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dr-JT/pupillometry"</span>, upgrade <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dr-JT/modeloutput"</span>, upgrade <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># directories</span></span>
+<span><span class="va">import_dir</span> <span class="op">&lt;-</span> <span class="st">"data/scored"</span></span>
+<span><span class="va">output_dir</span> <span class="op">&lt;-</span> <span class="st">"data"</span></span>
+<span></span>
+<span><span class="co"># file names</span></span>
+<span><span class="va">output_scores</span> <span class="op">&lt;-</span> <span class="st">"TaskScores.csv"</span></span>
+<span><span class="va">output_reliabilities</span> <span class="op">&lt;-</span> <span class="st">"Reliabilities.csv"</span></span>
+<span><span class="va">output_admintimes</span> <span class="op">&lt;-</span> <span class="st">"AdminTimes.csv"</span></span>
+<span><span class="va">output_datacleaning</span> <span class="op">&lt;-</span> <span class="st">"DataCleaning_log.csv"</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="import" class="level1"><h1>Import</h1>
+<p>To import and merge multiple data frames we can use <code>purrr::map() |&gt; purrr:reduce()</code></p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Import Data -------------------------------------------------------------</span></span>
+<span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">import_dir</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"Scores"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">data_import</span> <span class="op">&lt;-</span> <span class="va">files</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">read_csv</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/reduce.html">reduce</a></span><span class="op">(</span><span class="va">full_join</span>, by <span class="op">=</span> <span class="st">"Subject"</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="task-scores" class="level1"><h1>Task Scores</h1>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Select Variables --------------------------------------------------------</span></span>
+<span><span class="va">data_scores</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Subject</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># list of final subjects</span></span>
+<span><span class="va">subjlist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">data_scores</span>, <span class="va">Subject</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>At this step, you may also want to filter out subjects that have missing data on specific tasks, or too much missing data across all the tasks.</p>
+<p>I advise creating a final subject list of all subjects that made it to this state of data processing.</p>
+</section><section id="reliabilities" class="level1"><h1>Reliabilities</h1>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Reliabilities -----------------------------------------------------------</span></span>
+<span><span class="va">data_reliabilities</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"splithalf"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"cronbach_alpha"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Task"</span>, <span class="st">"metric"</span><span class="op">)</span>,</span>
+<span>               names_pattern <span class="op">=</span> <span class="st">"(\\w+.\\w+).(\\w+)"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_col <span class="op">=</span> <span class="va">Task</span>,</span>
+<span>              names_from <span class="op">=</span> <span class="va">metric</span>,</span>
+<span>              values_from <span class="op">=</span> <span class="va">value</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The code in <code>pivot_longer(names_pattern = "(\\w+.\\w+).(\\w+)")</code> follows a specific naming scheme used for column names. Underscores (optional) can be used for task names and column descriptions, but a period (required) is ONLY used to separate the task name / description from the description of the task score type / what the value represents (e.g., RT = reaction time, splithalf = split-half reliability)</p>
+<p><strong>Task_Name_MoreStuff.ScoreType</strong></p>
+<p>e.g., <strong>StroopDL_Last4Rev.ResponseDeadline</strong>, <strong>VAorient_S.k</strong>, <strong>Antisaccade.ACC</strong></p>
+<p>This should also be used for reliabilities and admin times:</p>
+<p>e.g., <strong>StroopDL_Last4Rev.splithalf</strong>, <strong>StroopDL.AdminTime</strong></p>
+</section><section id="admin-times" class="level1"><h1>Admin Times</h1>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Admin Times -------------------------------------------------------------</span></span>
+<span><span class="va">data_merge</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"AdminTime"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="va">mean</span>, sd <span class="op">=</span> <span class="va">sd</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Task"</span>, <span class="st">"metric"</span><span class="op">)</span>,</span>
+<span>               names_pattern <span class="op">=</span> <span class="st">"(\\w+.\\w+).(\\w+)"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">value</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_col <span class="op">=</span> <span class="va">Task</span>,</span>
+<span>              names_from <span class="op">=</span> <span class="va">metric</span>,</span>
+<span>              names_prefix <span class="op">=</span> <span class="st">"AdminTime."</span>,</span>
+<span>              values_from <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="data-cleaning-log" class="level1"><h1>Data Cleaning Log</h1>
+<p>There will be two sets of cleaning logs we need to import</p>
+<ol type="1">
+<li>Problematic subjects</li>
+<li>Outliers</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Data Cleaning Log -------------------------------------------------------</span></span>
+<span><span class="co"># problematic subjects</span></span>
+<span><span class="va">data_problematic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/logs"</span><span class="op">)</span>, </span>
+<span>                                 pattern <span class="op">=</span> <span class="st">"problematic"</span>, </span>
+<span>                                 full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">read_csv</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html">reframe</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>Task <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"\\..*"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>                       Problematic_Removed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># outliers</span></span>
+<span><span class="va">data_outliers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/logs"</span><span class="op">)</span>, </span>
+<span>                                 pattern <span class="op">=</span> <span class="st">"outliers"</span>, </span>
+<span>                                 full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">read_csv</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html">reframe</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>Task <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"\\..*"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                      Outliers_Removed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>                      Outliers_Passes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">Pass</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># merge</span></span>
+<span><span class="va">data_log</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">data_problematic</span>, <span class="va">data_outliers</span>, by <span class="op">=</span> <span class="st">"Task"</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="save-data" class="level1"><h1>Save Data</h1>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Save Data ---------------------------------------------------------------</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">data_scores</span>, <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">output_dir</span>, <span class="va">output_scores</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">data_reliabilities</span>, <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">output_dir</span>, <span class="va">output_reliabilities</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">data_reliabilities</span>, <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">output_dir</span>, <span class="va">output_admintimes</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">data_log</span>, <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">output_dir</span>, <span class="va">output_datacleaning</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">subjlist</span>, <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">output_dir</span>, <span class="st">"subjlist_final.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -714,12 +853,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation column-page-right"><div class="nav-page nav-page-previous">
-      <a href="./data-analysis-regression.html" class="pagination-link" aria-label="Regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Regression</span></span>
+</script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
+      <a href="./data-score.html" class="pagination-link" aria-label="Data Scoring">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Scoring</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./data-analysis-anova.html" class="pagination-link" aria-label="ANOVA">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

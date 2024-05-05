@@ -3,9 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Engle Lab useRguide"
-  author: "Jason S. Tsukahara"
-  date: today
+  title: "AWM useRguide"
   page-navigation: true
   reader-mode: true
   search: true
@@ -39,42 +37,23 @@ book:
       
   chapters:
     - index.qmd
-    - introduction.qmd
-    
-    - part: "Getting Started"
-      chapters:
-        - installation.qmd
-        - pkgs-and-funcs.qmd
-        - R-basics.qmd
-        - R-intermediate.qmd
-        - quarto-rmarkdown-basics.qmd
-        - tips.qmd
+    - installation.qmd
         
-    - part: "Tidyverse"
-      chapters: 
-        - this-is-the-way.qmd
-        - import-write.qmd
-        - working-with-data.qmd
-    
     - part: "Data Processing"
       chapters: 
-        - data-processing-steps.qmd
-        - tidy-raw-data.qmd
-        - score-clean-data.qmd
-        - single-merged-file.qmd
+        - data-proc-overview.qmd
+        - compile-raw-data.qmd
+        - setup-analysis.qmd
+        - data-prep.qmd
+        - data-score.qmd
+        - data-score-merge.qmd
         
-    - part: "Data Visualization"
+    - part: "Data Analysis"
       chapters:
-        - intro-ggplot2.qmd
-    
-    - part: "Statistical Analysis"
-      chapters: 
-        - regression.qmd
-        - anova.qmd
+        - data-analysis-anova.qmd
+        - data-analysis-regression.qmd
         
   appendices:
-    - reproducible-workflow.qmd
-    - psyworkflow.qmd
     - update-packages.qmd
     
 format:
@@ -82,7 +61,12 @@ format:
     theme: cosmo
     code-copy: true
     code-link: true
-    number-depth: 1
+    code-overflow: wrap
+    df-print: paged
+    number-depth: 0
+    page-layout: full
+    grid:
+      body-width: 900px
 
 editor: visual
 
