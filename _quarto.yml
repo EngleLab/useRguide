@@ -17,6 +17,9 @@ book:
       - text: "Lab Manual"
         href: https://engle-lab.gitbook.io/lab-manual/
         target: _blank
+      - text: "R Workshop"
+        href: https://dr-jt.github.io/r-for-psychology-students/
+        target: _blank
       - text: "R Packages"
         menu:
           - text: "englelab"
