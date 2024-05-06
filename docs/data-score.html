@@ -361,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Setup -------------------------------------------------------------------</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Setup ------------------</span></span>
 <span><span class="co"># packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
@@ -381,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span></span>
 <span><span class="co">## data cleaning parameters</span></span>
 <span><span class="va">outlier_cutoff</span> <span class="op">&lt;-</span> <span class="fl">3.5</span></span>
-<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># -----------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <strong>Setup</strong> section is to:</p>
 <ul>
@@ -393,18 +393,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Given that 1) you created a tidy raw data file in .csv format, and 2) you specified <code>import_dir</code> and <code>import_file</code> in the setup section, you most likely do not need to change anything here.</p>
 <p>Optionally, you might want to go ahead and filter out any rows that you absolutely do not want to include at any point in scoring the data (e.g., practice trials or certain subjects).</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Import Data -------------------------------------------------------------</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Import Data ------------</span></span>
 <span><span class="va">data_import</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">import_dir</span>, <span class="va">import_file</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># -----------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="score-data" class="level2"><h2 class="anchored" data-anchor-id="score-data">Score Data</h2>
 <p>The <strong>Score Data</strong> section is where most of the work needs to be done. You should be using <code>dplyr</code> and possibly <code>tidyr</code> to do most of the work here, though you may need other packages and functions. You can delete whatever is in there, that is just a placeholder as an example of the type of functions you might use.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Score Data --------------------------------------------------------------</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Score Data -------------</span></span>
 <span><span class="va">data_scores</span> <span class="op">&lt;-</span> <span class="va">data_import</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>.by <span class="op">=</span> <span class="va">Subject</span><span class="op">)</span></span>
-<span><span class="co"># ------------------------------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># -----------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="clean-data" class="level2"><h2 class="anchored" data-anchor-id="clean-data">Clean Data</h2>
 <p>The next section of the script template is for cleaning the data by removing problematic subjects and/or removing outliers.</p>
@@ -413,9 +413,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="save-data" class="level2"><h2 class="anchored" data-anchor-id="save-data">Save Data</h2>
 <p>No need to change anything here. Isn’t that nice?</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Save Data ---------------------------------------------------------------</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ---- Save Data --------------</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">data_raw</span>, <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="va">output_dir</span>, <span class="va">output_file</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span><span class="co"># -----------------------------</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -930,7 +930,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 probably should be reversed.  
 To do this, run the function again with the 'check.keys=TRUE' option</code></pre>
 </div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_cleaned</span><span class="op">$</span><span class="va">Stroop_incongruent_RT.mean_cronbachalpha</span> <span class="op">&lt;-</span> <span class="va">cronbachalpha</span><span class="op">$</span><span class="va">total</span><span class="op">$</span><span class="va">std.alpha</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_cleaned</span><span class="op">$</span><span class="va">Stroop_incongruent_RT.mean_cronbachalpha</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">cronbachalpha</span><span class="op">$</span><span class="va">total</span><span class="op">$</span><span class="va">std.alpha</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">

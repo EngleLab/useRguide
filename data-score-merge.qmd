@@ -23,7 +23,7 @@ englelab::get_template(score_script = TRUE)
 # Setup
 
 ```{r}
-# ---- Setup -------------------------------------------------------------------
+# ---- Setup ------------------
 # packages
 library(here)
 library(readr)
@@ -40,7 +40,7 @@ output_scores <- "TaskScores.csv"
 output_reliabilities <- "Reliabilities.csv"
 output_admintimes <- "AdminTimes.csv"
 output_datacleaning <- "DataCleaning_log.csv"
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 # Import
@@ -48,25 +48,25 @@ output_datacleaning <- "DataCleaning_log.csv"
 To import and merge multiple data frames we can use `purrr::map() |> purrr:reduce()`
 
 ```{r}
-# ---- Import Data -------------------------------------------------------------
+# ---- Import Data ------------
 files <- list.files(here(import_dir), pattern = "Scores", full.names = TRUE)
 data_import <- files |>
   map(read_csv) |>
   reduce(full_join, by = "Subject")
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 # Task Scores
 
 ```{r}
-# ---- Select Variables --------------------------------------------------------
+# ---- Select Variables -------
 data_scores <- data_import |>
   select(Subject) |>
   filter()
 
 # list of final subjects
 subjlist <- select(data_scores, Subject)
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 At this step, you may also want to filter out subjects that have missing data on specific tasks, or too much missing data across all the tasks.
@@ -76,7 +76,7 @@ I advise creating a final subject list of all subjects that made it to this stat
 # Reliabilities
 
 ```{r}
-# ---- Reliabilities -----------------------------------------------------------
+# ---- Reliabilities ----------
 data_reliabilities <- data_import |>
   select(contains("splithalf"), contains("cronbach_alpha")) |>
   drop_na() |>
@@ -88,7 +88,7 @@ data_reliabilities <- data_import |>
   pivot_wider(id_col = Task,
               names_from = metric,
               values_from = value)
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 The code in `pivot_longer(names_pattern = "(\\w+.\\w+).(\\w+)")` follows a specific naming scheme used for column names. Underscores (optional) can be used for task names and column descriptions, but a period (required) is ONLY used to separate the task name / description from the description of the task score type / what the value represents (e.g., RT = reaction time, splithalf = split-half reliability)
@@ -104,7 +104,7 @@ e.g., **StroopDL_Last4Rev.splithalf**, **StroopDL.AdminTime**
 # Admin Times
 
 ```{r}
-# ---- Admin Times -------------------------------------------------------------
+# ---- Admin Times ------------
 data_merge <- data_import |>
   select(contains("AdminTime")) |>
   summarise_all(list(mean = mean, sd = sd), na.rm = TRUE) |>
@@ -117,7 +117,7 @@ data_merge <- data_import |>
               names_from = metric,
               names_prefix = "AdminTime.",
               values_from = "value")
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 # Data Cleaning Log
@@ -128,7 +128,7 @@ There will be two sets of cleaning logs we need to import
 2.  Outliers
 
 ```{r}
-# ---- Data Cleaning Log -------------------------------------------------------
+# ---- Data Cleaning Log ------
 # problematic subjects
 data_problematic <- list.files(here("data/logs"), 
                                  pattern = "problematic", 
@@ -154,19 +154,19 @@ data_outliers <- list.files(here("data/logs"),
 
 # merge
 data_log <- merge(data_problematic, data_outliers, by = "Task", all = TRUE)
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 # Save Data
 
 ```{r}
-# ---- Save Data ---------------------------------------------------------------
+# ---- Save Data --------------
 write_csv(data_scores, here(output_dir, output_scores))
 write_csv(data_reliabilities, here(output_dir, output_reliabilities))
 write_csv(data_reliabilities, here(output_dir, output_admintimes))
 write_csv(data_log, here(output_dir, output_datacleaning))
 write_csv(subjlist, here(output_dir, "subjlist_final.csv"))
-# ------------------------------------------------------------------------------
+# -----------------------------
 
 rm(list = ls())
 ```

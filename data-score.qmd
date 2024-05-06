@@ -46,7 +46,7 @@ englelab::get_template(score_script = TRUE)
 
 ```{r}
 #| eval: false
-# ---- Setup -------------------------------------------------------------------
+# ---- Setup ------------------
 # packages
 library(here)
 library(readr)
@@ -66,7 +66,7 @@ output_file <- paste(task, "Scores.csv", sep = "_")
 
 ## data cleaning parameters
 outlier_cutoff <- 3.5
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 The **Setup** section is to:
@@ -87,10 +87,10 @@ Optionally, you might want to go ahead and filter out any rows that you absolute
 
 ```{r}
 #| eval: false
-# ---- Import Data -------------------------------------------------------------
+# ---- Import Data ------------
 data_import <- read_csv(here(import_dir, import_file)) |>
   filter()
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 ## Score Data
@@ -99,10 +99,10 @@ The **Score Data** section is where most of the work needs to be done. You shoul
 
 ```{r}
 #| eval: false
-# ---- Score Data --------------------------------------------------------------
+# ---- Score Data -------------
 data_scores <- data_import |>
   summarise(.by = Subject)
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 ## Clean Data
@@ -119,9 +119,9 @@ No need to change anything here. Isn't that nice?
 
 ```{r}
 #| eval: false
-# ---- Save Data ---------------------------------------------------------------
+# ---- Save Data --------------
 write_csv(data_raw, here(output_dir, output_file))
-# ------------------------------------------------------------------------------
+# -----------------------------
 
 rm(list = ls())
 ```
@@ -672,7 +672,8 @@ cronbachalpha <- reliability |>
   select(-ID) |>
   alpha()  # from the psych package
 
-data_cleaned$Stroop_incongruent_RT.mean_cronbachalpha <- cronbachalpha$total$std.alpha
+data_cleaned$Stroop_incongruent_RT.mean_cronbachalpha <- 
+  cronbachalpha$total$std.alpha
 ```
 
 ## Data Frame

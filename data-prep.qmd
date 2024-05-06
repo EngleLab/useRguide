@@ -36,7 +36,7 @@ englelab::get_template(raw_script = TRUE)
 
 ```{r}
 #| eval: false
-# ---- Setup -------------------------------------------------------------------
+# ---- Setup ------------------
 # packages
 library(here)
 library(readr)
@@ -51,7 +51,7 @@ output_dir <- "data/raw"
 task <- "taskname"
 import_file <- paste(task, ".txt", sep = "")
 output_file <- paste(task, "raw.csv", sep = "_")
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 The **Setup** section is to:
@@ -75,7 +75,7 @@ Two different import options are included in the script:
 
 ```{r}
 #| eval: false
-# ---- Import Data -------------------------------------------------------------
+# ---- Import Data ------------
 # to import a single file
 data_import <- read_delim(here(import_dir, import_file), delim = "\t",
                           escape_double = FALSE, trim_ws = TRUE)
@@ -83,11 +83,13 @@ data_import <- read_delim(here(import_dir, import_file), delim = "\t",
 # alternatively to import a batch of files...
 # change the arguments in purrr::map_df() depending on type of data files
 # this example is for files created from eprime and needs encoding = "UCS-2LE"
-files <- list.files(here(import_dir, task), pattern = ".txt", full.names = TRUE)
+files <- list.files(here(import_dir, task), 
+                    pattern = ".txt", full.names = TRUE)
 data_import <- files |>
-  map_df(~ read_delim(.x, locale = locale(encoding = "UCS-2LE"), delim = "\t",
-                      escape_double = FALSE, trim_ws = TRUE, na = "NULL"))
-# ------------------------------------------------------------------------------
+  map_df(~ read_delim(.x, locale = locale(encoding = "UCS-2LE"), 
+                      delim = "\t", escape_double = FALSE, 
+                      trim_ws = TRUE, na = "NULL"))
+# -----------------------------
 ```
 
 ## Tidy Data
@@ -96,13 +98,13 @@ This is the meat of the script, where the action happens. It will also be differ
 
 ```{r}
 #| eval: false
-# ---- Tidy Data ---------------------------------------------------------------
+# ---- Tidy Data --------------
 data_raw <- data_import |>
   rename() |>
   filter() |>
   mutate() |>
   select()
-# ------------------------------------------------------------------------------
+# -----------------------------
 ```
 
 ## Save Data
@@ -111,9 +113,9 @@ No need to change anything here. Isn't that nice?
 
 ```{r}
 #| eval: false
-# ---- Save Data ---------------------------------------------------------------
+# ---- Save Data --------------
 write_csv(data_raw, here(output_dir, output_file))
-# ------------------------------------------------------------------------------
+# -----------------------------
 
 rm(list = ls())
 ```
