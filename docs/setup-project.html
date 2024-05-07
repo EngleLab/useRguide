@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.24">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>AWM useRguide – 2&nbsp; Compile Raw Data</title>
+<title>AWM useRguide – 3&nbsp; Setup Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -30,8 +60,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./setup-project.html" rel="next">
-<link href="./data-proc-overview.html" rel="prev">
+<link href="./data-prep.html" rel="next">
+<link href="./compile-raw-data.html" rel="prev">
 <link href="./cover_small.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -41,8 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -68,17 +97,13 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">AWM useRguide</span>
@@ -90,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="https://englelab.gatech.edu/" target="_blank"> 
 <span class="menu-text">Lab Website</span></a>
   </li>  
@@ -106,8 +131,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-packages" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">R Packages</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-packages">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-packages">
+<li>
     <a class="dropdown-item" href="https://englelab.github.io/englelab/" target="_blank">
  <span class="dropdown-text">englelab</span></a>
   </li>  
@@ -128,9 +153,9 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">pupillometry</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -139,25 +164,19 @@ ul.task-list li input[type="checkbox"] {
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./compile-raw-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./setup-project.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
@@ -177,8 +196,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-proc-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
@@ -186,13 +205,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./compile-raw-data.html" class="sidebar-item-text sidebar-link active">
+  <a href="./compile-raw-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup-project.html" class="sidebar-item-text sidebar-link">
+  <a href="./setup-project.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></span></a>
   </div>
 </li>
@@ -215,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -224,8 +243,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-analysis-anova.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
@@ -238,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -247,36 +266,38 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./update-packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Update Packages</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#compile-raw-data" id="toc-compile-raw-data" class="nav-link active" data-scroll-target="#compile-raw-data">Compile Raw Data</a></li>
-  <li><a href="#sharepoint---data-collection" id="toc-sharepoint---data-collection" class="nav-link" data-scroll-target="#sharepoint---data-collection">SharePoint - Data Collection</a></li>
+<li><a href="#setup-folders" id="toc-setup-folders" class="nav-link active" data-scroll-target="#setup-folders">Setup Folders</a></li>
+  <li><a href="#copy-data-files" id="toc-copy-data-files" class="nav-link" data-scroll-target="#copy-data-files">Copy Data Files</a></li>
+  <li>
+<a href="#download-r-script-templates" id="toc-download-r-script-templates" class="nav-link" data-scroll-target="#download-r-script-templates">Download R Script Templates</a>
+  <ul class="collapse">
+<li><a href="#copy-from-other-projects" id="toc-copy-from-other-projects" class="nav-link" data-scroll-target="#copy-from-other-projects">Copy From Other Projects</a></li>
   </ul>
-</nav>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./compile-raw-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></h1>
+<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./setup-project.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span>
+</h1>
 <p class="subtitle lead">Data Processing</p>
 </div>
 
@@ -291,55 +312,59 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
-
-
-<p><img src="images/data_workflow_2.png" class="img-fluid" width="850"></p>
-<p>There are three stages of processing and analyzing data in our lab</p>
+</header><section id="setup-folders" class="level1"><h1>Setup Folders</h1>
 <ol type="1">
-<li><strong>Data Preparation</strong>: Convert messy raw data files into tidy raw data files</li>
-<li><strong>Data Scoring</strong>: Calculate aggregate scores, clean data, remove outliers, and more</li>
-<li><strong>Data Analysis</strong>: Perform statistical analysis and visualize data</li>
+<li>Create a folder for your project that contains the three following folders</li>
 </ol>
-<p>All the steps in our data processing workflow can be fully reproduced with only the original raw data files and R scripts.</p>
-<p>But first, we need to compile, organize, and store the raw data files.</p>
-<section id="compile-raw-data" class="level1">
-<h1>Compile Raw Data</h1>
-<p>Data is collected locally on running room computers in the lab, each with individual subject files for every session and task. The data is organized by session/task on each of these computers but we need to organize the folders just by /task and to also compile the data from all the computers in one location.</p>
-<p>We use a <code>copy_to_drive.R</code> script to compile the raw data from all the computers onto a <strong>Network Drive.</strong></p>
+<p>📁 analyses</p>
+<p>📁 data</p>
+<p>📁 R</p>
+<ol start="2" type="1">
+<li>Inside of the <strong>data</strong> folder create a <strong>raw/messy</strong> folder and a <strong>scored</strong> folder</li>
+</ol>
+<p>📁 data</p>
+<p>&nbsp;&nbsp;&nbsp;📁 raw</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📁 messy</p>
+<p>&nbsp;&nbsp;&nbsp;📁 scored</p>
+<ol start="3" type="1">
+<li>Create an RStudio Project in the project’s root directory</li>
+</ol>
+<blockquote class="blockquote">
+<p>File -&gt; New Project… -&gt; Existing Directory</p>
+</blockquote>
+</section><section id="copy-data-files" class="level1"><h1>Copy Data Files</h1>
+<p>Once you create a data analysis repository in SharePoint/Data Analysis, you can copy over data files for the tasks specific to that research project.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/data_to_zdrive.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="367"></p>
+<figure class="figure"><p><img src="images/data_to_analysis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="822"></p>
 </figure>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can find a template for the <code>copy_to_drive.R</code> script file on the Network Drive</p>
+<p>Only copy over the <strong>messy</strong> raw data files, otherwise your project will not be fully reproducible</p>
 </div>
 </div>
-</section>
-<section id="sharepoint---data-collection" class="level1">
-<h1>SharePoint - Data Collection</h1>
-<p>We use the <strong>Network Drive</strong> to <u>transfer</u> data files to the lab’s <strong>SharePoint</strong>, where the data will be permanently stored. A SharePoint/Data Collection/[Study Name] directory is where ALL the raw data files for that data collection effort are stored.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/data_to_sharepoint.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="367"></p>
-</figure>
+</section><section id="download-r-script-templates" class="level1"><h1>Download R Script Templates</h1>
+<p>The <code>englelab</code> package contains R script templates you can download</p>
+<p>In the console window, type:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">englelab</span><span class="fu">::</span><span class="fu"><a href="https://englelab.github.io/englelab/reference/get_template.html">get_template</a></span><span class="op">(</span>raw_script <span class="op">=</span> <span class="cn">TRUE</span>, score_script <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                       merge_script <span class="op">=</span> <span class="cn">TRUE</span>, analysis_script <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                       wmc_scripts <span class="op">=</span> <span class="cn">TRUE</span>, ac_scripts <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                       main_script <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="copy-from-other-projects" class="level3"><h3 class="anchored" data-anchor-id="copy-from-other-projects">Copy From Other Projects</h3>
+<p>If R scripts already exist in other projects for processing data from tasks you are using in your current project, then you can also just copy and paste those over to your project.</p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -747,21 +772,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation column-body">
-  <div class="nav-page nav-page-previous">
-      <a href="./data-proc-overview.html" class="pagination-link" aria-label="Overview">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview</span></span>
+</script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
+      <a href="./compile-raw-data.html" class="pagination-link" aria-label="Compile Raw Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./setup-project.html" class="pagination-link" aria-label="Setup Project">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data-prep.html" class="pagination-link" aria-label="Data Preparation">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Preparation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

@@ -8,6 +8,10 @@ execute:
   warning: false
 ---
 
+
+
+
+
 ![](images/data_workflow_2.png){width="850"}
 
 At this stage you have fully processed your data and have it in a format that is ready for statistical analysis.
@@ -29,12 +33,20 @@ Create an empty Quarto document for this chapter.
 ::: callout-note
 Alternatively, download the englelab analysis Quarto template rather than starting from an empty document.
 
+
+
+
+
 ```{r}
 #| eval: false
 
 englelab::get_template(analysis_script = TRUE)
 
 ```
+
+
+
+
 :::
 
 ## YAML
@@ -92,6 +104,10 @@ You can add multiple tabs easily by going to
 
 4.  Add an R code chunk below the **Required Packages** header and load the following packages,
 
+
+
+
+
 ```{r}
 library(here)
 library(readr)
@@ -107,6 +123,10 @@ library(ggeffects)
 library(modeloutput)
 ```
 
+
+
+
+
 5.  Add an R code chunk below the **Plot Theme** header and set your own `ggplot2` theme to automatically be used in the rest of the document.
 
 This is a custom theme `theme_spacious()` I use across all of my plots. It might look like there is a lot going on, but it mainly does two things
@@ -119,6 +139,10 @@ I use `theme_spacious()` along with a `ggplot2` theme such as `theme_linedraw()`
 ::: callout-note
 See [Class 8: Data Visualization](https://dr-jt.github.io/r-for-psychology-students/classes/class-8.html){target="_blank"} in the R Workshop for a thorough tutorial on `ggplot2`
 :::
+
+
+
+
 
 ```{r}
 theme_spacious <- function(font.size = 14, bold = TRUE){
@@ -159,6 +183,10 @@ output_theme <- theme_linedraw() +
 theme_set(output_theme)
 ```
 
+
+
+
+
 # Example Data Set
 
 > Suppose we were interested in memory and wanted to find out if recall can be improved by using visual imagery while memorizing a list of words. In addition to the memory strategy that is used, say we were also interested in the effect presentation rate on memory and if that interacted with memory strategy.
@@ -192,6 +220,10 @@ You can download the data for this hypothetical experiment and save it in your *
 
 3.  Create an R code chunk below the **Import Data** tab header
 
+
+
+
+
 ```{r}
 data_import <- read_csv(here("data", "Recall_Data.csv"))
 ```
@@ -203,6 +235,10 @@ data_import
 
 ```
 
+
+
+
+
 ## Specify Factor Levels
 
 When dealing with categorical variables for statistical analyses in R, it is usually a good idea to define the order of the categories as this will by default determine which category is treated as the reference (comparison group). *More complex contrast codes will not be covered in this guide.*
@@ -213,6 +249,10 @@ Let's set factor levels for **Memory Strategy** and **Presentation Rate**
 
 4.  Create an R code chunk below the **Get Data Ready for Models** tab header
 
+
+
+
+
 ```{r}
 recall_data <- data_import |>
   mutate(Memory_Strategy = factor(Memory_Strategy,
@@ -221,6 +261,10 @@ recall_data <- data_import |>
          Presentation_Rate = factor(Presentation_Rate,
                                     levels = c(1, 2, 4)))
 ```
+
+
+
+
 
 From here on out you can create your own header and tabsets as you see fit
 
@@ -240,36 +284,68 @@ The `t.test()` function can be used to compute any of these *t*-tests.
 
 We can perform a two-sample *t*-test for independent samples to compare recall performance for the group of subjects assigned to the rote repetition condition vs. those assigned to the visual imagery condition.
 
+
+
+
+
 ```{r}
 t_ms <- t.test(recall_data$Recall_Performance ~
                  recall_data$Memory_Strategy, 
                var.equal = TRUE)
 ```
 
+
+
+
+
 The default way to print output from statistical models in R is either by using a `summary()` function, or simply printing the statistical model object, `t_ms` , to the console:
 
 ::: panel-tabset
 ## R output
 
+
+
+
+
 ```{r}
 t_ms
 ```
 
+
+
+
+
 ## Table ouptut
 
 We can use `model_parameters()` , from `parameters`, to get the test statistics and `cohens_d()`, from `effectsize` to get the standardized effect size estimates and print a nice looking table using `display` from the `parameters` package.
+
+
+
+
 
 ```{r}
 model_parameters(t_ms) |>
   display(align = "left")
 ```
 
+
+
+
+
 <br>
+
+
+
+
 
 ```{r}
 cohens_d(t_ms) |>
   display(align = "left")
 ```
+
+
+
+
 :::
 
 ## t-test - dependent samples
@@ -277,6 +353,10 @@ cohens_d(t_ms) |>
 We can perform a two-sample *t*-test for dependent samples to compare the three presentation rate conditions because this variable was a within-subject factor.
 
 To do so, we need to create three different data frames for each of the pairwise comparisons (there might be a simpler way to do this using a different t-test function). We can use `filter()` from `dplyr` to do this.
+
+
+
+
 
 ```{r}
 data_pr_1v2 <- filter(recall_data, 
@@ -301,8 +381,16 @@ t_pr_2v4 <- t.test(data_pr_2v4$Recall_Performance ~
                    var.equal = TRUE, paired = TRUE)
 ```
 
+
+
+
+
 ::: panel-tabset
 ## R output
+
+
+
+
 
 ```{r}
 t_pr_1v2
@@ -310,9 +398,17 @@ t_pr_1v4
 t_pr_2v4
 ```
 
+
+
+
+
 ## Table ouptut
 
 We can use `model_parameters()` , from `parameters`, to get the test statistics and `cohens_d()`, from `modelbased` to get the standardized effect size estimates and print a nice looking table using `display` from the `parameters` package.
+
+
+
+
 
 ```{r}
 model_parameters(t_pr_1v2) |> 
@@ -325,7 +421,15 @@ model_parameters(t_pr_2v4) |>
   display(align = "left")
 ```
 
+
+
+
+
 <br>
+
+
+
+
 
 ```{r}
 cohens_d(t_pr_1v2) |>
@@ -337,6 +441,10 @@ cohens_d(t_pr_1v4) |>
 cohens_d(t_pr_2v4) |>
   display(align = "left")
 ```
+
+
+
+
 :::
 
 # ANOVA
@@ -357,6 +465,10 @@ A between-subjects ANOVA is conducted when there are only between-subject factor
 
 First let's reduce our data frame by aggregating over the within-subjects factor (pretend that we only have a between-subjects design).
 
+
+
+
+
 ```{r}
 data_model <- recall_data |>
   summarise(.by = c(Subject, Memory_Strategy),
@@ -370,13 +482,25 @@ data_model
 
 ```
 
+
+
+
+
 Model
+
+
+
+
 
 ```{r}
 anova_bs <- aov_car(Recall_Performance ~ 
                       Memory_Strategy + Error(Subject),
                     data = data_model)
 ```
+
+
+
+
 
 The `Error(Subject)` syntax in the formula tells `aov_car()` what column name contains subject ids.
 
@@ -387,13 +511,25 @@ View the different tabs to see different output options:
 ::: panel-tabset
 ## R output
 
+
+
+
+
 ```{r}
 anova_bs
 ```
 
+
+
+
+
 ## easystats
 
 You can use `model_parameters()` to get an ANOVA table. You should specify `type = 3` to get Type III sum of squares. You can also request to obtain omega-squared (or eta-squared) effect size estimate.
+
+
+
+
 
 ```{r}
 model_parameters(anova_bs, type = 3, 
@@ -402,7 +538,15 @@ model_parameters(anova_bs, type = 3,
   display(align = "left")
 ```
 
+
+
+
+
 You can use `estimate_contrasts()`, from `modelbased`, to get post-hoc comparisons.
+
+
+
+
 
 ```{r}
 estimate_contrasts(anova_bs, 
@@ -411,13 +555,25 @@ estimate_contrasts(anova_bs,
   display(align = "left")
 ```
 
+
+
+
+
 ## modeloutput
 
 My `modeloutput` package provides a way to display ANOVA tables in output format similar to other statistical software packages like JASP or SPSS. Add `anova_tables(contrast = "Memory_Strategy")` to get a table for post-hoc comparisons.
 
+
+
+
+
 ```{r}
 anova_tables(anova_bs, contrast = "Memory_Strategy")
 ```
+
+
+
+
 :::
 
 ## Figures
@@ -429,15 +585,27 @@ View the different tabs to see different output options:
 
 The main package in R to create and customize plots is `ggplot2`. However, there is definitely a bit of a learning curve to `ggplot2`. Instead, the `sjPlot` package offers convenient ways to plot the results of statistical analyses using `plot_model()`.
 
+
+
+
+
 ```{r}
 plot_model(anova_bs, type = "pred", show.data = TRUE, jitter = TRUE)
 ```
+
+
+
+
 
 `plot_model()` actually generates a `ggplot2` object so you can further modify using `ggplot2` code.
 
 ## ggplot2
 
 The most customizable way to plot model results is using the `ggplot2` package.
+
+
+
+
 
 ```{r}
 ggplot(recall_data, aes(x = Memory_Strategy, 
@@ -452,9 +620,17 @@ ggplot(recall_data, aes(x = Memory_Strategy,
   guides(color = "none")
 ```
 
+
+
+
+
 ## ggplot2 + modeloutput
 
 My `modeloutput` function has a `geom_flat_violin()` function to create the cloud part of the raincloud plot. There are some other modifications that have to be made to other elements of the ggplot as well.
+
+
+
+
 
 ```{r}
 ggplot(recall_data, aes(x = Memory_Strategy, 
@@ -474,6 +650,10 @@ ggplot(recall_data, aes(x = Memory_Strategy,
   scale_fill_brewer(palette = "Set1") +
   guides(fill = "none", color = "none")
 ```
+
+
+
+
 :::
 
 # Within-Subjects ANOVA
@@ -481,6 +661,10 @@ ggplot(recall_data, aes(x = Memory_Strategy,
 A within-subjects ANOVA (or repeated-measures ANOVA) is conducted when there is only a within-subjects factor in the study design.
 
 First let's reduce our data frame by aggregating over the between-subjects factor (pretend that we only have a within-subjects design).
+
+
+
+
 
 ```{r}
 data_model <- recall_data |>
@@ -495,17 +679,29 @@ data_model
 
 ```
 
+
+
+
+
 Statistically, the main difference between a between-subject factor and a within-subject factor is what goes into the error term. Recall that within-subject factor designs are more powerful. One reason for this is that the Error or Residual term in the model becomes smaller because `Subject` gets entered into the model as a variable (we are modelling the effect of differences between subjects). We need to specify the structure of the residual term for within-subject designs.
 
 In `aov_car()` we can specify the error term as `Error(Subject/Within-Subject Factor)`.
 
 Model
 
+
+
+
+
 ```{r}
 anova_ws <- aov_car(Recall_Performance ~ Presentation_Rate + 
                       Error(Subject/Presentation_Rate),
                     data = recall_data)
 ```
+
+
+
+
 
 ## Tables
 
@@ -514,13 +710,25 @@ View the different tabs to see different output options:
 ::: panel-tabset
 ## R output
 
+
+
+
+
 ```{r}
 anova_ws
 ```
 
+
+
+
+
 ## easystats
 
 You can use `model_parameters()` to get an ANOVA table. You should specify `type = 3` to get Type III sum of squares. You can also request to obtain omega-squared (or eta-squared) effect size estimate.
+
+
+
+
 
 ```{r}
 model_parameters(anova_ws, type = 3, 
@@ -529,7 +737,15 @@ model_parameters(anova_ws, type = 3,
   display(align = "left")
 ```
 
+
+
+
+
 You can use `estimate_contrasts()`, from `modelbased`, to get post-hoc comparisons.
+
+
+
+
 
 ```{r}
 estimate_contrasts(anova_ws, 
@@ -538,13 +754,25 @@ estimate_contrasts(anova_ws,
   display(align = "left")
 ```
 
+
+
+
+
 ## modeloutput
 
 My `modeloutput` package provides a way to display ANOVA tables in output format similar to other statistical software packages like JASP or SPSS. Add `anova_tables(contrast = "Presentation_Rate")` to get a table for post-hoc comparisons.
 
+
+
+
+
 ```{r}
 anova_tables(anova_ws, contrast = "Presentation_Rate")
 ```
+
+
+
+
 :::
 
 ## Figures
@@ -556,15 +784,27 @@ View the different tabs to see different output options:
 
 The main package in R to create and customize plots is `ggplot2`. However, there is definitely a bit of a learning curve to `ggplot2`. Instead, the `sjPlot` package offers convenient ways to plot the results of statistical analyses using `plot_model()`.
 
+
+
+
+
 ```{r}
 plot_model(anova_ws, type = "pred", show.data = TRUE, jitter = TRUE)
 ```
+
+
+
+
 
 `plot_model()` actually generates a `ggplot2` object so you can further modify using `ggplot2` code.
 
 ## ggplot2
 
 The most customizable way to plot model results is using the `ggplot2` package.
+
+
+
+
 
 ```{r}
 ggplot(recall_data, aes(x = Presentation_Rate, 
@@ -577,9 +817,17 @@ ggplot(recall_data, aes(x = Presentation_Rate,
   labs(x = "Presentation Rate", y = "Recall Performance")
 ```
 
+
+
+
+
 ## ggplot2 + modeloutput
 
 My `modeloutput` function has a `geom_flat_violin()` function to create the cloud part of the raincloud plot. There are some other modifications that have to be made to other elements of the ggplot as well.
+
+
+
+
 
 ```{r}
 ggplot(recall_data, aes(x = Presentation_Rate, 
@@ -595,6 +843,10 @@ ggplot(recall_data, aes(x = Presentation_Rate,
                 fun.data = mean_cl_normal, width = .1) +
   labs(x = "Presentation_Rate", y = "Recall Performance")
 ```
+
+
+
+
 :::
 
 # Mixed-Factors ANOVA
@@ -605,6 +857,10 @@ The setup for this is very similar but we need to specify an interaction term be
 
 1.  Specify each main effect and interaction terms separately
 
+
+
+
+
 ```{r}
 #| eval: false
 
@@ -612,7 +868,15 @@ Presentation_Rate + Memory_Strategy + Presentation_Rate:Memory_Strategy
 
 ```
 
+
+
+
+
 2.  Use a shorthand that includes all main effects and the interaction term
+
+
+
+
 
 ```{r}
 #| eval: false
@@ -621,7 +885,15 @@ Presentation_Rate*Memory_Strategy
 
 ```
 
+
+
+
+
 Model
+
+
+
+
 
 ```{r}
 anova_mixed <- aov_car(Recall_Performance ~ 
@@ -630,6 +902,10 @@ anova_mixed <- aov_car(Recall_Performance ~
                        data = recall_data)
 ```
 
+
+
+
+
 ## Tables
 
 View the different tabs to see different output options:
@@ -637,13 +913,25 @@ View the different tabs to see different output options:
 ::: panel-tabset
 ## R output
 
+
+
+
+
 ```{r}
 anova_mixed
 ```
 
+
+
+
+
 ## easystats
 
 You can use `model_parameters()` to get an ANOVA table. You should specify `type = 3` to get Type III sum of squares. You can also request to obtain omega-squared (or eta-squared) effect size estimate.
+
+
+
+
 
 ```{r}
 model_parameters(anova_mixed, type = 3, 
@@ -652,7 +940,15 @@ model_parameters(anova_mixed, type = 3,
   display(align = "left")
 ```
 
+
+
+
+
 You can use `estimate_contrasts()`, from `modelbased`, to get post-hoc comparisons.
+
+
+
+
 
 ```{r}
 estimate_contrasts(anova_mixed, 
@@ -662,15 +958,27 @@ estimate_contrasts(anova_mixed,
   display(align = "left")
 ```
 
+
+
+
+
 ## modeloutput
 
 My `modeloutput` package provides a way to display ANOVA tables in output format similar to other statistical software packages like JASP or SPSS. Add `anova_tables(contrast = "Presentation_Rate")` to get a table for post-hoc comparisons.
+
+
+
+
 
 ```{r}
 anova_tables(anova_mixed, 
              contrast = c("Presentation_Rate", "Memory_Strategy"), 
              at = c("Presentation_Rate", "Memory_Strategy"))
 ```
+
+
+
+
 :::
 
 ## Figures
@@ -682,15 +990,27 @@ View the different tabs to see different output options:
 
 The main package in R to create and customize plots is `ggplot2`. However, there is definitely a bit of a learning curve to `ggplot2`. Instead, the `sjPlot` package offers convenient ways to plot the results of statistical analyses using `plot_model()`.
 
+
+
+
+
 ```{r}
 plot_model(anova_mixed, type = "int", show.data = TRUE, jitter = TRUE)
 ```
+
+
+
+
 
 `plot_model()` actually generates a `ggplot2` object so you can further modify using `ggplot2` code.
 
 ## ggplot2
 
 The most customizable way to plot model results is using the `ggplot2` package.
+
+
+
+
 
 ```{r}
 ggplot(recall_data, aes(x = Presentation_Rate, 
@@ -706,9 +1026,17 @@ ggplot(recall_data, aes(x = Presentation_Rate,
   scale_color_brewer(palette = "Set1", name = "Memory Strategy")
 ```
 
+
+
+
+
 ## ggplot2 + modeloutput
 
 My `modeloutput` function has a `geom_flat_violin()` function to create the cloud part of the raincloud plot. There are some other modifications that have to be made to other elements of the ggplot as well.
+
+
+
+
 
 ```{r}
 ggplot(recall_data, aes(x = Presentation_Rate, 
@@ -732,7 +1060,15 @@ ggplot(recall_data, aes(x = Presentation_Rate,
   guides(fill = "none")
 ```
 
+
+
+
+
 ## ggeffects + ggplot2
+
+
+
+
 
 ```{r}
 model_plot <- anova_mixed |>
@@ -766,4 +1102,9 @@ ggplot(model_plot, aes(x = Presentation_Rate,
   labs(x = "Presentation Rate", y = "Recall Performance") +
   scale_color_brewer(palette = "Set1", name = "Memory Strategy")
 ```
+
+
+
+
 :::
+

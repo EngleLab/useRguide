@@ -640,5 +640,16 @@
       "Appendices",
       "Update Packages"
     ]
+  },
+  {
+    "objectID": "setup-project.html",
+    "href": "setup-project.html",
+    "title": "\n3  Setup Project\n",
+    "section": "",
+    "text": "Setup Folders\n\nCreate a folder for your project that contains the three following folders\n\n📁 analyses\n📁 data\n📁 R\n\nInside of the data folder create a raw/messy folder and a scored folder\n\n📁 data\n   📁 raw\n      📁 messy\n   📁 scored\n\nCreate an RStudio Project in the project’s root directory\n\n\nFile -&gt; New Project… -&gt; Existing Directory\n\nCopy Data Files\nOnce you create a data analysis repository in SharePoint/Data Analysis, you can copy over data files for the tasks specific to that research project.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nOnly copy over the messy raw data files, otherwise your project will not be fully reproducible\n\n\nDownload R Script Templates\nThe englelab package contains R script templates you can download\nIn the console window, type:\n\nenglelab::get_template(raw_script = TRUE, score_script = TRUE, \n                       merge_script = TRUE, analysis_script = TRUE, \n                       wmc_scripts = TRUE, ac_scripts = TRUE, \n                       main_script = TRUE)\n\nCopy From Other Projects\nIf R scripts already exist in other projects for processing data from tasks you are using in your current project, then you can also just copy and paste those over to your project.",
+    "crumbs": [
+      "Data Processing",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Setup Project</span>"
+    ]
   }
 ]

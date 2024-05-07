@@ -46,7 +46,7 @@ book:
       chapters: 
         - data-proc-overview.qmd
         - compile-raw-data.qmd
-        - setup-analysis.qmd
+        - setup-project.qmd
         - data-prep.qmd
         - data-score.qmd
         - data-score-merge.qmd
