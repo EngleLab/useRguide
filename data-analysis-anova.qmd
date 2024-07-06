@@ -1,6 +1,6 @@
 ---
-title: "Statistical Analysis - ANOVA"
-subtitle: "Data Analysis"
+title: "ANOVA"
+subtitle: "Statistical Analysis"
 execute:
   echo: true
   eval: true
@@ -10,9 +10,9 @@ execute:
 
 ![](images/data_workflow_2.png){width="850"}
 
-At this stage you have fully processed your data and have it in a format that is ready for statistical analysis.
+At this stage you have fully processed your data and have it in a format that is ready for statistical analysis. The next step is to conduct formal statistical models on your data and visualize the results.
 
-The next step is to conduct formal statistical models on your data and visualize the results. This chapter will cover how to perform various types of ANOVAs.
+This chapter will cover how to perform various types of ANOVAs.
 
 ------------------------------------------------------------------------
 
