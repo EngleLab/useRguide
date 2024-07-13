@@ -23,9 +23,33 @@ But first, we need to compile, organize, and store the raw data files.
 
 # Compile Raw Data
 
-Data is collected locally on running room computers in the lab, each with individual subject files for every session and task. The data is organized by session/task on each of these computers but we need to organize the folders just by /task and to also compile the data from all the computers in one location.
+Data is collected locally on running room computers in the lab. Each computer will have a different combination of data from each subject and session number. On the running room computers the data is organized by **session** / **task**
 
-We use a `copy_to_drive.R` script to compile the raw data from all the computers onto a **Network Drive.**
+📁 Session 1
+
+     📁 1. OSpan
+
+     📁 2. RAPM
+
+     📁 3. Antisaccade
+
+     📁 And so on
+
+📁 Session 2
+
+📁 Session 3
+
+📁 Session 4
+
+Ideally, we want the data organized just by **task** (we also like to get rid of the number in the folder name). And each task folder to have all the data from all subjects that have participated.
+
+📁 OSpan
+
+📁 RAPM
+
+📁 Antisaccade
+
+We use a `copy_to_drive.R` script to compile the raw data from all the computers onto a **Network Drive** and at the same time reorgnize the data by **task**.
 
 ![](images/data_to_zdrive.png){fig-align="center" width="367"}
 
@@ -33,8 +57,49 @@ We use a `copy_to_drive.R` script to compile the raw data from all the computers
 You can find a template for the `copy_to_drive.R` script file on the Network Drive
 :::
 
+The template looks something link:
+
+```{r}
+#| eval: false
+
+
+
+```
+
 # SharePoint - Data Collection
 
-We use the **Network Drive** to [transfer]{.underline} data files to the lab's **SharePoint**, where the data will be permanently stored. A SharePoint/Data Collection/\[Study Name\] directory is where ALL the raw data files for that data collection effort are stored.
+Link to [SharePoint](https://gtvault.sharepoint.com/sites/cos/psychology/engle-lab/Shared%20Documents/Forms/All%20Items.aspx){target="_blank"}
+
+We use the **Network Drive** simply to [transfer]{.underline} data files to the lab's **SharePoint**, where the data will be permanently stored. A SharePoint/Data Collection/\[Study Name\] directory is where ALL the raw data files for that data collection effort are stored.
 
 ![](images/data_to_sharepoint.png){fig-align="center" width="367"}
+
+The organization of data files and scripts looks something like:
+
+📁 **data**
+
+     📁 **raw** (created from \_raw.R scripts)
+
+           📄 OSpan_raw.csv
+
+           📄 RAPM_raw.csv
+
+           📄 Antisaccade_raw.csv
+
+           📁 **messy** (original files created from task program)
+
+                 📁 OSpan
+
+                       📄 OSpan_subjID.txt
+
+                 📁 RAPM
+
+                 📁 Antisaccade
+
+📁 **R**
+
+     📄 OSpan_raw.R
+
+     📄 RAPM_raw.R
+
+     📄 Antisaccade_raw.R
