@@ -1,0 +1,111 @@
+---
+title: "Data Qualtiy Checks"
+subtitle: "Data Preparation"
+execute:
+  echo: true
+  eval: false
+  message: false
+  warning: false
+bibliography: references.bib
+---
+
+# Duplicate Subject IDs
+
+As data collection continues you will periodically compile all the data, process it, and even do some analyses. These are a good opportunity to do a data quality check that can be hard to identify and correct for later on down the road: **Check for Duplicate Subject IDs**.
+
+In a large data collection effort where we recruit hundreds of subjects for multiple sessions, and have a team of over 10 research assistants, there are bound to be mistakes that happen. One that can be problematic for our data are duplicate subject IDs. This happens when an RA accidentally enters in the wrong subject ID when administering a task. This can be a result of a simple typo or the RA mixing up subject IDs when running multiple people at one time. Either way, these need to be identified and corrected for.
+
+::: callout-note
+There may also be cases where there are Subject IDs that do not make sense (e.g., contains 6 digits when we only use 5 digit IDs). These are typically easier to detect and correct for so it won't be covered here, but you should look out for these as well.
+:::
+
+## Check for Duplicates
+
+To check for duplicate subject IDs in a data file, you need to have a uniqe date and time (or some other unique information) in your raw data files. In the `psyworkflow` R package, there is a convenient function to detect duplicate IDs based on the unique columns.
+
+### Install `psyworkflow`
+
+```{r}
+
+devtools::install_github("dr-JT/psyworkflow")
+
+```
+
+### `duplicates_check()`
+
+In your tidy raw data R script file, you can add `duplicates_check()` when importing the data files
+
+```{r}
+files <- list.files(here(import_dir, task), 
+                    pattern = ".txt", full.names = TRUE)
+data_import <- files |>
+  map_df(~ read_delim(.x, locale = locale(encoding = "UCS-2LE"), 
+                      delim = "\t", escape_double = FALSE, 
+                      trim_ws = TRUE, na = "NULL")) |>
+  psyworkflow::duplicates_check()
+```
+
+Some arguments you need to specify:
+
+-   **id**: The column name corresponding to Subject IDs. Defaults to: id = "Subject"
+
+-   **unique**: Column names that are unique to each Subject ID
+
+-   **save_as**: Folder path and file name to output the duplicate ID's to. This is useful so that you have a log of which tasks have duplicate IDs and need to be corrected
+
+::: callout-note
+Use the helper function `?` to see other arguments
+:::
+
+::: callout-note
+For an E-Prime data file, all the default arguments can be used and the only argument you need to specify is **save_as**
+:::
+
+```{r}
+files <- list.files(here(import_dir, task), 
+                    pattern = ".txt", full.names = TRUE)
+data_import <- files |>
+  map_df(~ read_delim(.x, locale = locale(encoding = "UCS-2LE"), 
+                      delim = "\t", escape_double = FALSE, 
+                      trim_ws = TRUE, na = "NULL")) |>
+  psyworkflow::duplicates_check(save_as = here("data/raw/duplicates",
+                                               "task_name_duplicates.csv"))
+```
+
+## Identifying Correct IDs
+
+Open the **task_name_duplicates.csv** file to see a list of subject IDs that are duplicated.
+
+Figuring out which subject ID is correct and which one is wrong (and what the correct ID is) requires some investigative work. Here are some common things to look for:
+
+-   Cross check the date and time in the data files with the Participant Schedule
+
+-   Check the Running Room Log Book. Can verify what time they started and what computer they do the task on
+
+-   Check the Subject ID and Session Time in data files for tasks immediately preceding and following the task with the potentially wrong ID
+
+## Fix IDs in Data Files
+
+::: callout-important
+This is important. Do not ignore this section!
+:::
+
+You need to fix the data files **on the running room computer itself!** Not on the network drive, not on SharePoint, or anywhere else. The original data file created on the local running room computer needs to be fixed!
+
+How to do this depends on the program used to adminster the task and the type of data file
+
+### E-Prime
+
+E-Prime will produce two data files. We only use one, but the other can be a backup so we need to fix both data files.
+
+#### -Export.txt
+
+The -Export.txt is the main file that needs to be corrected. Open the file in Excel and change ALL the values in the **Subject** column. Make sure you have it right! Save it.
+
+#### .edat3
+
+The .edat3 file is secondary but should also be corrected. Open the .edat3 file (it will open in E-Data Aid). Change the value in the first row of the **Subject** column. This will automatically change all the other rows and will be highlighted in red.
+
+### Rename the data file
+
+Regardless of what program was used to administer the task (and as long as the subject ID is contained in the file name) you NEED to rename the data file itself. Replace the incorrect ID with the correct ID in the file name.

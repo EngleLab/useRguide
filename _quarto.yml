@@ -41,15 +41,19 @@ book:
   chapters:
     - index.qmd
     - installation.qmd
+    - overview.qmd
         
-    - part: "Data Processing"
+    - part: "Data Preparation"
       chapters: 
-        - data-proc-overview.qmd
-        - compile-raw-data.qmd
-        - setup-project.qmd
-        - data-prep.qmd
-        - data-score.qmd
-        - data-score-merge.qmd
+        - data-prep-compile-data.qmd
+        - data-prep-tidy-raw.qmd
+        - data-prep-duplicate-check.qmd
+    
+    - part: "Data Scoring"
+      chapters:
+        - data-scoring-setup-project.qmd
+        - data-scoring-score-clean.qmd
+        - data-scoring-single-merge-file.qmd
         
     - part: "Data Analysis"
       chapters:

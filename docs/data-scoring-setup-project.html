@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>AWM useRguide – 2&nbsp; Compile Raw Data</title>
+<title>AWM useRguide – 4&nbsp; Setup Analysis Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,6 +17,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -26,8 +60,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./setup-project.html" rel="next">
-<link href="./data-proc-overview.html" rel="prev">
+<link href="./data-scoring-score-clean.html" rel="next">
+<link href="./data-prep-duplicate-check.html" rel="prev">
 <link href="./cover_small.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -134,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./compile-raw-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-scoring-setup-project.html">Data Scoring</a></li><li class="breadcrumb-item"><a href="./data-scoring-setup-project.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Setup Analysis Project</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -154,10 +188,16 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Installs and Updates</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Data Processing</span></a>
+ <span class="menu-text">Data Preparation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -165,38 +205,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-proc-overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
+  <a href="./data-prep-compile-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./compile-raw-data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span></a>
+  <a href="./data-prep-tidy-raw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidy Raw Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./data-prep.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Preparation</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./data-score.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Scoring</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./data-score-merge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Scoring - Merge</span></span></a>
+  <a href="./data-prep-duplicate-check.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Qualtiy Checks</span></span></a>
   </div>
 </li>
       </ul>
@@ -204,12 +226,41 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Data Analysis</span></a>
+ <span class="menu-text">Data Scoring</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-scoring-setup-project.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Setup Analysis Project</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-scoring-score-clean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Score and Clean Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-scoring-single-merge-file.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single Merged File</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-analysis-anova.html" class="sidebar-item-text sidebar-link">
@@ -226,13 +277,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./update-packages.html" class="sidebar-item-text sidebar-link">
@@ -249,16 +300,22 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#compile-raw-data" id="toc-compile-raw-data" class="nav-link active" data-scroll-target="#compile-raw-data">Compile Raw Data</a></li>
-  <li><a href="#sharepoint---data-collection" id="toc-sharepoint---data-collection" class="nav-link" data-scroll-target="#sharepoint---data-collection">SharePoint - Data Collection</a></li>
+<li><a href="#setup-folders" id="toc-setup-folders" class="nav-link active" data-scroll-target="#setup-folders">Setup Folders</a></li>
+  <li><a href="#copy-data-files" id="toc-copy-data-files" class="nav-link" data-scroll-target="#copy-data-files">Copy Data Files</a></li>
+  <li>
+<a href="#download-r-script-templates" id="toc-download-r-script-templates" class="nav-link" data-scroll-target="#download-r-script-templates">Download R Script Templates</a>
+  <ul class="collapse">
+<li><a href="#copy-from-other-projects" id="toc-copy-from-other-projects" class="nav-link" data-scroll-target="#copy-from-other-projects">Copy From Other Projects</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./compile-raw-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></a></li></ol></nav><div class="quarto-title">
+<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-scoring-setup-project.html">Data Scoring</a></li><li class="breadcrumb-item"><a href="./data-scoring-setup-project.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Setup Analysis Project</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span>
+<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Setup Analysis Project</span>
 </h1>
-<p class="subtitle lead">Data Processing</p>
+<p class="subtitle lead">Data Scoring</p>
 </div>
 
 
@@ -272,76 +329,63 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header><p><img src="images/data_workflow_2.png" class="img-fluid" width="850"></p>
-<p>There are three stages of processing and analyzing data in our lab</p>
+</header><p><img src="images/data_collection_to_analysis.png" class="img-fluid" width="575"></p>
+<p>For every data collection study there are multiple data analysis projects that result in published papers. The data analysis projects will share common tasks but might use different criteria for scoring, cleaning, and analyzing the data. Because of this, and just for organization, we need to keep data collection and data analysis projects separate.</p>
+<p>The <strong>data collection repository</strong> (SharePoint / Data Collection / [Study Name]) should be where raw and tidy data files, along with some R scripts are stored.</p>
+<p>Each <strong>data analysis project</strong> should be created from the data files in the data collection repository.</p>
+<section id="setup-folders" class="level1"><h1>Setup Folders</h1>
 <ol type="1">
-<li>
-<strong>Data Preparation</strong>: Convert messy raw data files into tidy raw data files</li>
-<li>
-<strong>Data Scoring</strong>: Calculate aggregate scores, clean data, remove outliers, and more</li>
-<li>
-<strong>Data Analysis</strong>: Perform statistical analysis and visualize data</li>
+<li>Create a folder for your project that contains the three following folders</li>
 </ol>
-<p>All the steps in our data processing workflow can be fully reproduced with only the original raw data files and R scripts.</p>
-<p>But first, we need to compile, organize, and store the raw data files.</p>
-<section id="compile-raw-data" class="level1"><h1>Compile Raw Data</h1>
-<p>Data is collected locally on running room computers in the lab. Each computer will have a different combination of data from each subject and session number. On the running room computers the data is organized by <strong>session</strong> / <strong>task</strong></p>
-<p>📁 Session 1</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; 📁 1. OSpan</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; 📁 2. RAPM</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; 📁 3. Antisaccade</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; 📁 And so on</p>
-<p>📁 Session 2</p>
-<p>📁 Session 3</p>
-<p>📁 Session 4</p>
-<p>Ideally, we want the data organized just by <strong>task</strong> (we also like to get rid of the number in the folder name). And each task folder to have all the data from all subjects that have participated.</p>
-<p>📁 OSpan</p>
-<p>📁 RAPM</p>
-<p>📁 Antisaccade</p>
-<p>We use a <code>copy_to_drive.R</code> script to compile the raw data from all the computers onto a <strong>Network Drive</strong> and at the same time reorgnize the data by <strong>task</strong>.</p>
+<p>📁 analyses</p>
+<p>📁 data</p>
+<p>📁 R</p>
+<ol start="2" type="1">
+<li>Inside of the <strong>data</strong> folder create a <strong>raw/messy</strong> folder and a <strong>scored</strong> folder</li>
+</ol>
+<p>📁 data</p>
+<p>&nbsp;&nbsp;&nbsp;📁 raw</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📁 messy</p>
+<p>&nbsp;&nbsp;&nbsp;📁 scored</p>
+<ol start="3" type="1">
+<li>Create an RStudio Project in the project’s root directory</li>
+</ol>
+<blockquote class="blockquote">
+<p>File -&gt; New Project… -&gt; Existing Directory</p>
+</blockquote>
+</section><section id="copy-data-files" class="level1"><h1>Copy Data Files</h1>
+<p>Once you create a data analysis repository in SharePoint/Data Analysis, you can copy over data files for the tasks specific to that research project.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/data_to_zdrive.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="367"></p>
+<figure class="figure"><p><img src="images/data_to_analysis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="822"></p>
 </figure>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can find a template for the <code>copy_to_drive.R</code> script file on the Network Drive</p>
+<p>Only copy over the <strong>messy</strong> raw data files, otherwise your project will not be fully reproducible</p>
 </div>
 </div>
-<p>The template looks something link:</p>
-</section><section id="sharepoint---data-collection" class="level1"><h1>SharePoint - Data Collection</h1>
-<p>Link to <a href="https://gtvault.sharepoint.com/sites/cos/psychology/engle-lab/Shared%20Documents/Forms/All%20Items.aspx" target="_blank">SharePoint</a></p>
-<p>We use the <strong>Network Drive</strong> simply to <u>transfer</u> data files to the lab’s <strong>SharePoint</strong>, where the data will be permanently stored. A SharePoint/Data Collection/[Study Name] directory is where ALL the raw data files for that data collection effort are stored.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/data_to_sharepoint.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="367"></p>
-</figure>
+</section><section id="download-r-script-templates" class="level1"><h1>Download R Script Templates</h1>
+<p>The <code>englelab</code> package contains R script templates you can download</p>
+<p>In the console window, type:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">englelab</span><span class="fu">::</span><span class="fu"><a href="https://englelab.github.io/englelab/reference/get_template.html">get_template</a></span><span class="op">(</span>raw_script <span class="op">=</span> <span class="cn">TRUE</span>, score_script <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                       merge_script <span class="op">=</span> <span class="cn">TRUE</span>, analysis_script <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                       wmc_scripts <span class="op">=</span> <span class="cn">TRUE</span>, ac_scripts <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                       main_script <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The organization of data files and scripts looks something like:</p>
-<p>📁 <strong>data</strong></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; 📁 <strong>raw</strong> (created from _raw.R scripts)</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄 OSpan_raw.csv</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄 RAPM_raw.csv</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄 Antisaccade_raw.csv</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁 <strong>messy</strong> (original files created from task program)</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁 OSpan</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄 OSpan_subjID.txt</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁 RAPM</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁 Antisaccade</p>
-<p>📁 <strong>R</strong></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; 📄 OSpan_raw.R</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; 📄 RAPM_raw.R</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; 📄 Antisaccade_raw.R</p>
+<section id="copy-from-other-projects" class="level3"><h3 class="anchored" data-anchor-id="copy-from-other-projects">Copy From Other Projects</h3>
+<p>If R scripts already exist in other projects for processing data from tasks you are using in your current project, then you can also just copy and paste those over to your project.</p>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -750,13 +794,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
-      <a href="./data-proc-overview.html" class="pagination-link" aria-label="Overview">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview</span></span>
+      <a href="./data-prep-duplicate-check.html" class="pagination-link" aria-label="Data Qualtiy Checks">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Qualtiy Checks</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./setup-project.html" class="pagination-link" aria-label="Setup Project">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data-scoring-score-clean.html" class="pagination-link" aria-label="Score and Clean Data">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Score and Clean Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

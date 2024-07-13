@@ -1,6 +1,6 @@
 ---
-title: "Data Scoring"
-subtitle: "Data Processing"
+title: "Score and Clean Data"
+subtitle: "Data Scoring"
 execute:
   echo: true
   eval: true
@@ -21,9 +21,7 @@ library(psych)
 
 ![](images/data_workflow_2.png){width="850"}
 
-At this stage of data processing you have created tidy raw data files for each task.
-
-The next step is to process the raw data into aggregate summary variables. This involves several steps:
+Before you can analyze the data you need to process the raw data into aggregate summary variables. This involves several steps:
 
 1.  Calculate task scores
 

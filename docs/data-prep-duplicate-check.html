@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>AWM useRguide – 3&nbsp; Setup Project</title>
+<title>AWM useRguide – 3&nbsp; Data Qualtiy Checks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,8 +60,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data-prep.html" rel="next">
-<link href="./compile-raw-data.html" rel="prev">
+<link href="./data-scoring-setup-project.html" rel="next">
+<link href="./data-prep-tidy-raw.html" rel="prev">
 <link href="./cover_small.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./setup-project.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-prep-compile-data.html">Data Preparation</a></li><li class="breadcrumb-item"><a href="./data-prep-duplicate-check.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Qualtiy Checks</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -188,10 +188,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Installs and Updates</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Data Processing</span></a>
+ <span class="menu-text">Data Preparation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -199,38 +205,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-proc-overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
+  <a href="./data-prep-compile-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./compile-raw-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span></a>
+  <a href="./data-prep-tidy-raw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidy Raw Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup-project.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./data-prep.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Preparation</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./data-score.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Scoring</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./data-score-merge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Scoring - Merge</span></span></a>
+  <a href="./data-prep-duplicate-check.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Qualtiy Checks</span></span></a>
   </div>
 </li>
       </ul>
@@ -238,12 +226,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Data Analysis</span></a>
+ <span class="menu-text">Data Scoring</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-scoring-setup-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Setup Analysis Project</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-scoring-score-clean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Score and Clean Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-scoring-single-merge-file.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single Merged File</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-analysis-anova.html" class="sidebar-item-text sidebar-link">
@@ -260,13 +277,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./update-packages.html" class="sidebar-item-text sidebar-link">
@@ -283,22 +300,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#setup-folders" id="toc-setup-folders" class="nav-link active" data-scroll-target="#setup-folders">Setup Folders</a></li>
-  <li><a href="#copy-data-files" id="toc-copy-data-files" class="nav-link" data-scroll-target="#copy-data-files">Copy Data Files</a></li>
-  <li>
-<a href="#download-r-script-templates" id="toc-download-r-script-templates" class="nav-link" data-scroll-target="#download-r-script-templates">Download R Script Templates</a>
+<li>
+<a href="#duplicate-subject-ids" id="toc-duplicate-subject-ids" class="nav-link active" data-scroll-target="#duplicate-subject-ids">Duplicate Subject IDs</a>
   <ul class="collapse">
-<li><a href="#copy-from-other-projects" id="toc-copy-from-other-projects" class="nav-link" data-scroll-target="#copy-from-other-projects">Copy From Other Projects</a></li>
+<li>
+<a href="#check-for-duplicates" id="toc-check-for-duplicates" class="nav-link" data-scroll-target="#check-for-duplicates">Check for Duplicates</a>
+  <ul class="collapse">
+<li><a href="#install-psyworkflow" id="toc-install-psyworkflow" class="nav-link" data-scroll-target="#install-psyworkflow">Install <code>psyworkflow</code></a></li>
+  <li><a href="#duplicates_check" id="toc-duplicates_check" class="nav-link" data-scroll-target="#duplicates_check"><code>duplicates_check()</code></a></li>
+  </ul>
+</li>
+  <li><a href="#identifying-correct-ids" id="toc-identifying-correct-ids" class="nav-link" data-scroll-target="#identifying-correct-ids">Identifying Correct IDs</a></li>
+  <li>
+<a href="#fix-ids-in-data-files" id="toc-fix-ids-in-data-files" class="nav-link" data-scroll-target="#fix-ids-in-data-files">Fix IDs in Data Files</a>
+  <ul class="collapse">
+<li><a href="#e-prime" id="toc-e-prime" class="nav-link" data-scroll-target="#e-prime">E-Prime</a></li>
+  <li><a href="#rename-the-data-file" id="toc-rename-the-data-file" class="nav-link" data-scroll-target="#rename-the-data-file">Rename the data file</a></li>
+  </ul>
+</li>
   </ul>
 </li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-proc-overview.html">Data Processing</a></li><li class="breadcrumb-item"><a href="./setup-project.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span></a></li></ol></nav><div class="quarto-title">
+<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-prep-compile-data.html">Data Preparation</a></li><li class="breadcrumb-item"><a href="./data-prep-duplicate-check.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Qualtiy Checks</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setup Project</span>
+<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Qualtiy Checks</span>
 </h1>
-<p class="subtitle lead">Data Processing</p>
+<p class="subtitle lead">Data Preparation</p>
 </div>
 
 
@@ -312,36 +341,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p><img src="images/data_collection_to_analysis.png" class="img-fluid" width="575"></p>
-<p>For every data collection study there are multiple data analysis projects that result in published papers. The data analysis projects will share common tasks but might use different criteria for scoring, cleaning, and analyzing the data. Because of this, and just for organization, we need to keep data collection and data analysis projects separate.</p>
-<p>The <strong>data collection repository</strong> (SharePoint / Data Collection / [Study Name]) should be where raw and tidy data files, along with some R scripts are stored.</p>
-<p>Each <strong>data analysis project</strong> should be created from the data files in the data collection repository.</p>
-<section id="setup-folders" class="level1"><h1>Setup Folders</h1>
-<ol type="1">
-<li>Create a folder for your project that contains the three following folders</li>
-</ol>
-<p>📁 analyses</p>
-<p>📁 data</p>
-<p>📁 R</p>
-<ol start="2" type="1">
-<li>Inside of the <strong>data</strong> folder create a <strong>raw/messy</strong> folder and a <strong>scored</strong> folder</li>
-</ol>
-<p>📁 data</p>
-<p>&nbsp;&nbsp;&nbsp;📁 raw</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📁 messy</p>
-<p>&nbsp;&nbsp;&nbsp;📁 scored</p>
-<ol start="3" type="1">
-<li>Create an RStudio Project in the project’s root directory</li>
-</ol>
-<blockquote class="blockquote">
-<p>File -&gt; New Project… -&gt; Existing Directory</p>
-</blockquote>
-</section><section id="copy-data-files" class="level1"><h1>Copy Data Files</h1>
-<p>Once you create a data analysis repository in SharePoint/Data Analysis, you can copy over data files for the tasks specific to that research project.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/data_to_analysis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="822"></p>
-</figure>
+</header><section id="duplicate-subject-ids" class="level1"><h1>Duplicate Subject IDs</h1>
+<p>As data collection continues you will periodically compile all the data, process it, and even do some analyses. These are a good opportunity to do a data quality check that can be hard to identify and correct for later on down the road: <strong>Check for Duplicate Subject IDs</strong>.</p>
+<p>In a large data collection effort where we recruit hundreds of subjects for multiple sessions, and have a team of over 10 research assistants, there are bound to be mistakes that happen. One that can be problematic for our data are duplicate subject IDs. This happens when an RA accidentally enters in the wrong subject ID when administering a task. This can be a result of a simple typo or the RA mixing up subject IDs when running multiple people at one time. Either way, these need to be identified and corrected for.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There may also be cases where there are Subject IDs that do not make sense (e.g., contains 6 digits when we only use 5 digit IDs). These are typically easier to detect and correct for so it won’t be covered here, but you should look out for these as well.</p>
+</div>
+</div>
+<section id="check-for-duplicates" class="level2"><h2 class="anchored" data-anchor-id="check-for-duplicates">Check for Duplicates</h2>
+<p>To check for duplicate subject IDs in a data file, you need to have a uniqe date and time (or some other unique information) in your raw data files. In the <code>psyworkflow</code> R package, there is a convenient function to detect duplicate IDs based on the unique columns.</p>
+<section id="install-psyworkflow" class="level3"><h3 class="anchored" data-anchor-id="install-psyworkflow">Install <code>psyworkflow</code>
+</h3>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dr-JT/psyworkflow"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="duplicates_check" class="level3"><h3 class="anchored" data-anchor-id="duplicates_check"><code>duplicates_check()</code></h3>
+<p>In your tidy raw data R script file, you can add <code>duplicates_check()</code> when importing the data files</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="fu">here</span><span class="op">(</span><span class="va">import_dir</span>, <span class="va">task</span><span class="op">)</span>, </span>
+<span>                    pattern <span class="op">=</span> <span class="st">".txt"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">data_import</span> <span class="op">&lt;-</span> <span class="va">files</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">map_df</span><span class="op">(</span><span class="op">~</span> <span class="fu">read_delim</span><span class="op">(</span><span class="va">.x</span>, locale <span class="op">=</span> <span class="fu">locale</span><span class="op">(</span>encoding <span class="op">=</span> <span class="st">"UCS-2LE"</span><span class="op">)</span>, </span>
+<span>                      delim <span class="op">=</span> <span class="st">"\t"</span>, escape_double <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>                      trim_ws <span class="op">=</span> <span class="cn">TRUE</span>, na <span class="op">=</span> <span class="st">"NULL"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">psyworkflow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psyworkflow/man/duplicates_check.html">duplicates_check</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Some arguments you need to specify:</p>
+<ul>
+<li><p><strong>id</strong>: The column name corresponding to Subject IDs. Defaults to: id = “Subject”</p></li>
+<li><p><strong>unique</strong>: Column names that are unique to each Subject ID</p></li>
+<li><p><strong>save_as</strong>: Folder path and file name to output the duplicate ID’s to. This is useful so that you have a log of which tasks have duplicate IDs and need to be corrected</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the helper function <code>?</code> to see other arguments</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For an E-Prime data file, all the default arguments can be used and the only argument you need to specify is <strong>save_as</strong></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="fu">here</span><span class="op">(</span><span class="va">import_dir</span>, <span class="va">task</span><span class="op">)</span>, </span>
+<span>                    pattern <span class="op">=</span> <span class="st">".txt"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">data_import</span> <span class="op">&lt;-</span> <span class="va">files</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">map_df</span><span class="op">(</span><span class="op">~</span> <span class="fu">read_delim</span><span class="op">(</span><span class="va">.x</span>, locale <span class="op">=</span> <span class="fu">locale</span><span class="op">(</span>encoding <span class="op">=</span> <span class="st">"UCS-2LE"</span><span class="op">)</span>, </span>
+<span>                      delim <span class="op">=</span> <span class="st">"\t"</span>, escape_double <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>                      trim_ws <span class="op">=</span> <span class="cn">TRUE</span>, na <span class="op">=</span> <span class="st">"NULL"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">psyworkflow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psyworkflow/man/duplicates_check.html">duplicates_check</a></span><span class="op">(</span>save_as <span class="op">=</span> <span class="fu">here</span><span class="op">(</span><span class="st">"data/raw/duplicates"</span>,</span>
+<span>                                               <span class="st">"task_name_duplicates.csv"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="identifying-correct-ids" class="level2"><h2 class="anchored" data-anchor-id="identifying-correct-ids">Identifying Correct IDs</h2>
+<p>Open the <strong>task_name_duplicates.csv</strong> file to see a list of subject IDs that are duplicated.</p>
+<p>Figuring out which subject ID is correct and which one is wrong (and what the correct ID is) requires some investigative work. Here are some common things to look for:</p>
+<ul>
+<li><p>Cross check the date and time in the data files with the Participant Schedule</p></li>
+<li><p>Check the Running Room Log Book. Can verify what time they started and what computer they do the task on</p></li>
+<li><p>Check the Subject ID and Session Time in data files for tasks immediately preceding and following the task with the potentially wrong ID</p></li>
+</ul></section><section id="fix-ids-in-data-files" class="level2"><h2 class="anchored" data-anchor-id="fix-ids-in-data-files">Fix IDs in Data Files</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -352,23 +435,22 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Only copy over the <strong>messy</strong> raw data files, otherwise your project will not be fully reproducible</p>
+<p>This is important. Do not ignore this section!</p>
 </div>
 </div>
-</section><section id="download-r-script-templates" class="level1"><h1>Download R Script Templates</h1>
-<p>The <code>englelab</code> package contains R script templates you can download</p>
-<p>In the console window, type:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">englelab</span><span class="fu">::</span><span class="fu"><a href="https://englelab.github.io/englelab/reference/get_template.html">get_template</a></span><span class="op">(</span>raw_script <span class="op">=</span> <span class="cn">TRUE</span>, score_script <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>                       merge_script <span class="op">=</span> <span class="cn">TRUE</span>, analysis_script <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>                       wmc_scripts <span class="op">=</span> <span class="cn">TRUE</span>, ac_scripts <span class="op">=</span> <span class="cn">TRUE</span>, </span>
-<span>                       main_script <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="copy-from-other-projects" class="level3"><h3 class="anchored" data-anchor-id="copy-from-other-projects">Copy From Other Projects</h3>
-<p>If R scripts already exist in other projects for processing data from tasks you are using in your current project, then you can also just copy and paste those over to your project.</p>
+<p>You need to fix the data files <strong>on the running room computer itself!</strong> Not on the network drive, not on SharePoint, or anywhere else. The original data file created on the local running room computer needs to be fixed!</p>
+<p>How to do this depends on the program used to adminster the task and the type of data file</p>
+<section id="e-prime" class="level3"><h3 class="anchored" data-anchor-id="e-prime">E-Prime</h3>
+<p>E-Prime will produce two data files. We only use one, but the other can be a backup so we need to fix both data files.</p>
+<section id="export.txt" class="level4"><h4 class="anchored" data-anchor-id="export.txt">-Export.txt</h4>
+<p>The -Export.txt is the main file that needs to be corrected. Open the file in Excel and change ALL the values in the <strong>Subject</strong> column. Make sure you have it right! Save it.</p>
+</section><section id="edat3" class="level4"><h4 class="anchored" data-anchor-id="edat3">.edat3</h4>
+<p>The .edat3 file is secondary but should also be corrected. Open the .edat3 file (it will open in E-Data Aid). Change the value in the first row of the <strong>Subject</strong> column. This will automatically change all the other rows and will be highlighted in red.</p>
+</section></section><section id="rename-the-data-file" class="level3"><h3 class="anchored" data-anchor-id="rename-the-data-file">Rename the data file</h3>
+<p>Regardless of what program was used to administer the task (and as long as the subject ID is contained in the file name) you NEED to rename the data file itself. Replace the incorrect ID with the correct ID in the file name.</p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -777,13 +859,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
-      <a href="./compile-raw-data.html" class="pagination-link" aria-label="Compile Raw Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span>
+      <a href="./data-prep-tidy-raw.html" class="pagination-link" aria-label="Tidy Raw Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tidy Raw Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data-prep.html" class="pagination-link" aria-label="Data Preparation">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Preparation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data-scoring-setup-project.html" class="pagination-link" aria-label="Setup Analysis Project">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Setup Analysis Project</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

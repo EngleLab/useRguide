@@ -1,6 +1,6 @@
 ---
 title: "Compile Raw Data"
-subtitle: "Data Processing"
+subtitle: "Data Preparation"
 execute:
   echo: true
   eval: true
@@ -8,20 +8,6 @@ execute:
   warning: false
 bibliography: references.bib
 ---
-
-![](images/data_workflow_2.png){width="850"}
-
-There are three stages of processing and analyzing data in our lab
-
-1.  **Data Preparation**: Convert messy raw data files into tidy raw data files
-2.  **Data Scoring**: Calculate aggregate scores, clean data, remove outliers, and more
-3.  **Data Analysis**: Perform statistical analysis and visualize data
-
-All the steps in our data processing workflow can be fully reproduced with only the original raw data files and R scripts.
-
-But first, we need to compile, organize, and store the raw data files.
-
-# Compile Raw Data
 
 Data is collected locally on running room computers in the lab. Each computer will have a different combination of data from each subject and session number. On the running room computers the data is organized by **session** / **task**
 

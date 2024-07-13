@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.24">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>AWM useRguide – Installs and Updates</title>
+
+
+<title>AWM useRguide – Overview</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,41 +20,28 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -60,8 +50,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./overview.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./data-prep-compile-data.html" rel="next">
+<link href="./installation.html" rel="prev">
 <link href="./cover_small.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,7 +61,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -97,13 +88,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+}</script>
+
+
 </head>
+
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">AWM useRguide</span>
@@ -115,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="https://englelab.gatech.edu/" target="_blank"> 
 <span class="menu-text">Lab Website</span></a>
   </li>  
@@ -131,8 +126,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-packages" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">R Packages</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-packages">
-<li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-packages">    
+        <li>
     <a class="dropdown-item" href="https://englelab.github.io/englelab/" target="_blank">
  <span class="dropdown-text">englelab</span></a>
   </li>  
@@ -153,9 +148,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">pupillometry</span></a>
   </li>  
     </ul>
-</li>
+  </li>
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -164,19 +159,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./installation.html">Installs and Updates</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./overview.html">Overview</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
@@ -184,13 +185,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./installation.html" class="sidebar-item-text sidebar-link active">
+  <a href="./installation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installs and Updates</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./overview.html" class="sidebar-item-text sidebar-link">
+  <a href="./overview.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -202,8 +203,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-prep-compile-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span></a>
@@ -222,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -231,8 +232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-scoring-setup-project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Setup Analysis Project</span></span></a>
@@ -251,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -260,8 +261,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-analysis-anova.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
@@ -274,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -283,49 +284,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./update-packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Update Packages</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li>
-<a href="#install-software" id="toc-install-software" class="nav-link active" data-scroll-target="#install-software">Install Software</a>
+  <li><a href="#how-we-do-research" id="toc-how-we-do-research" class="nav-link active" data-scroll-target="#how-we-do-research">How We Do Research</a></li>
+  <li><a href="#data-organization-challenges" id="toc-data-organization-challenges" class="nav-link" data-scroll-target="#data-organization-challenges">Data Organization Challenges</a>
   <ul class="collapse">
-<li><a href="#install-r" id="toc-install-r" class="nav-link" data-scroll-target="#install-r">Install R</a></li>
-  <li><a href="#install-rstudio" id="toc-install-rstudio" class="nav-link" data-scroll-target="#install-rstudio">Install RStudio</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#update-software" id="toc-update-software" class="nav-link" data-scroll-target="#update-software">Update Software</a>
+  <li><a href="#solution-to-challenges" id="toc-solution-to-challenges" class="nav-link" data-scroll-target="#solution-to-challenges">Solution to Challenges</a></li>
+  </ul></li>
+  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a>
   <ul class="collapse">
-<li><a href="#update-r" id="toc-update-r" class="nav-link" data-scroll-target="#update-r">Update R</a></li>
-  <li><a href="#update-rstudio" id="toc-update-rstudio" class="nav-link" data-scroll-target="#update-rstudio">Update RStudio</a></li>
+  <li><a href="#what-does-reproducibility-mean" id="toc-what-does-reproducibility-mean" class="nav-link" data-scroll-target="#what-does-reproducibility-mean">What does reproducibility mean?</a></li>
+  </ul></li>
+  <li><a href="#how-we-process-data" id="toc-how-we-process-data" class="nav-link" data-scroll-target="#how-we-process-data">How We Process Data</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-</li>
-  <li><a href="#getting-to-know-rstudio" id="toc-getting-to-know-rstudio" class="nav-link" data-scroll-target="#getting-to-know-rstudio">Getting to Know RStudio</a></li>
-  <li>
-<a href="#rstudio-settings" id="toc-rstudio-settings" class="nav-link" data-scroll-target="#rstudio-settings">RStudio Settings</a>
-  <ul class="collapse">
-<li><a href="#customizing-rstudio" id="toc-customizing-rstudio" class="nav-link" data-scroll-target="#customizing-rstudio">Customizing RStudio</a></li>
-  </ul>
-</li>
-  </ul></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Installs and Updates</h1>
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Overview</h1>
 </div>
 
 
@@ -339,112 +336,133 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>R is the actual programming software that executes the code. RStudio is an environment for writing R scripts, Quarto documents, managing packages and projects, and much more. When you open RStudio, it will open a window to the R console within the RStudio environment.</p>
-<p>If you do not have R or RStudio installed on your computer, then follow the install instructions below.</p>
-<p>If you already have R or RStudio installed on your computer, then you may want to <a href="#update-software">Update Software</a>.</p>
-<section id="install-software" class="level1"><h1>Install Software</h1>
-<section id="install-r" class="level2"><h2 class="anchored" data-anchor-id="install-r">Install R</h2>
-<p>First you need to download the latest version of <strong>R</strong> from their website <a href="https://www.r-project.org" class="uri">https://www.r-project.org</a></p>
-<ol type="1">
-<li><p>Select <strong>CRAN</strong> on the left, just under <strong>Download</strong></p></li>
-<li><p>Select the first option under 0-Cloud</p></li>
-<li><p>Select the download option depending on your computer</p></li>
-<li><p>Select the <strong>base</strong> installation (for Windows) or the <strong>Latest Release</strong> (for Mac)</p></li>
-<li><p>Open and Run the installation file</p></li>
-</ol></section><section id="install-rstudio" class="level2"><h2 class="anchored" data-anchor-id="install-rstudio">Install RStudio</h2>
-<p>The easiest way to interact with R is through the RStudio environment. To do this you need to <a href="https://www.rstudio.com/products/rstudio/download/#download" target="_blank">download RStudio</a></p>
-<ol type="1">
-<li>Select the <strong>Free</strong> version of <strong>RStudio Desktop</strong>
-</li>
-<li>Select the download option depending on your computer</li>
-</ol></section></section><section id="update-software" class="level1"><h1>Update Software</h1>
-<section id="update-r" class="level2"><h2 class="anchored" data-anchor-id="update-r">Update R</h2>
-<p>If you already have R installed, but want to update it to the most current version follow these steps.</p>
-<p><em>Warning: When updating R (not RStudio), it may remove all packages you have installed</em></p>
-<p>First check what version of R you have installed.</p>
-<ol type="1">
-<li><p>Open RStudio</p></li>
-<li><p>In the console window you will see the R version you are running (e.g., R version 4.1.0)</p></li>
-<li><p>If you have an R version older than 4.0.0 than you need to update R.</p></li>
-<li><p>Run the following lines of code in your console window. This is an easy way to re-install all your currently installed packages. This step will save a list of packages to re-install later.</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Save current packages and their versions to object called ip</span></span>
-<span></span>
-<span><span class="va">ip</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">ip</span></span>
-<span></span>
-<span><span class="co"># Save the object as an .rds file</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">ip</span>, <span class="st">"CurrentPackages.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="5" type="1">
-<li><p>Exit out of all R or RStudio windows</p></li>
-<li><p>Download and install the latest version of R (see the section on installing R above)</p></li>
-<li><p>Open RStudio</p></li>
-<li><p>Check if your previously installed packages are installed using the <strong>Packages</strong> tab in the bottom right window</p></li>
-<li><p>If you need to re-install your previous packages, then run the following lines of code</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># After updating R, load the file and reinstall packages</span></span>
-<span></span>
-<span><span class="va">ip</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"CurrentPackages.rds"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">ip</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section><section id="update-rstudio" class="level2"><h2 class="anchored" data-anchor-id="update-rstudio">Update RStudio</h2>
-<p>Go to Help -&gt; Check for Updates</p>
-</section></section><section id="getting-to-know-rstudio" class="level1"><h1>Getting to Know RStudio</h1>
-<p>While R is the actual programming software that executes the code, RStudio is an environment for interacting with R, writing R scripts, managing and organizing projects, and much more. When you open RStudio, it will open a window to the R console within the RStudio environment.</p>
-<p>Go ahead an open the RStudio application on your computer.</p>
-<p>When you open a fresh session of RStudio there are 3 window panes open. The Console window, the Environment window, and the Files window. Go ahead and navigate to File -&gt; New File -&gt; R Script. You should now see something similar to the image below</p>
-<div class="cell fig-cap-location-top">
-<div class="cell-output-display">
-<div id="fig-rstudio-env" class="quarto-figure quarto-figure-center quarto-float anchored" data-cap-location="top">
-<figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-rstudio-env-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: RStudio window panes
-</figcaption><div aria-describedby="fig-rstudio-env-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/rstudio-environment.png" class="img-fluid figure-img" width="781">
-</div>
-</figure>
-</div>
-</div>
-</div>
-<p>There are 4 window panes and each one has it’s own set of tabs associated with it:</p>
+</header>
+
+
+<section id="how-we-do-research" class="level1">
+<h1>How We Do Research</h1>
+<p>We make use of large data collection efforts where we recruit 300-500 people to participate in multiple 2-3 hour sessions and perform up to 40+ cognitive tasks. A single large data collection effort will contain multiple research projects and publications.</p>
+<p>For instance, in one of our recent data collection efforts (2020-2022) we recruited 461 participants for 5 2.5-hour sessions in which they completed 42 cognitive tasks. Multiple publications have resulted from this data collection effort with several more in the works:</p>
+<p><span class="citation" data-cites="burgoyne2024">Burgoyne, Seeburger, and Engle (<a href="#ref-burgoyne2024" role="doc-biblioref">2024</a>)</span> . Modality Matters: Three Auditory Conflict Tasks to Measure Individual Differences in Attention Control</p>
+<p><span class="citation" data-cites="burgoyne2023">Burgoyne et al. (<a href="#ref-burgoyne2023" role="doc-biblioref">2023</a>)</span> . Nature and Measurement of Attention Control</p>
+<p><span class="citation" data-cites="draheim2023">Draheim, Tsukahara, and Engle (<a href="#ref-draheim2023" role="doc-biblioref">2023</a>)</span> . Replication and Extension of the Toolbox Approach to Measuring Attention Control.</p>
+<p><a href="https://osf.io/qbwem/wiki/home/" target="_blank">OSF BOAT</a>: See a description and full list of publications and projects to result from this data collection effort on OSF.</p>
+</section>
+<section id="data-organization-challenges" class="level1">
+<h1>Data Organization Challenges</h1>
+<p>There are several challenges to working with data from these large data collection efforts</p>
 <ul>
-<li><p>The <strong>Console</strong> window (the bottom left window pane) is where code is executed and output is displayed.</p></li>
-<li>
-<p>The <strong>Source</strong> window (the top left window pane) is where you will write your code to create a script file. When you open a new script file you will see a blank sheet where you can start writing the script. When you execute lines of code from here you will see it being executed in the Console window.</p>
-<p>The Source window is also where you can view data frames you have just imported or created. In the image above, notice the different tabs in the Source window. There are two “Untitled” script files open and one data frame called ‘data’.</p>
-</li>
-<li><p>The <strong>Environment</strong> window (top right window pane) is where you can see any data frames, variables, or functions you have created. Go ahead and type the following in your Console window and hit enter.</p></li>
+<li><p><strong>Large number of tasks</strong>: Data from 40+ tasks need to be processed, scored, and cleaned.</p></li>
+<li><p><strong>Different combination of tasks</strong>: The multiple research projects and publications will use a different combination of tasks, with a core set of tasks common across most of our projects (e.g., fluid intelligence, working memory capacity, and attention control).</p></li>
+<li><p><strong>Different criteria and decisions</strong>: Different decisions and criteria how to process, score, and clean the data might be made across the multiple research projects and publications.</p></li>
+<li><p><strong>Different “final” data files</strong>: Because of the above challenges, we can end up with different subjects and values even for common sets of tasks across projects.</p></li>
 </ul>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">welcome_message</span> <span class="op">&lt;-</span> <span class="st">"hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>You should now see the variable <code>welcome_message</code> in the Environment window pane</p>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Poor documentation and <strong>lack of reproducibility</strong> can undermine our ability to deal with these challenges</p>
+</div>
+</div>
+<section id="solution-to-challenges" class="level2">
+<h2 class="anchored" data-anchor-id="solution-to-challenges">Solution to Challenges</h2>
+<p>Simply using R is not enough</p>
 <ul>
-<li>The <strong>Files</strong> window (the bottom right window pane) is where you can see your computer’s directories, plots you create, manage packages, and see help documentation.</li>
-</ul></section><section id="rstudio-settings" class="level1"><h1>RStudio Settings</h1>
-<p>I highly suggest changing the default RStudio General settings by going to Tools -&gt; Global Options</p>
-<div class="cell fig-cap-location-top">
-<div class="cell-output-display">
-<div id="fig-rstudio-settings" class="quarto-figure quarto-figure-center quarto-float anchored" data-cap-location="top">
-<figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-rstudio-settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: RStudio settings window
-</figcaption><div aria-describedby="fig-rstudio-settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/rstudio-settings.png" class="img-fluid figure-img" width="645">
+<li><p>Document steps and aim for full reproducibility</p></li>
+<li><p>Keep projects, data files, and scripts well orgainzed</p></li>
+</ul>
+</section>
+</section>
+<section id="reproducibility" class="level1">
+<h1>Reproducibility</h1>
+<p>Open science priniciples are becoming the norm in the field. Open access to data and scripts is a part of that. Once we have published a study, we host all our data and scripts on OSF.</p>
+<p><a href="https://osf.io/v6thw/" target="_blank">OSF: Attention &amp; Working Memory Lab</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</figure>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>Are data and scripts truly open access and reproducible if they are unorganized and hard to understand?</p>
 </div>
-<p>You can also change the theme, font type, and font size, if you navigate to the Appearance tab in Settings. You may also like to change the organization of the RStudio window panes in Pane Layout.</p>
-<section id="customizing-rstudio" class="level2"><h2 class="anchored" data-anchor-id="customizing-rstudio">Customizing RStudio</h2>
-<p>Coming soon…</p>
+</div>
+<p>Project organization is often overlooked at the expense of “just getting it done” because it takes more time and forethought to organize a project. However, the “just getting it done” approach can lead to a lot of unintended consequences:</p>
+<ul>
+<li><p><strong>Inefficient Workflow</strong>: Disorganization can lead to a chaotic workflow where significant time is spent locating files, understanding what each script does, and figuring out the correct order of operations for running analyses. This inefficiency can drastically slow down the research progress.</p></li>
+<li><p><strong>Time Inefficiency</strong>: Researchers may waste significant amounts of time searching for files, data, or specific pieces of code within a disorganized project. This inefficiency can extend project timelines and delay the dissemination of findings.</p></li>
+<li><p><strong>Increased Errors</strong>: A lack of organization can lead to more mistakes. This is because it’s easier to lose critical pieces of code or overlook important updates to scripts. It is also harder to go back and check your work to make sure things were done correctly.</p></li>
+<li><p><strong>Difficulty in Scaling the Project</strong>: As projects grow, the lack of initial organization can make it much more difficult to scale up. This can limit the scope of the research or lead to significant restructuring efforts down the line.</p></li>
+<li><p><strong>Barriers to Revising Analysis</strong>: Research often requires revisiting and revising analyses as new data comes in or as hypotheses evolve. A lack of organization can make it difficult to update analyses or integrate new data seamlessly, stifling the dynamic nature of research.</p></li>
+<li><p><strong>Challenges in Publishing and Sharing</strong>: When preparing research for publication or sharing with the broader scientific community, a well-organized project simplifies the process of compiling results, data, and methods. An unorganized project can impede these efforts, delaying or even jeopardizing publication.</p></li>
+<li><p><strong>Reproducibility Issues</strong>: Without clear organization, reproducing the results of a project can become nearly impossible, both for the original researchers and for others who may want to build upon the work. This undermines the credibility and utility of the research.</p></li>
+</ul>
+<p>The thing is, simply using R does not get around any of this. In fact, sometimes it can exacerbate it because of the extra cognitive demand faced when writing code. This extra demand can make the “just getting it done” approach more tempting. So what is the solution?</p>
+<p>The solution is to <u>slow down</u> and <u>give some thought</u> to the organization of your project and it’s reproducibility.</p>
+<blockquote class="blockquote">
+<p>Frontloading effort saves future headaches.</p>
+</blockquote>
+<p>Part of the scientific process involves carefully documenting every step in our procedures. Doing so not only ensures higher quality research, but also enables your future self and others to fully reproduce what you did, go back and analyze the data in a different way, or catch errors in the data analysis process. Without a fully reproducible project, it may be difficult or impossible to catch errors that were made.</p>
+<section id="what-does-reproducibility-mean" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-reproducibility-mean">What does reproducibility mean?</h2>
+<p>Reproducibility means that all data processing and analysis steps can be fully reproduced using only the original raw data files and the execution of the R scripts. There are different levels of reproducibility (I made these up):</p>
+<ol type="1">
+<li><p><strong>Partially reproducible</strong> - only some data processing and analysis steps can be reproduced, which may be due to a lack of original raw data files, the “just get it done” approach, or the use of proprietary and non-reproducible software.</p></li>
+<li><p><strong>Minimally reproducible</strong> (acceptable) - all data processing and analysis steps can be reproduced on any research team members computer without any modifications needed.</p></li>
+<li><p><strong>Moderately reproducible</strong> (desired) - meets the minimal level plus other people not involved in the research project can reproduce the steps with minimal modifications.</p></li>
+<li><p><strong>Highly reproducible</strong> (good luck!) - fully reproducible without major modifications needed by people not involved in the research project 5 - 10+ years from now.</p></li>
+</ol>
+<p>A minimal level of reproducibility is still acceptable, as achieving more requires significant time and effort. We should strive for a moderate amount of reproducibility but achieving it requires more than just writing code. Your code must be organized, easy to understand, and include notes and documentation. Even if you or someone else attempts to reproduce your steps in the future, they can modify the code to make it work. The highest level of reproducibility is difficult to achieve due to software and code updates. Your code may only work with the current version of R or other packages. There are solutions to this problem of software and code updates, but who knows if those will work in the future!</p>
+<hr>
+<p>Simply using R for data analysis does not guarantee that your workflow is reproducible. In fact, there are many non-reproducible ways to use R. To ensure at least a moderate level of reproducibility, consider the following criteria (this is not an exhaustive list):</p>
+<ul>
+<li><p>Your statistical analysis (the final step) can be fully reproduced from the raw data files and your R scripts</p></li>
+<li><p>Your code can be reproduced on other computers without any modifications</p></li>
+<li><p><strong>Your data and R scripts are organized and documented in a way that makes them easily understandable</strong></p></li>
+</ul>
+<p>This last criterion is extremely important, but is often overlooked. If others cannot understand your workflow, then it is not moderately reproducible. Therefore, it is important to take the time and think about the organization of your project, files, data, and scripts.</p>
+</section>
+</section>
+<section id="how-we-process-data" class="level1">
+<h1>How We Process Data</h1>
+<p><img src="images/data_workflow_2.png" class="img-fluid"></p>
+<p>There are three stages of processing and analyzing data in our lab</p>
+<ol type="1">
+<li><strong>Data Preparation</strong>: Convert messy raw data files into tidy raw data files</li>
+<li><strong>Data Scoring</strong>: Calculate aggregate scores, clean data, remove outliers, and more</li>
+<li><strong>Data Analysis</strong>: Perform statistical analysis and visualize data</li>
+</ol>
+<p>All the steps in our data processing workflow can be fully reproduced with only the original raw data files and R scripts.</p>
+<p>We will cover these steps in the following chapters.</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-burgoyne2024" class="csl-entry" role="listitem">
+Burgoyne, Alexander P., Dolly T. Seeburger, and Randall W. Engle. 2024. <span>“Modality Matters: Three Auditory Conflict Tasks to Measure Individual Differences in Attention Control.”</span> <em>Behavior Research Methods</em>, February. <a href="https://doi.org/10.3758/s13428-023-02328-6">https://doi.org/10.3758/s13428-023-02328-6</a>.
+</div>
+<div id="ref-burgoyne2023" class="csl-entry" role="listitem">
+Burgoyne, Alexander P., Jason S. Tsukahara, Cody A. Mashburn, Richard Pak, and Randall W. Engle. 2023. <span>“Nature and Measurement of Attention Control.”</span> <em>Journal of Experimental Psychology: General</em>, April. <a href="https://doi.org/10.1037/xge0001408">https://doi.org/10.1037/xge0001408</a>.
+</div>
+<div id="ref-draheim2023" class="csl-entry" role="listitem">
+Draheim, Christopher, Jason S. Tsukahara, and Randall W. Engle. 2023. <span>“Replication and Extension of the Toolbox Approach to Measuring Attention Control.”</span> <em>Behavior Research Methods</em>. <a href="https://doi.org/10.3758/s13428-023-02140-2">https://doi.org/10.3758/s13428-023-02140-2</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -852,18 +870,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./installation.html" class="pagination-link" aria-label="Installs and Updates">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Installs and Updates</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./overview.html" class="pagination-link" aria-label="Overview">
-        <span class="nav-page-text">Overview</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./data-prep-compile-data.html" class="pagination-link" aria-label="Compile Raw Data">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Compile Raw Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

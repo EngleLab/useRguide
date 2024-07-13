@@ -1,6 +1,6 @@
 ---
-title: "Data Preparation"
-subtitle: "Data Processing"
+title: "Tidy Raw Data"
+subtitle: "Data Preparation"
 execute:
   echo: true
   eval: true
@@ -17,9 +17,7 @@ library(dplyr)
 
 ![](images/data_workflow_2.png){width="850"}
 
-At this stage of data processing you have compiled the raw data files and setup a SharePoint/Data Analysis/\[Project Name\] project folder and copied over data files for any tasks you need.
-
-The next step is to convert the messy raw data files into tidy raw data files.
+At this stage of data processing you have compiled the raw data files. The next step is to convert the messy raw data files into tidy raw data files.
 
 ------------------------------------------------------------------------
 
@@ -271,11 +269,7 @@ paged_table(data_raw, options = list(cols.print = 9, rows.print = 20))
 This is where most of the work will be done for data preparation. Some common problems with messy raw data files:
 
 -   The same information is contained across different columns BUT in different rows
-
-<!-- -->
-
 -   Values in columns don't make sense and/or require understanding how the program was setup
-
 -   Missing columns that should be there
 
 ## Combine information across columns

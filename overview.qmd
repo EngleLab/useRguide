@@ -1,6 +1,4 @@
 ---
-title: "Overview"
-subtitle: "Data Processing"
 execute:
   echo: true
   eval: true
@@ -8,6 +6,8 @@ execute:
   warning: false
 bibliography: references.bib
 ---
+
+# Overview {.unnumbered}
 
 # How We Do Research
 
@@ -120,31 +120,5 @@ There are three stages of processing and analyzing data in our lab
 All the steps in our data processing workflow can be fully reproduced with only the original raw data files and R scripts.
 
 We will cover these steps in the following chapters.
-
-## Compile Raw Data
-
-Data is collected locally on running room computers in the lab, each with individual subject files for every session and task. The data is organized by session/task on each of these computers but we need to organize the folders just by /task and to also compile the data from all the computers in one location.
-
-We use a `copy_to_drive.R` script to compile the raw data from all the computers onto a **Network Drive.**
-
-![](images/data_to_zdrive.png){fig-align="center" width="367"}
-
-::: callout-note
-You can find a template for the `copy_to_drive.R` script file on the Network Drive
-:::
-
-## SharePoint - Data Collection
-
-We use the **Network Drive** to [transfer]{.underline} data files to the lab's **SharePoint**, where the data will be permanently stored. A SharePoint/Data Collection/\[Study Name\] directory is where ALL the raw data files for that data collection effort are stored.
-
-![](images/data_to_sharepoint.png){fig-align="center" width="367"}
-
-## SharePoint - Data Analysis
-
-Recall that a single data collection effort will contain multiple research projects, all with their own combination of tasks and decisions about processing, scoring, and cleaning the data. To maintain reproducibility across these research projects, we need to create a separate Data Analysis repository for a single data collection effort.
-
-Once you create a data analysis repository in SharePoint/Data Analysis, you can copy over data files for the tasks specific to that research project. In SharePoint/Data Analysis/\[Project Name\] is where the data is processed, scored, cleaned, and analyzed for that research project.
-
-![](images/data_to_analysis.png){fig-align="center" width="822"}
 
 # References

@@ -70,344 +70,352 @@
     ]
   },
   {
-    "objectID": "data-proc-overview.html",
-    "href": "data-proc-overview.html",
-    "title": "1  Overview",
+    "objectID": "overview.html",
+    "href": "overview.html",
+    "title": "Overview",
     "section": "",
     "text": "How We Do Research\nWe make use of large data collection efforts where we recruit 300-500 people to participate in multiple 2-3 hour sessions and perform up to 40+ cognitive tasks. A single large data collection effort will contain multiple research projects and publications.\nFor instance, in one of our recent data collection efforts (2020-2022) we recruited 461 participants for 5 2.5-hour sessions in which they completed 42 cognitive tasks. Multiple publications have resulted from this data collection effort with several more in the works:\nBurgoyne, Seeburger, and Engle (2024) . Modality Matters: Three Auditory Conflict Tasks to Measure Individual Differences in Attention Control\nBurgoyne et al. (2023) . Nature and Measurement of Attention Control\nDraheim, Tsukahara, and Engle (2023) . Replication and Extension of the Toolbox Approach to Measuring Attention Control.\nOSF BOAT: See a description and full list of publications and projects to result from this data collection effort on OSF.",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+      "Overview"
     ]
   },
   {
-    "objectID": "data-proc-overview.html#solution-to-challenges",
-    "href": "data-proc-overview.html#solution-to-challenges",
-    "title": "1  Overview",
+    "objectID": "overview.html#solution-to-challenges",
+    "href": "overview.html#solution-to-challenges",
+    "title": "Overview",
     "section": "Solution to Challenges",
     "text": "Solution to Challenges\nSimply using R is not enough\n\nDocument steps and aim for full reproducibility\nKeep projects, data files, and scripts well orgainzed",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+      "Overview"
     ]
   },
   {
-    "objectID": "data-proc-overview.html#what-does-reproducibility-mean",
-    "href": "data-proc-overview.html#what-does-reproducibility-mean",
-    "title": "1  Overview",
+    "objectID": "overview.html#what-does-reproducibility-mean",
+    "href": "overview.html#what-does-reproducibility-mean",
+    "title": "Overview",
     "section": "What does reproducibility mean?",
     "text": "What does reproducibility mean?\nReproducibility means that all data processing and analysis steps can be fully reproduced using only the original raw data files and the execution of the R scripts. There are different levels of reproducibility (I made these up):\n\nPartially reproducible - only some data processing and analysis steps can be reproduced, which may be due to a lack of original raw data files, the “just get it done” approach, or the use of proprietary and non-reproducible software.\nMinimally reproducible (acceptable) - all data processing and analysis steps can be reproduced on any research team members computer without any modifications needed.\nModerately reproducible (desired) - meets the minimal level plus other people not involved in the research project can reproduce the steps with minimal modifications.\nHighly reproducible (good luck!) - fully reproducible without major modifications needed by people not involved in the research project 5 - 10+ years from now.\n\nA minimal level of reproducibility is still acceptable, as achieving more requires significant time and effort. We should strive for a moderate amount of reproducibility but achieving it requires more than just writing code. Your code must be organized, easy to understand, and include notes and documentation. Even if you or someone else attempts to reproduce your steps in the future, they can modify the code to make it work. The highest level of reproducibility is difficult to achieve due to software and code updates. Your code may only work with the current version of R or other packages. There are solutions to this problem of software and code updates, but who knows if those will work in the future!\n\nSimply using R for data analysis does not guarantee that your workflow is reproducible. In fact, there are many non-reproducible ways to use R. To ensure at least a moderate level of reproducibility, consider the following criteria (this is not an exhaustive list):\n\nYour statistical analysis (the final step) can be fully reproduced from the raw data files and your R scripts\nYour code can be reproduced on other computers without any modifications\nYour data and R scripts are organized and documented in a way that makes them easily understandable\n\nThis last criterion is extremely important, but is often overlooked. If others cannot understand your workflow, then it is not moderately reproducible. Therefore, it is important to take the time and think about the organization of your project, files, data, and scripts.",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+      "Overview"
     ]
   },
   {
-    "objectID": "data-proc-overview.html#compile-raw-data",
-    "href": "data-proc-overview.html#compile-raw-data",
-    "title": "1  Overview",
-    "section": "Compile Raw Data",
-    "text": "Compile Raw Data\nData is collected locally on running room computers in the lab, each with individual subject files for every session and task. The data is organized by session/task on each of these computers but we need to organize the folders just by /task and to also compile the data from all the computers in one location.\nWe use a copy_to_drive.R script to compile the raw data from all the computers onto a Network Drive.\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou can find a template for the copy_to_drive.R script file on the Network Drive",
-    "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
-    ]
-  },
-  {
-    "objectID": "data-proc-overview.html#sharepoint---data-collection",
-    "href": "data-proc-overview.html#sharepoint---data-collection",
-    "title": "1  Overview",
-    "section": "SharePoint - Data Collection",
-    "text": "SharePoint - Data Collection\nWe use the Network Drive to transfer data files to the lab’s SharePoint, where the data will be permanently stored. A SharePoint/Data Collection/[Study Name] directory is where ALL the raw data files for that data collection effort are stored.",
-    "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
-    ]
-  },
-  {
-    "objectID": "data-proc-overview.html#sharepoint---data-analysis",
-    "href": "data-proc-overview.html#sharepoint---data-analysis",
-    "title": "1  Overview",
-    "section": "SharePoint - Data Analysis",
-    "text": "SharePoint - Data Analysis\nRecall that a single data collection effort will contain multiple research projects, all with their own combination of tasks and decisions about processing, scoring, and cleaning the data. To maintain reproducibility across these research projects, we need to create a separate Data Analysis repository for a single data collection effort.\nOnce you create a data analysis repository in SharePoint/Data Analysis, you can copy over data files for the tasks specific to that research project. In SharePoint/Data Analysis/[Project Name] is where the data is processed, scored, cleaned, and analyzed for that research project.",
-    "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
-    ]
-  },
-  {
-    "objectID": "compile-raw-data.html",
-    "href": "compile-raw-data.html",
-    "title": "\n2  Compile Raw Data\n",
+    "objectID": "data-prep-compile-data.html",
+    "href": "data-prep-compile-data.html",
+    "title": "\n1  Compile Raw Data\n",
     "section": "",
-    "text": "There are three stages of processing and analyzing data in our lab\n\n\nData Preparation: Convert messy raw data files into tidy raw data files\n\nData Scoring: Calculate aggregate scores, clean data, remove outliers, and more\n\nData Analysis: Perform statistical analysis and visualize data\n\nAll the steps in our data processing workflow can be fully reproduced with only the original raw data files and R scripts.\nBut first, we need to compile, organize, and store the raw data files.\nCompile Raw Data\nData is collected locally on running room computers in the lab. Each computer will have a different combination of data from each subject and session number. On the running room computers the data is organized by session / task\n📁 Session 1\n     📁 1. OSpan\n     📁 2. RAPM\n     📁 3. Antisaccade\n     📁 And so on\n📁 Session 2\n📁 Session 3\n📁 Session 4\nIdeally, we want the data organized just by task (we also like to get rid of the number in the folder name). And each task folder to have all the data from all subjects that have participated.\n📁 OSpan\n📁 RAPM\n📁 Antisaccade\nWe use a copy_to_drive.R script to compile the raw data from all the computers onto a Network Drive and at the same time reorgnize the data by task.\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou can find a template for the copy_to_drive.R script file on the Network Drive\n\n\nThe template looks something link:\nSharePoint - Data Collection\nLink to SharePoint\nWe use the Network Drive simply to transfer data files to the lab’s SharePoint, where the data will be permanently stored. A SharePoint/Data Collection/[Study Name] directory is where ALL the raw data files for that data collection effort are stored.\n\n\n\n\nThe organization of data files and scripts looks something like:\n📁 data\n     📁 raw (created from _raw.R scripts)\n           📄 OSpan_raw.csv\n           📄 RAPM_raw.csv\n           📄 Antisaccade_raw.csv\n           📁 messy (original files created from task program)\n                 📁 OSpan\n                       📄 OSpan_subjID.txt\n                 📁 RAPM\n                 📁 Antisaccade\n📁 R\n     📄 OSpan_raw.R\n     📄 RAPM_raw.R\n     📄 Antisaccade_raw.R",
+    "text": "Data is collected locally on running room computers in the lab. Each computer will have a different combination of data from each subject and session number. On the running room computers the data is organized by session / task\n📁 Session 1\n     📁 1. OSpan\n     📁 2. RAPM\n     📁 3. Antisaccade\n     📁 And so on\n📁 Session 2\n📁 Session 3\n📁 Session 4\nIdeally, we want the data organized just by task (we also like to get rid of the number in the folder name). And each task folder to have all the data from all subjects that have participated.\n📁 OSpan\n📁 RAPM\n📁 Antisaccade\nWe use a copy_to_drive.R script to compile the raw data from all the computers onto a Network Drive and at the same time reorgnize the data by task.\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou can find a template for the copy_to_drive.R script file on the Network Drive\n\n\nThe template looks something link:\nSharePoint - Data Collection\nLink to SharePoint\nWe use the Network Drive simply to transfer data files to the lab’s SharePoint, where the data will be permanently stored. A SharePoint/Data Collection/[Study Name] directory is where ALL the raw data files for that data collection effort are stored.\n\n\n\n\nThe organization of data files and scripts looks something like:\n📁 data\n     📁 raw (created from _raw.R scripts)\n           📄 OSpan_raw.csv\n           📄 RAPM_raw.csv\n           📄 Antisaccade_raw.csv\n           📁 messy (original files created from task program)\n                 📁 OSpan\n                       📄 OSpan_subjID.txt\n                 📁 RAPM\n                 📁 Antisaccade\n📁 R\n     📄 OSpan_raw.R\n     📄 RAPM_raw.R\n     📄 Antisaccade_raw.R",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Compile Raw Data</span>"
+      "Data Preparation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Compile Raw Data</span>"
     ]
   },
   {
-    "objectID": "setup-project.html",
-    "href": "setup-project.html",
-    "title": "\n3  Setup Project\n",
-    "section": "",
-    "text": "For every data collection study there are multiple data analysis projects that result in published papers. The data analysis projects will share common tasks but might use different criteria for scoring, cleaning, and analyzing the data. Because of this, and just for organization, we need to keep data collection and data analysis projects separate.\nThe data collection repository (SharePoint / Data Collection / [Study Name]) should be where raw and tidy data files, along with some R scripts are stored.\nEach data analysis project should be created from the data files in the data collection repository.\nSetup Folders\n\nCreate a folder for your project that contains the three following folders\n\n📁 analyses\n📁 data\n📁 R\n\nInside of the data folder create a raw/messy folder and a scored folder\n\n📁 data\n   📁 raw\n      📁 messy\n   📁 scored\n\nCreate an RStudio Project in the project’s root directory\n\n\nFile -&gt; New Project… -&gt; Existing Directory\n\nCopy Data Files\nOnce you create a data analysis repository in SharePoint/Data Analysis, you can copy over data files for the tasks specific to that research project.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nOnly copy over the messy raw data files, otherwise your project will not be fully reproducible\n\n\nDownload R Script Templates\nThe englelab package contains R script templates you can download\nIn the console window, type:\n\nenglelab::get_template(raw_script = TRUE, score_script = TRUE, \n                       merge_script = TRUE, analysis_script = TRUE, \n                       wmc_scripts = TRUE, ac_scripts = TRUE, \n                       main_script = TRUE)\n\nCopy From Other Projects\nIf R scripts already exist in other projects for processing data from tasks you are using in your current project, then you can also just copy and paste those over to your project.",
-    "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Setup Project</span>"
-    ]
-  },
-  {
-    "objectID": "data-prep.html",
-    "href": "data-prep.html",
-    "title": "\n4  Data Preparation\n",
+    "objectID": "data-prep-tidy-raw.html",
+    "href": "data-prep-tidy-raw.html",
+    "title": "\n2  Tidy Raw Data\n",
     "section": "",
     "text": "Overview of Template\nYou can download an R script template to convert messy raw data files into tidy raw data files:\nenglelab::get_template(raw_script = TRUE)",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Preparation</span>"
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidy Raw Data</span>"
     ]
   },
   {
-    "objectID": "data-prep.html#setup",
-    "href": "data-prep.html#setup",
-    "title": "\n4  Data Preparation\n",
+    "objectID": "data-prep-tidy-raw.html#setup",
+    "href": "data-prep-tidy-raw.html#setup",
+    "title": "\n2  Tidy Raw Data\n",
     "section": "Setup",
     "text": "Setup\n\n# ---- Setup ------------------\n# packages\nlibrary(here)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(purrr) # delete if not importing a batch of files\n\n# directories\nimport_dir &lt;- \"data/raw/messy\"\noutput_dir &lt;- \"data/raw\"\n\n# file names\ntask &lt;- \"taskname\"\nimport_file &lt;- paste(task, \".txt\", sep = \"\")\noutput_file &lt;- paste(task, \"raw.csv\", sep = \"_\")\n# -----------------------------\n\nThe Setup section is to:\n\nLoad any packages used in the script\nSet the directories of where to import and output data files to\nSet the file names of the data files to be imported and outputted\n\nI like to include the directory and file names at the top of the script that way it is easy to see what is being imported/outputted and from where right at the top of the script rather than having to search through the script for this information.\nWe can then use the import_dir , output_dir, import_file, and output_file variables in the script when we import and output a data file.",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Preparation</span>"
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidy Raw Data</span>"
     ]
   },
   {
-    "objectID": "data-prep.html#import",
-    "href": "data-prep.html#import",
-    "title": "\n4  Data Preparation\n",
+    "objectID": "data-prep-tidy-raw.html#import",
+    "href": "data-prep-tidy-raw.html#import",
+    "title": "\n2  Tidy Raw Data\n",
     "section": "Import",
     "text": "Import\nTwo different import options are included in the script:\n\n\nImport a single file: You can use the standard import functions from readr to do this\n\nImport multiple files and merge them: To do this, you need to use purrr::map_df() with a readr import function\n\n\n# ---- Import Data ------------\n# to import a single file\ndata_import &lt;- read_delim(here(import_dir, import_file), delim = \"\\t\",\n                          escape_double = FALSE, trim_ws = TRUE)\n\n# alternatively to import a batch of files...\n# change the arguments in purrr::map_df() depending on type of data files\n# this example is for files created from eprime and needs encoding = \"UCS-2LE\"\nfiles &lt;- list.files(here(import_dir, task), \n                    pattern = \".txt\", full.names = TRUE)\ndata_import &lt;- files |&gt;\n  map_df(~ read_delim(.x, locale = locale(encoding = \"UCS-2LE\"), \n                      delim = \"\\t\", escape_double = FALSE, \n                      trim_ws = TRUE, na = \"NULL\"))\n# -----------------------------",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Preparation</span>"
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidy Raw Data</span>"
     ]
   },
   {
-    "objectID": "data-prep.html#tidy-data",
-    "href": "data-prep.html#tidy-data",
-    "title": "\n4  Data Preparation\n",
+    "objectID": "data-prep-tidy-raw.html#tidy-data",
+    "href": "data-prep-tidy-raw.html#tidy-data",
+    "title": "\n2  Tidy Raw Data\n",
     "section": "Tidy Data",
     "text": "Tidy Data\nThis is the meat of the script, where the action happens. It will also be different for every task, obviously. I will cover common steps in more detail below.\n\n# ---- Tidy Data --------------\ndata_raw &lt;- data_import |&gt;\n  rename() |&gt;\n  filter() |&gt;\n  mutate() |&gt;\n  select()\n# -----------------------------",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Preparation</span>"
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidy Raw Data</span>"
     ]
   },
   {
-    "objectID": "data-prep.html#save-data",
-    "href": "data-prep.html#save-data",
-    "title": "\n4  Data Preparation\n",
+    "objectID": "data-prep-tidy-raw.html#save-data",
+    "href": "data-prep-tidy-raw.html#save-data",
+    "title": "\n2  Tidy Raw Data\n",
     "section": "Save Data",
     "text": "Save Data\nNo need to change anything here. Isn’t that nice?\n\n# ---- Save Data --------------\nwrite_csv(data_raw, here(output_dir, output_file))\n# -----------------------------\n\nrm(list = ls())",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Preparation</span>"
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidy Raw Data</span>"
     ]
   },
   {
-    "objectID": "data-prep.html#combine-information-across-columns",
-    "href": "data-prep.html#combine-information-across-columns",
-    "title": "\n4  Data Preparation\n",
+    "objectID": "data-prep-tidy-raw.html#combine-information-across-columns",
+    "href": "data-prep-tidy-raw.html#combine-information-across-columns",
+    "title": "\n2  Tidy Raw Data\n",
     "section": "Combine information across columns",
     "text": "Combine information across columns\nYou can probably guess that the data contained in slide1.resp and slide2.resp contains the same information about what response was made. But one is for practice trials and the other for real trials. This should just be combined in one column. Same thing with slide1.rt and slide2.rt.\nThere is a convenient function to do this, dplyr::coalesce()\n\n\nCode\nData Frame\n\n\n\n\ndata_raw &lt;- data_import |&gt;\n  rename(TrialProc = `Proc Trial`) |&gt;\n  filter(TrialProc == \"prc\" | TrialProc == \"tsk\") |&gt;\n  mutate(Response = coalesce(slide1.resp, slide2.resp),\n         RT = coalesce(slide1.rt, slide2.rt))\n\nView the Data Frames tab to see the resulting data frames\n\n\nUse the small arrow ▸ at the end of the column names to see more columns",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Preparation</span>"
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidy Raw Data</span>"
     ]
   },
   {
-    "objectID": "data-prep.html#values-in-columns-dont-make-sense",
-    "href": "data-prep.html#values-in-columns-dont-make-sense",
-    "title": "\n4  Data Preparation\n",
+    "objectID": "data-prep-tidy-raw.html#values-in-columns-dont-make-sense",
+    "href": "data-prep-tidy-raw.html#values-in-columns-dont-make-sense",
+    "title": "\n2  Tidy Raw Data\n",
     "section": "Values in columns don’t make sense",
     "text": "Values in columns don’t make sense\nSome common examples\n\nThe trial number continues across practice practice and real trials\nCondition has values of 0 and 1. What do 0 and 1 mean???\nTrialProc has values that can be more clear\nValues in columns Response and Ans do not make sense. What do 1, 2, and 3 mean???\n\n\n\nCode\nData Frame\n\n\n\n\ndata_raw &lt;- data_import |&gt;\n  rename(TrialProc = `Proc Trial`) |&gt;\n  filter(TrialProc == \"prc\" | TrialProc == \"tsk\") |&gt;\n  mutate(Response = coalesce(slide1.resp, slide2.resp),\n         RT = coalesce(slide1.rt, slide2.rt),\n         Condition = case_when(COND == 0 ~ \"congruent\",\n                               COND == 1 ~ \"incongruent\"),\n         TrialProc = case_when(TrialProc == \"prc\" ~ \"practice\",\n                               TrialProc == \"tsk\" ~ \"real\"),\n         Response = case_when(Response == 1 ~ \"red\",\n                              Response == 2 ~ \"green\",\n                              Response == 3 ~ \"blue\"),\n         Correct_Response = case_when(Ans == 1 ~ \"red\",\n                                      Ans == 2 ~ \"green\",\n                                      Ans == 3 ~ \"blue\")) |&gt;\nmutate(.by = c(ID, TrialProc),\n         Trial = row_number())\n\nView the Data Frame tab to see the resulting data frame\n\n\nUse the small arrow ▸ at the end of the column names to see more columns",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Preparation</span>"
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidy Raw Data</span>"
     ]
   },
   {
-    "objectID": "data-prep.html#add-additional-columns",
-    "href": "data-prep.html#add-additional-columns",
-    "title": "\n4  Data Preparation\n",
+    "objectID": "data-prep-tidy-raw.html#add-additional-columns",
+    "href": "data-prep-tidy-raw.html#add-additional-columns",
+    "title": "\n2  Tidy Raw Data\n",
     "section": "Add additional columns",
     "text": "Add additional columns\nYou may have noticed that there is no column corresponding to accuracy. We have Response and Correct_Response information so we can create a new column for Accuracy\n\n\nCode\nData Frame\n\n\n\n\ndata_raw &lt;- data_import |&gt;\n  rename(TrialProc = `Proc Trial`) |&gt;\n  filter(TrialProc == \"prc\" | TrialProc == \"tsk\") |&gt;\n  mutate(Response = coalesce(slide1.resp, slide2.resp),\n         RT = coalesce(slide1.rt, slide2.rt),\n         Condition = case_when(COND == 0 ~ \"congruent\",\n                               COND == 1 ~ \"incongruent\"),\n         TrialProc = case_when(TrialProc == \"prc\" ~ \"practice\",\n                               TrialProc == \"tsk\" ~ \"real\"),\n         Response = case_when(Response == 1 ~ \"red\",\n                              Response == 2 ~ \"green\",\n                              Response == 3 ~ \"blue\"),\n         Correct_Response = case_when(Ans == 1 ~ \"red\",\n                                      Ans == 2 ~ \"green\",\n                                      Ans == 3 ~ \"blue\"),\n         Accuracy = case_when(Response == Correct_Response ~ 1,\n                              Response != Correct_Response ~ 0)) |&gt;\nmutate(.by = c(ID, TrialProc),\n         Trial = row_number())\n\nView the Data Frame tab to see the resulting data frames\n\n\nUse the small arrow ▸ at the end of the column names to see more columns",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Preparation</span>"
+      "Data Preparation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Tidy Raw Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html",
-    "href": "data-score.html",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-prep-duplicate-check.html",
+    "href": "data-prep-duplicate-check.html",
+    "title": "\n3  Data Qualtiy Checks\n",
+    "section": "",
+    "text": "Duplicate Subject IDs\nAs data collection continues you will periodically compile all the data, process it, and even do some analyses. These are a good opportunity to do a data quality check that can be hard to identify and correct for later on down the road: Check for Duplicate Subject IDs.\nIn a large data collection effort where we recruit hundreds of subjects for multiple sessions, and have a team of over 10 research assistants, there are bound to be mistakes that happen. One that can be problematic for our data are duplicate subject IDs. This happens when an RA accidentally enters in the wrong subject ID when administering a task. This can be a result of a simple typo or the RA mixing up subject IDs when running multiple people at one time. Either way, these need to be identified and corrected for.",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Qualtiy Checks</span>"
+    ]
+  },
+  {
+    "objectID": "data-prep-duplicate-check.html#check-for-duplicates",
+    "href": "data-prep-duplicate-check.html#check-for-duplicates",
+    "title": "\n3  Data Qualtiy Checks\n",
+    "section": "Check for Duplicates",
+    "text": "Check for Duplicates\nTo check for duplicate subject IDs in a data file, you need to have a uniqe date and time (or some other unique information) in your raw data files. In the psyworkflow R package, there is a convenient function to detect duplicate IDs based on the unique columns.\nInstall psyworkflow\n\n\ndevtools::install_github(\"dr-JT/psyworkflow\")\n\nduplicates_check()\nIn your tidy raw data R script file, you can add duplicates_check() when importing the data files\n\nfiles &lt;- list.files(here(import_dir, task), \n                    pattern = \".txt\", full.names = TRUE)\ndata_import &lt;- files |&gt;\n  map_df(~ read_delim(.x, locale = locale(encoding = \"UCS-2LE\"), \n                      delim = \"\\t\", escape_double = FALSE, \n                      trim_ws = TRUE, na = \"NULL\")) |&gt;\n  psyworkflow::duplicates_check()\n\nSome arguments you need to specify:\n\nid: The column name corresponding to Subject IDs. Defaults to: id = “Subject”\nunique: Column names that are unique to each Subject ID\nsave_as: Folder path and file name to output the duplicate ID’s to. This is useful so that you have a log of which tasks have duplicate IDs and need to be corrected\n\n\n\n\n\n\n\nNote\n\n\n\nUse the helper function ? to see other arguments\n\n\n\n\n\n\n\n\nNote\n\n\n\nFor an E-Prime data file, all the default arguments can be used and the only argument you need to specify is save_as\n\n\n\nfiles &lt;- list.files(here(import_dir, task), \n                    pattern = \".txt\", full.names = TRUE)\ndata_import &lt;- files |&gt;\n  map_df(~ read_delim(.x, locale = locale(encoding = \"UCS-2LE\"), \n                      delim = \"\\t\", escape_double = FALSE, \n                      trim_ws = TRUE, na = \"NULL\")) |&gt;\n  psyworkflow::duplicates_check(save_as = here(\"data/raw/duplicates\",\n                                               \"task_name_duplicates.csv\"))",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Qualtiy Checks</span>"
+    ]
+  },
+  {
+    "objectID": "data-prep-duplicate-check.html#identifying-correct-ids",
+    "href": "data-prep-duplicate-check.html#identifying-correct-ids",
+    "title": "\n3  Data Qualtiy Checks\n",
+    "section": "Identifying Correct IDs",
+    "text": "Identifying Correct IDs\nOpen the task_name_duplicates.csv file to see a list of subject IDs that are duplicated.\nFiguring out which subject ID is correct and which one is wrong (and what the correct ID is) requires some investigative work. Here are some common things to look for:\n\nCross check the date and time in the data files with the Participant Schedule\nCheck the Running Room Log Book. Can verify what time they started and what computer they do the task on\nCheck the Subject ID and Session Time in data files for tasks immediately preceding and following the task with the potentially wrong ID",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Qualtiy Checks</span>"
+    ]
+  },
+  {
+    "objectID": "data-prep-duplicate-check.html#fix-ids-in-data-files",
+    "href": "data-prep-duplicate-check.html#fix-ids-in-data-files",
+    "title": "\n3  Data Qualtiy Checks\n",
+    "section": "Fix IDs in Data Files",
+    "text": "Fix IDs in Data Files\n\n\n\n\n\n\nImportant\n\n\n\nThis is important. Do not ignore this section!\n\n\nYou need to fix the data files on the running room computer itself! Not on the network drive, not on SharePoint, or anywhere else. The original data file created on the local running room computer needs to be fixed!\nHow to do this depends on the program used to adminster the task and the type of data file\nE-Prime\nE-Prime will produce two data files. We only use one, but the other can be a backup so we need to fix both data files.\n-Export.txt\nThe -Export.txt is the main file that needs to be corrected. Open the file in Excel and change ALL the values in the Subject column. Make sure you have it right! Save it.\n.edat3\nThe .edat3 file is secondary but should also be corrected. Open the .edat3 file (it will open in E-Data Aid). Change the value in the first row of the Subject column. This will automatically change all the other rows and will be highlighted in red.\nRename the data file\nRegardless of what program was used to administer the task (and as long as the subject ID is contained in the file name) you NEED to rename the data file itself. Replace the incorrect ID with the correct ID in the file name.",
+    "crumbs": [
+      "Data Preparation",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data Qualtiy Checks</span>"
+    ]
+  },
+  {
+    "objectID": "data-scoring-setup-project.html",
+    "href": "data-scoring-setup-project.html",
+    "title": "\n4  Setup Analysis Project\n",
+    "section": "",
+    "text": "For every data collection study there are multiple data analysis projects that result in published papers. The data analysis projects will share common tasks but might use different criteria for scoring, cleaning, and analyzing the data. Because of this, and just for organization, we need to keep data collection and data analysis projects separate.\nThe data collection repository (SharePoint / Data Collection / [Study Name]) should be where raw and tidy data files, along with some R scripts are stored.\nEach data analysis project should be created from the data files in the data collection repository.\nSetup Folders\n\nCreate a folder for your project that contains the three following folders\n\n📁 analyses\n📁 data\n📁 R\n\nInside of the data folder create a raw/messy folder and a scored folder\n\n📁 data\n   📁 raw\n      📁 messy\n   📁 scored\n\nCreate an RStudio Project in the project’s root directory\n\n\nFile -&gt; New Project… -&gt; Existing Directory\n\nCopy Data Files\nOnce you create a data analysis repository in SharePoint/Data Analysis, you can copy over data files for the tasks specific to that research project.\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nOnly copy over the messy raw data files, otherwise your project will not be fully reproducible\n\n\nDownload R Script Templates\nThe englelab package contains R script templates you can download\nIn the console window, type:\n\nenglelab::get_template(raw_script = TRUE, score_script = TRUE, \n                       merge_script = TRUE, analysis_script = TRUE, \n                       wmc_scripts = TRUE, ac_scripts = TRUE, \n                       main_script = TRUE)\n\nCopy From Other Projects\nIf R scripts already exist in other projects for processing data from tasks you are using in your current project, then you can also just copy and paste those over to your project.",
+    "crumbs": [
+      "Data Scoring",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Setup Analysis Project</span>"
+    ]
+  },
+  {
+    "objectID": "data-scoring-score-clean.html",
+    "href": "data-scoring-score-clean.html",
+    "title": "\n5  Score and Clean Data\n",
     "section": "",
     "text": "Overview of Template\nYou can download an R script template to score tidy raw data files:\nenglelab::get_template(score_script = TRUE)",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#setup",
-    "href": "data-score.html#setup",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#setup",
+    "href": "data-scoring-score-clean.html#setup",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Setup",
     "text": "Setup\n\n# ---- Setup ------------------\n# packages\nlibrary(here)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(englelab)    # for data cleaning functions\nlibrary(tidyr)       # for pivot_wider. delete if not using\nlibrary(psych)       # for cronbach's alpha. delete if not using\n\n# directories\nimport_dir &lt;- \"data/raw\"\noutput_dir &lt;- \"data/scored\"\n\n# file names\ntask &lt;- \"taskname\"\nimport_file &lt;- paste(task, \"raw.csv\", sep = \"_\")\noutput_file &lt;- paste(task, \"Scores.csv\", sep = \"_\")\n\n## data cleaning parameters\noutlier_cutoff &lt;- 3.5\n# -----------------------------\n\nThe Setup section is to:\n\nLoad any packages used in the script\nSet the directories of where to import and output data files to\nSet the file names of the data files to be imported and outputted\nSet data cleaning parameters (e.g., outlier criterion)",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#import",
-    "href": "data-score.html#import",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#import",
+    "href": "data-scoring-score-clean.html#import",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Import",
     "text": "Import\nGiven that 1) you created a tidy raw data file in .csv format, and 2) you specified import_dir and import_file in the setup section, you most likely do not need to change anything here.\nOptionally, you might want to go ahead and filter out any rows that you absolutely do not want to include at any point in scoring the data (e.g., practice trials or certain subjects).\n\n# ---- Import Data ------------\ndata_import &lt;- read_csv(here(import_dir, import_file)) |&gt;\n  filter()\n# -----------------------------",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#score-data",
-    "href": "data-score.html#score-data",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#score-data",
+    "href": "data-scoring-score-clean.html#score-data",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Score Data",
     "text": "Score Data\nThe Score Data section is where most of the work needs to be done. You should be using dplyr and possibly tidyr to do most of the work here, though you may need other packages and functions. You can delete whatever is in there, that is just a placeholder as an example of the type of functions you might use.\n\n# ---- Score Data -------------\ndata_scores &lt;- data_import |&gt;\n  summarise(.by = Subject)\n# -----------------------------",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#clean-data",
-    "href": "data-score.html#clean-data",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#clean-data",
+    "href": "data-scoring-score-clean.html#clean-data",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Clean Data",
     "text": "Clean Data\nThe next section of the script template is for cleaning the data by removing problematic subjects and/or removing outliers.",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#reliability",
-    "href": "data-score.html#reliability",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#reliability",
+    "href": "data-scoring-score-clean.html#reliability",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Reliability",
     "text": "Reliability\nThere are two standard ways of calculating reliability: split-half and cronbach’s alpha. The script template provides some template code for calculating both of these.",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#save-data",
-    "href": "data-score.html#save-data",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#save-data",
+    "href": "data-scoring-score-clean.html#save-data",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Save Data",
     "text": "Save Data\nNo need to change anything here. Isn’t that nice?\n\n# ---- Save Data --------------\nwrite_csv(data_raw, here(output_dir, output_file))\n# -----------------------------\n\nrm(list = ls())",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#between-subjects-anova",
-    "href": "data-score.html#between-subjects-anova",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#between-subjects-anova",
+    "href": "data-scoring-score-clean.html#between-subjects-anova",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Between-Subjects ANOVA",
     "text": "Between-Subjects ANOVA\nCondition is not a between-subject variable in this sample data but if you have a between-subject variable or design, you will want to keep the column(s) for that variable(s) in long format.",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#within-subjects-anova",
-    "href": "data-score.html#within-subjects-anova",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#within-subjects-anova",
+    "href": "data-scoring-score-clean.html#within-subjects-anova",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Within-Subjects ANOVA",
     "text": "Within-Subjects ANOVA\nCondition is a within-subject variable in this sample data. Whether you want this variable in long or wide format depends on whether you will use R or JASP to analyze the data.\n\nFor R, you can keep it in long format\nFor JASP, you will need to restructure it to wide format\n\n\n\nCode\nData Frame\n\n\n\n\n# set criterion in setup section of script\nrt_short_criterion &lt;- 200\nrt_long_criterion &lt;- 5000\n\ndata_scores &lt;- data_import |&gt;\n  filter(RT &gt;= rt_short_criterion, RT &lt;= rt_long_criterion) |&gt;\n  summarise(.by = c(ID, Condition),\n            Accuracy.mean = mean(Accuracy, na.rm = TRUE),\n            RT.mean = mean(RT, na.rm = TRUE),\n            RT.sd = sd(RT, na.rm = TRUE)) |&gt;\n  pivot_wider(id_cols = ID,\n              names_from = Condition,\n              values_from = c(Accuracy.mean, RT.mean, RT.sd),\n              names_glue = \"{Condition}_{.value}\")\n\n\n\nUse the small arrow ▸ at the end of the column names to see more columns",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#correlation-and-regression",
-    "href": "data-score.html#correlation-and-regression",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#correlation-and-regression",
+    "href": "data-scoring-score-clean.html#correlation-and-regression",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Correlation and Regression",
     "text": "Correlation and Regression\nFor correlation and regression you will want to restructure the data to wide format (same as the code above).\nIf you have multiple data files from different measures or tasks, that you eventually want to merge into a single data frame for analysis, it is a good idea to add the measure or task name to the column names. That way when you merge the data you know which column corresponds to which task.\n\n\nCode\nData Frame\n\n\n\n\n# set criterion in setup section of script\nrt_short_criterion &lt;- 200\nrt_long_criterion &lt;- 5000\n\ndata_scores &lt;- data_import |&gt;\n  filter(RT &gt;= rt_short_criterion, RT &lt;= rt_long_criterion) |&gt;\n  summarise(.by = c(ID, Condition),\n            Accuracy.mean = mean(Accuracy, na.rm = TRUE),\n            RT.mean = mean(RT, na.rm = TRUE),\n            RT.sd = sd(RT, na.rm = TRUE)) |&gt;\n  pivot_wider(id_cols = ID,\n              names_from = Condition,\n              values_from = c(Accuracy.mean, RT.mean, RT.sd),\n              names_glue = \"{task}_{Condition}_{.value}\")\n\n\n\nUse the small arrow ▸ at the end of the column names to see more columns",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#remove-problematic-subjects",
-    "href": "data-score.html#remove-problematic-subjects",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#remove-problematic-subjects",
+    "href": "data-scoring-score-clean.html#remove-problematic-subjects",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Remove Problematic Subjects",
     "text": "Remove Problematic Subjects\nDepending on the task, problematic subjects can be detected in different ways. For this example data we will simply remove subjects that had less than chance performance on congruent trials (were just guessing or did not understand the task).\nTo do so, we will use a custom function created for this purpose, remove_problematic() from our englelab package. ?englelab::remove_problematic\nThe main argument is remove =. This argument takes a logical statement (e.g., remove = Accuracy.mean &lt;= .5).\nThe other argument, that is more optional, is log_file =. This allows us to save a data file containing only the subjects that were removed. This is good if we later on want to report in publications how many subjects were removed.\n\n\nCode\nData Frame\n\n\n\n\n# set criterion in setup section of script\nacc_criterion &lt;- .34\n\ndata_cleaned &lt;- data_scores |&gt;\n  remove_problematic(\n    remove = \"Stroop_congruent_Accuracy.mean &lt;= acc_criterion\",\n    log_file = here(\"data/logs\", paste(task, \"_problematic.csv\", sep = \"\")))\n\n\n\nUse the small arrow ▸ at the end of the column names to see more columns",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#remove-outliers",
-    "href": "data-score.html#remove-outliers",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#remove-outliers",
+    "href": "data-scoring-score-clean.html#remove-outliers",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Remove Outliers",
     "text": "Remove Outliers\nRemove outliers based on their final task scores. A typical way we remove outliers is by setting their score to missing NA if it is 3.5 standard deviations above or below the mean.\nTo do so, we will use a custom function created for this purpose, replace_outliers from our englelab package.\nThere are several arguments that need to be defined. See ?englelab::replace_outliers for a description on this.\nThe fully piped |&gt; code for this entire section looks like:\n\n\nCode\nData Frame\n\n\n\n\n# set criterion in setup section of script\nacc_criterion &lt;- .34\noutlier_criterion &lt;- 3.5\n\ndata_cleaned &lt;- data_scores |&gt;\n  remove_problematic(\n    remove = \"Stroop_congruent_Accuracy.mean &lt;= acc_criterion\",\n    log_file = here(\"data/logs\", paste(task, \"_problematic.csv\", sep = \"\"))) |&gt;\n  replace_outliers(\n    variables = \"Stroop_incongruent_RT.mean\",\n    cutoff = outlier_criterion,\n    with = \"NA\",\n    pass = 1,\n    id = \"ID\",\n    log_file = here(\"data/logs\", paste(task, \"_outliers.csv\", sep = \"\"))) |&gt;\n  filter(!is.na(Stroop_congruent_RT.mean))\n\nProblematic subjects removed: 1\n\n\nOutliers detected (pass = 1): 0\n\n\nNotice that filter(!is.na()) is specified after replace_outliers. This removes any of the outliers from the dataframe.\n\n\nUse the small arrow ▸ at the end of the column names to see more columns",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#split-half-reliability",
-    "href": "data-score.html#split-half-reliability",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#split-half-reliability",
+    "href": "data-scoring-score-clean.html#split-half-reliability",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Split-half reliability",
     "text": "Split-half reliability\nFirst trials need to be split between even and odd trials (or whatever split-half one is using).\n\n\nCode\nData Frame\n\n\n\n\nsplithalf &lt;- reliability |&gt;\n  mutate(.by = ID,\n         Split = ifelse(Trial %% 2, \"odd\", \"even\"))\n\n\n\nUse the small arrow ▸ at the end of the column names to see more columns\n\n\n\n  \n\n\n\n\n\n\nThen scores can be re-calculated based on the even/odd splits. Everything that was done to score the data needs to be included, such as trial-level cleaning.\n\n\nCode\nData Frame\n\n\n\n\nsplithalf &lt;- reliability |&gt;\n  mutate(.by = ID,\n         Split = ifelse(Trial %% 2, \"odd\", \"even\")) |&gt;\n  filter(RT &gt;= rt_short_criterion, RT &lt;= rt_long_criterion) |&gt;\n  summarise(.by = c(ID, Condition, Split),\n            RT.mean = mean(RT, na.rm = TRUE)) |&gt;\n  pivot_wider(id_cols = ID,\n              names_from = c(Condition, Split),\n              values_from = RT.mean)\n\n\n\nUse the small arrow ▸ at the end of the column names to see more columns\n\n\n\n  \n\n\n\n\n\n\nFinally, spearman-brown corrected split-half reliability can be calculated and added to the data frame\n\n\nCode\nData Frame\n\n\n\n\nsplithalf &lt;- reliability |&gt;\n  mutate(.by = ID,\n         Split = ifelse(Trial %% 2, \"odd\", \"even\")) |&gt;\n  filter(RT &gt;= rt_short_criterion, RT &lt;= rt_long_criterion) |&gt;\n  summarise(.by = c(ID, Condition, Split),\n            RT.mean = mean(RT, na.rm = TRUE)) |&gt;\n  pivot_wider(id_cols = ID,\n              names_from = c(Condition, Split),\n              values_from = RT.mean) |&gt;\n  summarise(r = cor(incongruent_even, incongruent_odd)) |&gt;\n  mutate(r = (2 * r) / (1 + r))\n\ndata_cleaned$Stroop_incongruent_RT.mean_splithalf &lt;- splithalf$r\n\n\n\nUse the small arrow ▸ at the end of the column names to see more columns",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score.html#cronbachs-alpha",
-    "href": "data-score.html#cronbachs-alpha",
-    "title": "\n5  Data Scoring\n",
+    "objectID": "data-scoring-score-clean.html#cronbachs-alpha",
+    "href": "data-scoring-score-clean.html#cronbachs-alpha",
+    "title": "\n5  Score and Clean Data\n",
     "section": "Cronbach’s alpha",
     "text": "Cronbach’s alpha\nCronbach’s alpha is easier to calculate because we do not need to re-calculate the scores.\nThe first step is to get the data frame setup such that trial number is spread across columns\n\n\nCode\nData Frame\n\n\n\n\ncronbachalpha &lt;- reliability |&gt;\n  filter(RT &gt;= rt_short_criterion, RT &lt;= rt_long_criterion) |&gt;\n  select(ID, Trial, Accuracy) |&gt;\n  pivot_wider(id_cols = ID,\n              names_from = Trial,\n              values_from = Accuracy)\n\n\n\nUse the small arrow ▸ at the end of the column names to see more columns\n\n\n\n  \n\n\n\n\n\n\nThen we can use psych::alpha() to calculate the average correlation between items and save it to the data frame\n\n\nCode\nData Frame\n\n\n\n\ncronbachalpha &lt;- reliability |&gt;\n  select(ID, Trial, Accuracy) |&gt;\n  pivot_wider(id_cols = ID,\n              names_from = Trial,\n              values_from = Accuracy) |&gt;\n  select(-ID) |&gt;\n  alpha()  # from the psych package\n\nSome items ( 1 ) were negatively correlated with the total scale and \nprobably should be reversed.  \nTo do this, run the function again with the 'check.keys=TRUE' option\n\ndata_cleaned$Stroop_incongruent_RT.mean_cronbachalpha &lt;- \n  cronbachalpha$total$std.alpha\n\n\n\nUse the small arrow ▸ at the end of the column names to see more columns",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Scoring</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Score and Clean Data</span>"
     ]
   },
   {
-    "objectID": "data-score-merge.html",
-    "href": "data-score-merge.html",
-    "title": "\n6  Data Scoring - Merge\n",
+    "objectID": "data-scoring-single-merge-file.html",
+    "href": "data-scoring-single-merge-file.html",
+    "title": "\n6  Single Merged File\n",
     "section": "",
     "text": "At this stage of data processing you have created multiple data files containing the task scores, reliabilities, and other variables for each task. The next step is to create a single merged data file containing the primary task scores for each task that you will be performing data analysis on. We can also create data files with the reliabilities, administration times, and a log of the data cleaning steps.\n\nYou can download an R script template to score tidy raw data files:\n\nenglelab::get_template(score_script = TRUE)\n\nSetup\n\n# ---- Setup ------------------\n# packages\nlibrary(here)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(purrr)\nlibrary(tidyr)\n\n# directories\nimport_dir &lt;- \"data/scored\"\noutput_dir &lt;- \"data\"\n\n# file names\noutput_scores &lt;- \"TaskScores.csv\"\noutput_reliabilities &lt;- \"Reliabilities.csv\"\noutput_admintimes &lt;- \"AdminTimes.csv\"\noutput_datacleaning &lt;- \"DataCleaning_log.csv\"\n# -----------------------------\n\nImport\nTo import and merge multiple data frames we can use purrr::map() |&gt; purrr:reduce()\n\n# ---- Import Data ------------\nfiles &lt;- list.files(here(import_dir), pattern = \"Scores\", full.names = TRUE)\ndata_import &lt;- files |&gt;\n  map(read_csv) |&gt;\n  reduce(full_join, by = \"Subject\")\n# -----------------------------\n\nTask Scores\n\n# ---- Select Variables -------\ndata_scores &lt;- data_import |&gt;\n  select(Subject) |&gt;\n  filter()\n\n# list of final subjects\nsubjlist &lt;- select(data_scores, Subject)\n# -----------------------------\n\nAt this step, you may also want to filter out subjects that have missing data on specific tasks, or too much missing data across all the tasks.\nI advise creating a final subject list of all subjects that made it to this state of data processing.\nReliabilities\n\n# ---- Reliabilities ----------\ndata_reliabilities &lt;- data_import |&gt;\n  select(contains(\"splithalf\"), contains(\"cronbach_alpha\")) |&gt;\n  drop_na() |&gt;\n  distinct() |&gt;\n  pivot_longer(everything(),\n               names_to = c(\"Task\", \"metric\"),\n               names_pattern = \"(\\\\w+.\\\\w+).(\\\\w+)\",\n               values_to = \"value\") |&gt;\n  pivot_wider(id_col = Task,\n              names_from = metric,\n              values_from = value)\n# -----------------------------\n\nThe code in pivot_longer(names_pattern = \"(\\\\w+.\\\\w+).(\\\\w+)\") follows a specific naming scheme used for column names. Underscores (optional) can be used for task names and column descriptions, but a period (required) is ONLY used to separate the task name / description from the description of the task score type / what the value represents (e.g., RT = reaction time, splithalf = split-half reliability)\nTask_Name_MoreStuff.ScoreType\ne.g., StroopDL_Last4Rev.ResponseDeadline, VAorient_S.k, Antisaccade.ACC\nThis should also be used for reliabilities and admin times:\ne.g., StroopDL_Last4Rev.splithalf, StroopDL.AdminTime\nAdmin Times\n\n# ---- Admin Times ------------\ndata_merge &lt;- data_import |&gt;\n  select(contains(\"AdminTime\")) |&gt;\n  summarise_all(list(mean = mean, sd = sd), na.rm = TRUE) |&gt;\n  pivot_longer(everything(),\n               names_to = c(\"Task\", \"metric\"),\n               names_pattern = \"(\\\\w+.\\\\w+).(\\\\w+)\",\n               values_to = \"value\") |&gt;\n  mutate(value = round(value, 3)) |&gt;\n  pivot_wider(id_col = Task,\n              names_from = metric,\n              names_prefix = \"AdminTime.\",\n              values_from = \"value\")\n# -----------------------------\n\nData Cleaning Log\nThere will be two sets of cleaning logs we need to import\n\nProblematic subjects\nOutliers\n\n\n# ---- Data Cleaning Log ------\n# problematic subjects\ndata_problematic &lt;- list.files(here(\"data/logs\"), \n                                 pattern = \"problematic\", \n                                 full.names = TRUE) %&gt;%\n  map(read_csv) |&gt;\n  map(function(x) {\n    reframe(x, tibble(Task = gsub(\"\\\\..*\", \"\", colnames(select(x, 2))), \n                       Problematic_Removed = nrow(x)))\n  }) |&gt;\n  bind_rows()\n\n# outliers\ndata_outliers &lt;- list.files(here(\"data/logs\"), \n                                 pattern = \"outliers\", \n                                 full.names = TRUE) %&gt;%\n  map(read_csv) |&gt;\n  map(function(x) {\n    reframe(x, tibble(Task = gsub(\"\\\\..*\", \"\", colnames(select(x, 2))),\n                      Outliers_Removed = nrow(x),\n                      Outliers_Passes = max(pull(x, Pass))))\n  }) |&gt;\n  bind_rows()\n\n# merge\ndata_log &lt;- merge(data_problematic, data_outliers, by = \"Task\", all = TRUE)\n# -----------------------------\n\nSave Data\n\n# ---- Save Data --------------\nwrite_csv(data_scores, here(output_dir, output_scores))\nwrite_csv(data_reliabilities, here(output_dir, output_reliabilities))\nwrite_csv(data_reliabilities, here(output_dir, output_admintimes))\nwrite_csv(data_log, here(output_dir, output_datacleaning))\nwrite_csv(subjlist, here(output_dir, \"subjlist_final.csv\"))\n# -----------------------------\n\nrm(list = ls())",
     "crumbs": [
-      "Data Processing",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Data Scoring - Merge</span>"
+      "Data Scoring",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Single Merged File</span>"
     ]
   },
   {

@@ -1,6 +1,6 @@
 ---
-title: "Setup Project"
-subtitle: "Data Processing"
+title: "Setup Analysis Project"
+subtitle: "Data Scoring"
 execute:
   echo: true
   eval: false
